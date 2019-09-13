@@ -6,7 +6,7 @@ const APPCONFIG = {
     BAR_RADIUS: 5,
     BAR_HEIGHT: 10,
     BAR_SEGMENTS: 16,
-    NUM_BARS_PER_ROW: 12,
+    NUM_BARS_PER_ROW: 31,
     NUM_ROWS: 1,
     GROUND_WIDTH: 1800,
     GROUND_HEIGHT: 1000,
@@ -39,13 +39,6 @@ const APPCONFIG = {
         "Oct",
         "Nov",
         "Dec"
-    ],
-    YEARS: [
-        "Year 1",
-        "Year 2",
-        "Year 3",
-        "Year 4",
-        "Year 5"
     ],
     LABEL_SCALE: {
         x: 20,

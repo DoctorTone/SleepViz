@@ -220,23 +220,24 @@ class Framework extends BaseApp {
         let barMesh;
         let label;
         let labelProperty;
-        let yearData;
+        let dayData;
         let monthData;
-        let currentYear;
+        let currentMonth;
         let currentGroup;
         let currentValueGroup;
+        let startMonth = 4;
         // Lines
         let monthlyLinePositions = [];
         
         for(let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
-            currentYear = row + 1;
             // Create group
             currentGroup = new THREE.Group();
-            currentGroup.name = "Year" + currentYear;
+            currentMonth = APPCONFIG.MONTHS[startMonth];
+            currentGroup.name = currentMonth;
             this.root.add(currentGroup);
 
             currentValueGroup = new THREE.Group();
-            currentValueGroup.name = "ValuesYear" + currentYear;
+            currentValueGroup.name = "ValuesMonth" + currentMonth;
             currentValueGroup.visible = false;
             
             this.root.add(currentValueGroup);
