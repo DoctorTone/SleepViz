@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+        <title>Viz Framework</title>
+
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./src/css/sleepStyles.css">
+    </head>
+<body>
+  <!-- Override control kit styling-->
+  <style type="text/css">
+    #controlKit .panel .head .label {
+      color: orange;
+    }
+  </style>
+
+  <!-- Information modal -->
+  <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="infoModalLabel">Viz Framework</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  A framework for building 3D visualisations.
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="guiWidth">
+
+  </div>
+
+  <div id="WebGL-Output">
+    <div class="title">
+      <h1>Viz Framework</h1>
+    </div>
+    <div class="copyright">
+      <span>&copy DRT Software Ltd. 2019</span>
+    </div>
+    <div id="rotate" class="panel">
+      <p>Zoom</p>
+      <div class="">
+        <button type="button" id="zoomOut" class="btn btn-primary"><img src="./images/minus.png"></button>
+        <button type="button" id="zoomIn" class="btn btn-primary"><img src="./images/add.png"></button>
+      </div>
+      <p>Rotate</p>
+      <div class="mb-1">
+        <button type="button" id="rotateLeft" class="btn btn-primary"><img src="./images/leftWhite.png"></button>
+        <button type="button" id="rotateRight" class="btn btn-primary"><img src="./images/rightWhite.png"></button>
+      </div>
+      <div>
+        <button type="button" id="rotateUp" class="btn btn-primary"><img src="./images/upWhite.png"></button>
+        <button type="button" id="rotateDown" class="btn btn-primary"><img src="./images/downWhite.png"></button>
+      </div>
+    </div>
+    <div id="info" class="panel">
+      <img src="./images/info.png">
+    </div>
+  </div>  
+  <script src="./src/js/sleep.js"></script>
+</body>
+</html>

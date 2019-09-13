@@ -1,0 +1,120 @@
+/* Viz framework styles */
+body {
+    margin: 0;
+    overflow: hidden;
+    color: orange;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: left;
+}
+.title h1 {
+    font-size: 1.75rem;
+}
+.modal {
+    color: black;
+}
+#guiWidth {
+    width: 175px;
+}
+.panel {
+    position: absolute;
+    text-align: center;
+}
+.panel p {
+    margin-bottom: 0.25rem;
+}
+#rotate {
+    bottom: 15%;
+    right: 1%;
+    width: 22.5%;
+    color: white;
+}
+#rotate button {
+    width: 45%;
+    padding: 0.2rem 0.4rem;
+}
+#rotate img {
+    width: 100%;
+}
+.copyright {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    width: 100%;
+}
+#info {
+    bottom: 1%;
+    right: 1%;
+    width: 10%;
+}
+#info img {
+    width: 100%;
+}
+
+/* Small screens */
+@media (min-width: 576px) {
+    .title {
+        text-align: center;
+    }
+    #rotate {
+        width: 15%;
+    }
+}
+
+/* Small screen - landscape */
+@media (min-width: 576px) and (orientation: landscape) {
+    .title {
+        text-align: center;
+    }
+    #rotate {
+        width: 11%;
+        top: 11%;
+    }
+    #info {
+        width: 7.5%;
+    }
+    #guiWidth {
+        width: 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    #guiWidth {
+        width: 300px;
+    }
+}
+
+/* iPad in landscape */
+@media (min-width: 992px) {
+    #rotate {
+        width: 10%;
+        top: 60%;
+    }
+    #info {
+        width: 6%;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+    #rotate {
+        width: 8%;
+    }
+    #rotate img {
+        width: 100%;
+    }
+    #info {
+        width: 4%;
+    }
+}
+
+/* Full HD screens */
+@media (min-width: 1600px) {
+    #rotate {
+        width: 7%;
+    }
+}

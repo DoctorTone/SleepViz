@@ -1,0 +1,30 @@
+{
+  "name": "sleepviz",
+  "version": "1.0.0",
+  "description": "Sleep visualisation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoctorTone/SleepViz.git"
+  },
+  "author": "Dr Tony Glover",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoctorTone/SleepViz/issues"
+  },
+  "homepage": "https://github.com/DoctorTone/SleepViz#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "controlkit": "^0.1.9",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "three": "^0.108.0",
+    "three-trackballcontrols": "0.0.8"
+  }
+}
