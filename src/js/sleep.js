@@ -10,7 +10,7 @@ import { LabelManager } from "./LabelManager";
 import controlkit from "controlkit";
 import bootstrap from "bootstrap";
 
-import exampleData from "../../data/exampleData.json";
+import sleepData from "../../data/sleepData.json";
 
 class Framework extends BaseApp {
     constructor() {
