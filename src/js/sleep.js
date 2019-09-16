@@ -223,6 +223,7 @@ class Framework extends BaseApp {
         let dayData;
         let monthData;
         let currentMonth;
+        let minuteData;
         let currentGroup;
         let currentValueGroup;
         let startMonth = 4;
@@ -234,6 +235,8 @@ class Framework extends BaseApp {
             currentGroup = new THREE.Group();
             currentMonth = APPCONFIG.MONTHS[startMonth];
             currentGroup.name = currentMonth;
+            monthData = sleepData[currentMonth];
+
             this.root.add(currentGroup);
 
             currentValueGroup = new THREE.Group();
@@ -245,7 +248,7 @@ class Framework extends BaseApp {
             let linePositions = [];
             let labelValue;
 
-            for(let bar=0; bar<APPCONFIG.NUM_BARS_PER_ROW; ++bar) {
+            for(let bar=0; bar<monthData.length; ++bar) {
                 // Label properties
                 labelProperty = {};
                 labelProperty.position = new THREE.Vector3();
@@ -256,13 +259,16 @@ class Framework extends BaseApp {
                 bars.push(barMesh);
                 barMesh.position.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
 
-                yearData = exampleData["Year" + currentYear];
-                monthData = yearData[bar].sales;
-                if (monthData === 0) {
-                    monthData = 0.001;
+                dayData = monthData[bar].Duration;
+                dayData = dayData.split(":");
+                dayData.hours = parseInt(dayData[0], 10);
+                dayData.minutes = parseInt(dayData[1], 10);
+                minuteData = (dayData.hours * 60) + dayData.minutes;
+                if (minuteData === 0) {
+                    minuteData = 0.001;
                 }
-                barMesh.scale.set(1, monthData, 1);
-                barMesh.position.y += (monthData * 5);
+                barMesh.scale.set(1, minuteData/10, 1);
+                //barMesh.position.y += (minuteData);
                 currentGroup.add(barMesh);
 
                 // Lines
@@ -274,14 +280,15 @@ class Framework extends BaseApp {
                 labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.VALUE_SCALE;
-                if (monthData < 0.5) {
-                    monthData = 0;
+                if (dayData < 0.5) {
+                    dayData = 0;
                 }
                 labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + bar;
-                label = this.labelManager.create("valueLabel" + labelValue, monthData, labelProperty);
+                label = this.labelManager.create("valueLabel" + labelValue, dayData, labelProperty);
                 currentValueGroup.add(label.getSprite());
 
                 // Labels
+                /*
                 if (row === 0) {
                     labelProperty.position.copy(barMesh.position);
                     labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
@@ -305,6 +312,7 @@ class Framework extends BaseApp {
                     label = this.labelManager.create("yearLabel" + row, APPCONFIG.YEARS[row], labelProperty);
                     this.root.add(label.getSprite());
                 }
+                */
             }
             monthlyLinePositions.push(linePositions);
         }
@@ -312,6 +320,7 @@ class Framework extends BaseApp {
         this.bars = bars;
 
         // Lines
+        /*
         const lineColour = new THREE.Color();
         lineColour.setHex(0xdadada);
         let lineColours = [];
@@ -349,6 +358,7 @@ class Framework extends BaseApp {
             this.root.add(line);
         }
         this.lineGeoms = lineGeoms;
+        */
 
         this.createGUI();
     }
