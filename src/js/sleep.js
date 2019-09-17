@@ -227,6 +227,8 @@ class Framework extends BaseApp {
         let currentGroup;
         let currentValueGroup;
         let startMonth = 4;
+        let barStartPos = new THREE.Vector3();
+        let attributes = ["Duration", "Asleep"];
         // Lines
         let monthlyLinePositions = [];
         
@@ -253,24 +255,28 @@ class Framework extends BaseApp {
                 labelProperty = {};
                 labelProperty.position = new THREE.Vector3();
 
-                // Create mesh
-                barMesh = new THREE.Mesh(barGeom, this.barMaterials[row]);
-                barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
-                bars.push(barMesh);
-                barMesh.position.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
-
-                dayData = monthData[bar].Duration;
-                dayData = dayData.split(":");
-                dayData.hours = parseInt(dayData[0], 10);
-                dayData.minutes = parseInt(dayData[1], 10);
-                minuteData = (dayData.hours * 60) + dayData.minutes;
-                if (minuteData === 0) {
-                    minuteData = 0.001;
+                // Create meshes
+                barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
+                for (let attribute=0; attribute<APPCONFIG.NUM_ATTRIBUTES; ++attribute) {
+                    barMesh = new THREE.Mesh(barGeom, this.barMaterials[row]);
+                    barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
+                    bars.push(barMesh);
+                    barMesh.position.copy(barStartPos);
+                    barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
+                    dayData = monthData[bar];
+                    dayData = dayData[attributes[attribute]];
+                    dayData = dayData.split(":");
+                    dayData.hours = parseInt(dayData[0], 10);
+                    dayData.minutes = parseInt(dayData[1], 10);
+                    minuteData = (dayData.hours * 60) + dayData.minutes;
+                    if (minuteData === 0) {
+                        minuteData = 0.001;
+                    }
+                    barMesh.scale.set(1, minuteData/10, 1);
+                    //barMesh.position.y += (minuteData);
+                    currentGroup.add(barMesh);
                 }
-                barMesh.scale.set(1, minuteData/10, 1);
-                //barMesh.position.y += (minuteData);
-                currentGroup.add(barMesh);
-
+                
                 // Lines
                 linePositions.push(barMesh.position.x, barMesh.position.y*2, barMesh.position.z);
 
