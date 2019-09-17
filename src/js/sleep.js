@@ -214,7 +214,8 @@ class Framework extends BaseApp {
         this.addGroundPlane();
 
         // Add bars to scene
-        const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
+        //const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
+        const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         const bars = [];
         this.createBarMaterials();
         let barMesh;

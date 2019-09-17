@@ -5,6 +5,8 @@ const APPCONFIG = {
     BAR_COLOUR : 0xfff000,
     BAR_RADIUS: 5,
     BAR_HEIGHT: 10,
+    BAR_WIDTH: 10,
+    BAR_DEPTH: 10,
     BAR_SEGMENTS: 16,
     NUM_BARS_PER_ROW: 31,
     NUM_ATTRIBUTES: 2,
