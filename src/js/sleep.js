@@ -228,7 +228,7 @@ class Framework extends BaseApp {
         let currentValueGroup;
         let startMonth = 4;
         let barStartPos = new THREE.Vector3();
-        let attributes = ["Duration", "Asleep"];
+        let attributes = ["Asleep", "Awake"];
         // Lines
         let monthlyLinePositions = [];
         
@@ -270,7 +270,7 @@ class Framework extends BaseApp {
                     dayData.minutes = parseInt(dayData[1], 10);
                     minuteData = (dayData.hours * 60) + dayData.minutes;
                     if (minuteData === 0) {
-                        minuteData = 0.001;
+                        minuteData = 0.01;
                     }
                     barMesh.scale.set(1, minuteData/10, 1);
                     //barMesh.position.y += (minuteData);
