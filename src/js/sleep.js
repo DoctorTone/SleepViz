@@ -16,6 +16,7 @@ class Framework extends BaseApp {
     constructor() {
         super();
         this.barMaterials = [];
+        this.attributeMaterials = [];
         this.labelManager = new LabelManager();
         this.cameraRotate = false;
         this.rotSpeed = Math.PI/20;
@@ -51,6 +52,14 @@ class Framework extends BaseApp {
         for(let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
             barMaterial = new THREE.MeshLambertMaterial( {color: APPCONFIG.BAR_COLOURS[row], transparent: true, opacity: 1} );
             this.barMaterials.push(barMaterial);
+        }
+    }
+
+    createAttributeMaterials() {
+        let barMaterial;
+        for (let attribute=0; attribute<APPCONFIG.NUM_ATTRIBUTES; ++attribute) {
+            barMaterial = new THREE.MeshLambertMaterial( {color: APPCONFIG.BAR_COLOURS[attribute], transparent: true, opacity: 1} );
+            this.attributeMaterials.push(barMaterial);
         }
     }
 
@@ -218,6 +227,7 @@ class Framework extends BaseApp {
         const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         const bars = [];
         this.createBarMaterials();
+        this.createAttributeMaterials();
         let barMesh;
         let label;
         let labelProperty;
@@ -259,7 +269,7 @@ class Framework extends BaseApp {
                 // Create meshes
                 barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
                 for (let attribute=0; attribute<attributes.length; ++attribute) {
-                    barMesh = new THREE.Mesh(barGeom, this.barMaterials[row]);
+                    barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
                     barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
                     bars.push(barMesh);
                     barMesh.position.copy(barStartPos);
