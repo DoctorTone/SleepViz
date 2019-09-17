@@ -6,8 +6,8 @@ const SceneConfig = {
     pointLightColour: 0xffffff,
     CameraPos: {
         x: 0,
-        y: 400,
-        z: 600
+        y: 300,
+        z: 400
     },
     LookAtPos: {
         x: 0,
