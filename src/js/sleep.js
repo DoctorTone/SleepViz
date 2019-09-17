@@ -229,7 +229,7 @@ class Framework extends BaseApp {
         let currentValueGroup;
         let startMonth = 4;
         let barStartPos = new THREE.Vector3();
-        let attributes = ["Asleep", "Awake"];
+        let attributes = ["Asleep", "Awake", "Quality sleep", "Deep sleep"];
         // Lines
         let monthlyLinePositions = [];
         
@@ -258,7 +258,7 @@ class Framework extends BaseApp {
 
                 // Create meshes
                 barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
-                for (let attribute=0; attribute<APPCONFIG.NUM_ATTRIBUTES; ++attribute) {
+                for (let attribute=0; attribute<attributes.length; ++attribute) {
                     barMesh = new THREE.Mesh(barGeom, this.barMaterials[row]);
                     barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
                     bars.push(barMesh);
@@ -271,7 +271,7 @@ class Framework extends BaseApp {
                     dayData.minutes = parseInt(dayData[1], 10);
                     minuteData = (dayData.hours * 60) + dayData.minutes;
                     if (minuteData === 0) {
-                        minuteData = 0.01;
+                        minuteData = 0.1;
                     }
                     barMesh.scale.set(1, minuteData/10, 1);
                     //barMesh.position.y += (minuteData);
