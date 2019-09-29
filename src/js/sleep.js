@@ -40,7 +40,7 @@ class Framework extends BaseApp {
 
     addGroundPlane() {
         const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
-        const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL} );
+        const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL, flatShading: true} );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
         ground.position.y = 0;
@@ -50,7 +50,7 @@ class Framework extends BaseApp {
     createBarMaterials() {
         let barMaterial;
         for(let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
-            barMaterial = new THREE.MeshLambertMaterial( {color: APPCONFIG.BAR_COLOURS[row], transparent: true, opacity: 1} );
+            barMaterial = new THREE.MeshLambertMaterial( {color: APPCONFIG.BAR_COLOURS[row], flatShading: true} );
             this.barMaterials.push(barMaterial);
         }
     }
@@ -58,7 +58,7 @@ class Framework extends BaseApp {
     createAttributeMaterials() {
         let barMaterial;
         for (let attribute=0; attribute<APPCONFIG.NUM_ATTRIBUTES; ++attribute) {
-            barMaterial = new THREE.MeshLambertMaterial( {color: APPCONFIG.BAR_COLOURS[attribute], transparent: true, opacity: 1} );
+            barMaterial = new THREE.MeshPhongMaterial( {color: APPCONFIG.BAR_COLOURS[attribute], shininess: 0, specular: 0x222222 } );
             this.attributeMaterials.push(barMaterial);
         }
     }

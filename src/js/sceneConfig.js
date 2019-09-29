@@ -1,13 +1,13 @@
 // General parameters to help with setting up scene
 
 const SceneConfig = {
-    clearColour: 0x5c5f64,
-    ambientLightColour: 0x383838,
-    pointLightColour: 0xffffff,
+    clearColour: 0xcccccc,
+    ambientLightColour: 0x444444,
+    pointLightColour: 0xbbbbbb,
     CameraPos: {
         x: 0,
-        y: 300,
-        z: 400
+        y: 10,
+        z: 30
     },
     LookAtPos: {
         x: 0,

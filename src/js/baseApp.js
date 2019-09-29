@@ -41,8 +41,10 @@ export class BaseApp {
 
     createRenderer() {
         this.renderer = new THREE.WebGLRenderer( {antialias : true, alpha: true});
+        this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setClearColor(SceneConfig.clearColour, 1.0);
         this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.VSMShadowMap;
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.container.appendChild( this.renderer.domElement );
@@ -133,17 +135,29 @@ export class BaseApp {
          this.scene.add(spotLight);
          */
 
+        
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
+        directionalLight.position.set( 3, 12, 17);
+        directionalLight.castShadow = true;
+        directionalLight.shadow.camera.near = 0.1;
+        directionalLight.shadow.camera.far = 500;
+        directionalLight.shadow.camera.right = 17;
+        directionalLight.shadow.camera.left = - 17;
+        directionalLight.shadow.camera.top	= 17;
+        directionalLight.shadow.camera.bottom = - 17;
+        directionalLight.shadow.mapSize.width = 512;
+        directionalLight.shadow.mapSize.height = 512;
+        directionalLight.shadow.radius = 2;
+        directionalLight.shadow.bias = -0.0005;
+        scene.add( directionalLight );
+         
+
         /*
-         var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
-         directionalLight.position.set( 1, 1, 1 );
-         this.scene.add( directionalLight );
-         */
-
-
         let pointLight = new THREE.PointLight(SceneConfig.pointLightColour);
         pointLight.position.set(300,300,400);
         pointLight.name = 'PointLight';
         scene.add(pointLight);
+        */
 
         return this.scenes.length-1;
     }
