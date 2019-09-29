@@ -40,10 +40,12 @@ class Framework extends BaseApp {
 
     addGroundPlane() {
         const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
-        const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL, flatShading: true} );
+        const groundMat = new THREE.MeshPhongMaterial( {color: APPCONFIG.GROUND_MATERIAL, shininess: 0, specular: 0x222222 } );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
         ground.position.y = 0;
+        ground.castShadow = true;
+        ground.receiveShadow = true;
         this.root.add(ground);
     }
 
@@ -271,6 +273,8 @@ class Framework extends BaseApp {
                 for (let attribute=0; attribute<attributes.length; ++attribute) {
                     barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
                     barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
+                    barMesh.castShadow = true;
+                    barMesh.receiveShadow = true;
                     bars.push(barMesh);
                     barMesh.position.copy(barStartPos);
                     barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
