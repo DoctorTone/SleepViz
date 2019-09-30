@@ -4,7 +4,7 @@ const APPCONFIG = {
     ROOT_ROTATE: Math.PI/4,
     BAR_COLOUR : 0xfff000,
     BAR_RADIUS: 0.75,
-    BAR_HEIGHT: 7,
+    BAR_HEIGHT: 5,
     BAR_WIDTH: 0.75,
     BAR_DEPTH: 0.75,
     BAR_SEGMENTS: 16,

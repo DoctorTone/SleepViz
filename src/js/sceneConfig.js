@@ -5,10 +5,12 @@ const SceneConfig = {
     ambientLightColour: 0x444444,
     pointLightColour: 0xbbbbbb,
     LightPos: {
-        x: 40,
+        x: 35,
         y: 30,
         z: 20
     },
+    ShadowWidth: 20,
+    ShadowMapSize: 512,
     CameraPos: {
         x: 0,
         y: 10,

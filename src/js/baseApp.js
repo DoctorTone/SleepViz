@@ -141,12 +141,12 @@ export class BaseApp {
         directionalLight.castShadow = true;
         directionalLight.shadow.camera.near = 0.1;
         directionalLight.shadow.camera.far = 100;
-        directionalLight.shadow.camera.right = 17;
-        directionalLight.shadow.camera.left = - 17;
-        directionalLight.shadow.camera.top	= 17;
-        directionalLight.shadow.camera.bottom = - 17;
-        directionalLight.shadow.mapSize.width = 512;
-        directionalLight.shadow.mapSize.height = 512;
+        directionalLight.shadow.camera.right = SceneConfig.ShadowWidth;
+        directionalLight.shadow.camera.left = - SceneConfig.ShadowWidth;
+        directionalLight.shadow.camera.top	= SceneConfig.ShadowWidth;
+        directionalLight.shadow.camera.bottom = - SceneConfig.ShadowWidth;
+        directionalLight.shadow.mapSize.width = SceneConfig.ShadowMapSize;
+        directionalLight.shadow.mapSize.height = SceneConfig.ShadowMapSize;
         directionalLight.shadow.radius = 2;
         directionalLight.shadow.bias = -0.0005;
         scene.add( directionalLight );

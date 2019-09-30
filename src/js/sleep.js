@@ -287,7 +287,7 @@ class Framework extends BaseApp {
                     if (minuteData === 0) {
                         minuteData = 0.1;
                     }
-                    barMesh.scale.set(1, minuteData/10, 1);
+                    barMesh.scale.set(1, minuteData/40, 1);
                     //barMesh.position.y += (minuteData);
                     currentGroup.add(barMesh);
                 }
