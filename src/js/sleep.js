@@ -41,7 +41,9 @@ class Framework extends BaseApp {
     addGroundPlane() {
         const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
         const gridTexture = this.textureLoader.load("./images/grid.gif");
-        const groundMat = new THREE.MeshPhongMaterial( { map: gridTexture } );
+        gridTexture.wrapS = gridTexture.wrapT = THREE.RepeatWrapping;
+        gridTexture.repeat.set(4, 4);
+        const groundMat = new THREE.MeshPhongMaterial( { color: APPCONFIG.GROUND_MATERIAL, map: gridTexture } );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
         ground.position.y = 0;
