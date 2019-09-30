@@ -3,8 +3,8 @@
 const APPCONFIG = {
     ROOT_ROTATE: Math.PI/4,
     BAR_COLOUR : 0xfff000,
-    BAR_RADIUS: 5,
-    BAR_HEIGHT: 10,
+    BAR_RADIUS: 0.75,
+    BAR_HEIGHT: 7,
     BAR_WIDTH: 0.75,
     BAR_DEPTH: 0.75,
     BAR_SEGMENTS: 16,
@@ -17,18 +17,18 @@ const APPCONFIG = {
     GROUND_SEGMENTS: 128,
     GROUND_MATERIAL: 0x999999,
     barStartPos: {
-        x: -100,
+        x: -25,
         y: 0,
         z: 0
     },
-    BAR_INC_X: 30,
+    BAR_INC_X: 5,
     BAR_INC_Z: 0,
     BAR_COLOURS: [
         0xaa0000,
-        0x00ff00,
-        0x0000ff,
-        0xffff00,
-        0x00ffff
+        0x00aa00,
+        0x0000aa,
+        0xaaaa00,
+        0x00aaaa
     ],
     MONTHS: [
         "Jan",
