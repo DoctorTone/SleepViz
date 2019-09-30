@@ -299,13 +299,20 @@ class Framework extends BaseApp {
                     if (bar === 0 && attribute === 1) {
                         labelProperty.position.copy(barMesh.position);
                         labelProperty.visibility = true;
-                        labelProperty.scale = APPCONFIG.VALUE_SCALE;
+                        labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                         labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
                         label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
                         this.root.add(label.getSprite());
                     }
                 }
                 
+                // Day labels
+                labelProperty.position.copy(barMesh.position);
+                labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
+                labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
+                label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
+                this.root.add(label.getSprite());
+
                 // Lines
                 linePositions.push(barMesh.position.x, barMesh.position.y*2, barMesh.position.z);
 
