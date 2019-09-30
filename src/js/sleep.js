@@ -40,7 +40,8 @@ class Framework extends BaseApp {
 
     addGroundPlane() {
         const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
-        const groundMat = new THREE.MeshPhongMaterial( {color: APPCONFIG.GROUND_MATERIAL, shininess: 0, specular: 0x222222 } );
+        const gridTexture = this.textureLoader.load("./images/grid.gif");
+        const groundMat = new THREE.MeshPhongMaterial( { map: gridTexture } );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
         ground.position.y = 0;
@@ -220,6 +221,9 @@ class Framework extends BaseApp {
         this.root = new THREE.Object3D();
         this.addToScene(this.root);
         //this.root.rotation.y = APPCONFIG.ROOT_ROTATE;
+
+        // Textures
+        this.textureLoader = new THREE.TextureLoader();
 
         // Add ground
         this.addGroundPlane();
