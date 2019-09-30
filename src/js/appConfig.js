@@ -25,8 +25,8 @@ const APPCONFIG = {
     BAR_INC_Z: 0,
     BAR_COLOURS: [
         0xaa0000,
-        0x00aa00,
         0x0000aa,
+        0x00aa00,
         0xaaaa00,
         0x00aaaa
     ],

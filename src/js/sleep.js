@@ -219,10 +219,10 @@ class Framework extends BaseApp {
     createScene() {
         // Init base createsScene
         super.createScene();
+
         // Create root object.
         this.root = new THREE.Object3D();
         this.addToScene(this.root);
-        //this.root.rotation.y = APPCONFIG.ROOT_ROTATE;
 
         // Textures
         this.textureLoader = new THREE.TextureLoader();
@@ -234,7 +234,7 @@ class Framework extends BaseApp {
         const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         //const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         const bars = [];
-        this.createBarMaterials();
+        // this.createBarMaterials();
         this.createAttributeMaterials();
         let barMesh;
         let label;
@@ -247,7 +247,7 @@ class Framework extends BaseApp {
         let currentValueGroup;
         let startMonth = 4;
         let barStartPos = new THREE.Vector3();
-        let attributes = ["Asleep", "Awake", "Quality sleep", "Deep sleep"];
+        let attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
         // Lines
         let monthlyLinePositions = [];
         
