@@ -52,9 +52,9 @@ const APPCONFIG = {
     LABEL_HEIGHT: 2,
     LABEL_TEXTCOLOUR: "rgba(255, 255, 255, 1.0)",
     LABEL_MONTH_OFFSET: {
-        x: 0,
-        y: 0,
-        z: 10
+        x: -7,
+        y: 2,
+        z: 0
     },
     LABEL_YEAR_OFFSET: {
         x: -15,
@@ -63,8 +63,8 @@ const APPCONFIG = {
     },
     VALUE_OFFSET: 5,
     VALUE_SCALE: {
-        x: 17.5,
-        y: 8.5,
+        x: 5,
+        y: 2,
         z: 1
     },
     RIGHT: 1,

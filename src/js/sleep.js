@@ -234,7 +234,6 @@ class Framework extends BaseApp {
         const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         //const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         const bars = [];
-        // this.createBarMaterials();
         this.createAttributeMaterials();
         let barMesh;
         let label;
@@ -296,12 +295,22 @@ class Framework extends BaseApp {
                     barMesh.scale.set(1, minuteData/40, 1);
                     //barMesh.position.y += (minuteData);
                     currentGroup.add(barMesh);
+                    // Month label
+                    if (bar === 0 && attribute === 1) {
+                        labelProperty.position.copy(barMesh.position);
+                        labelProperty.visibility = true;
+                        labelProperty.scale = APPCONFIG.VALUE_SCALE;
+                        labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
+                        label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
+                        this.root.add(label.getSprite());
+                    }
                 }
                 
                 // Lines
                 linePositions.push(barMesh.position.x, barMesh.position.y*2, barMesh.position.z);
 
                 // Value labels
+                /*
                 labelProperty.position.copy(barMesh.position);
                 labelProperty.position.y *= 2;
                 labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
@@ -313,6 +322,7 @@ class Framework extends BaseApp {
                 labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + bar;
                 label = this.labelManager.create("valueLabel" + labelValue, dayData, labelProperty);
                 currentValueGroup.add(label.getSprite());
+                */
 
                 // Labels
                 /*
@@ -327,7 +337,8 @@ class Framework extends BaseApp {
                     label = this.labelManager.create("monthLabel" + bar, APPCONFIG.MONTHS[bar], labelProperty);
                     this.root.add(label.getSprite());
                 }
-
+                */
+                /*
                 if (bar === 0) {
                     labelProperty.position.copy(barMesh.position);
                     labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
