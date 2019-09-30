@@ -137,10 +137,10 @@ export class BaseApp {
 
         
         var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
-        directionalLight.position.set( 3, 12, 17);
+        directionalLight.position.set( SceneConfig.LightPos.x , SceneConfig.LightPos.y, SceneConfig.LightPos.z );
         directionalLight.castShadow = true;
         directionalLight.shadow.camera.near = 0.1;
-        directionalLight.shadow.camera.far = 500;
+        directionalLight.shadow.camera.far = 100;
         directionalLight.shadow.camera.right = 17;
         directionalLight.shadow.camera.left = - 17;
         directionalLight.shadow.camera.top	= 17;
@@ -150,6 +150,7 @@ export class BaseApp {
         directionalLight.shadow.radius = 2;
         directionalLight.shadow.bias = -0.0005;
         scene.add( directionalLight );
+        scene.add( new THREE.CameraHelper( directionalLight.shadow.camera ) );
          
 
         /*
