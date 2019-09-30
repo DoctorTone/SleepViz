@@ -309,6 +309,7 @@ class Framework extends BaseApp {
                 // Day labels
                 labelProperty.position.copy(barMesh.position);
                 labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
+                labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
                 label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
                 this.root.add(label.getSprite());
