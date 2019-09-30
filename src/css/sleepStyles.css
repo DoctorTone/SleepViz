@@ -83,6 +83,10 @@ body {
 }
 
 @media (min-width: 768px) {
+    .title {
+        padding-left: 30px;
+        text-align: left;
+    }
     #guiWidth {
         width: 300px;
     }
