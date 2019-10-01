@@ -203,7 +203,7 @@ class Framework extends BaseApp {
         let attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
         let monthData = sleepData[currentMonth];
         // Lines
-        let monthlyLinePositions = [];
+        let attributeLinePositions = [];
         let attributeGroups = [];
 
         // Set up groups
@@ -212,6 +212,13 @@ class Framework extends BaseApp {
             currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
             attributeGroups.push(currentAttributeGroup);
             this.root.add(currentAttributeGroup);
+        }
+
+        // Lines
+        let linePositions;
+        for (let attribute=0; attribute<attributes.length; ++attribute) {
+            linePositions = [];
+            attributeLinePositions.push(linePositions);
         }
 
         for(let bar=0; bar<monthData.length; ++bar) {
@@ -250,6 +257,9 @@ class Framework extends BaseApp {
                     label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
                     this.root.add(label.getSprite());
                 }
+
+                // Lines
+                attributeLinePositions[attribute].push(barMesh.position.x, barMesh.position.y * 2, barMesh.position.z);
             }
             
             // Day labels
