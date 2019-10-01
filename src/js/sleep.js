@@ -128,15 +128,6 @@ class Framework extends BaseApp {
                             this.toggleAttribute("Deep sleep", "May");
                         }
                     })
-            .addSubGroup( {label: "Gaps", enable: false} )
-                .addSlider(gapMonthConfig, "Month", "range", {
-                    onChange: () => {
-                        this.scaleBars(gapMonthConfig.Month, gapYearConfig.Year);
-                    },
-                    onFinish: () => {
-                        this.scaleBars(gapMonthConfig.Month, gapYearConfig.Year);
-                    }
-                })
             .addSubGroup( {label: "Transparent", enable: false} )
                 .addCheckbox(transparentConfig, "Year1", {
                     onChange: () => {
