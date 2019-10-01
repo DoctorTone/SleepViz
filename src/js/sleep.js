@@ -139,7 +139,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(trendConfig, "Quality", {
                     onChange: () => {
-                        this.toggleTrend("Quality");
+                        this.toggleTrend("Quality sleep");
                     }
                 })
                 .addCheckbox(trendConfig, "Awake", {
@@ -149,7 +149,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(trendConfig, "Deep", {
                     onChange: () => {
-                        this.toggleTrend("Deep");
+                        this.toggleTrend("Deep sleep");
                     }
                 })
             .addSubGroup( {label: "Scales", enable: false} )
@@ -224,6 +224,7 @@ class Framework extends BaseApp {
 
             currentTrendGroup = new THREE.Group();
             currentTrendGroup.name = attributes[attribute] + "Trend" + currentMonth + "Group";
+            currentTrendGroup.visible = false;
             trendGroups.push(currentTrendGroup);
             this.root.add(currentTrendGroup);
         }
@@ -526,8 +527,8 @@ class Framework extends BaseApp {
         }
     }
 
-    toggleTrend(year) {
-        let currentTrend = this.getObjectByName(year + "Trend");
+    toggleTrend(attributeName) {
+        let currentTrend = this.getObjectByName(attributeName + "TrendMayGroup");
         if(currentTrend) {
             currentTrend.visible = !currentTrend.visible;
         }
