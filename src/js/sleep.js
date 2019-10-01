@@ -259,7 +259,7 @@ class Framework extends BaseApp {
                 }
 
                 // Lines
-                attributeLinePositions[attribute].push(barMesh.position.x, barMesh.position.y * 2, barMesh.position.z);
+                attributeLinePositions[attribute].push(barMesh.position.x, minuteData/40, barMesh.position.z);
             }
             
             // Day labels
