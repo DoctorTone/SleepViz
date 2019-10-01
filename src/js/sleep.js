@@ -307,7 +307,7 @@ class Framework extends BaseApp {
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
                 label = this.labelManager.create("valueLabel" + currentMonth, barValue, labelProperty);
-                this.root.add(label.getSprite());
+                valueGroups[attribute].add(label.getSprite());
             }
             
             // Day labels
@@ -563,6 +563,9 @@ class Framework extends BaseApp {
     }
 
     toggleValues(attributeName) {
+        // DEBUG
+        console.log("toggle = ", attributeName);
+
         let currentAttribute = this.getObjectByName(attributeName + "ValuesMayGroup");
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
