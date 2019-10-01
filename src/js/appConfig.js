@@ -59,9 +59,10 @@ const APPCONFIG = {
     },
     LABEL_DATE_OFFSET: {
         x: 0,
-        y: 0.75,
+        y: 0,
         z: 2.5
     },
+    LABEL_Y_POS: 1,
     LABEL_MONTH_SCALE: {
         x: 5,
         y: 2,
