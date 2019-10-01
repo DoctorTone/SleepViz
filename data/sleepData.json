@@ -8,7 +8,7 @@
             "Asleep":"05:10",
             "Awake":"00:00",
             "Quality sleep":"03:52",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":55
         },
         {
@@ -19,7 +19,7 @@
             "Asleep":"06:00",
             "Awake":"00:00",
             "Quality sleep":"04:16",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":58
         },
         {
@@ -30,7 +30,7 @@
             "Asleep":"06:52",
             "Awake":"00:18",
             "Quality sleep":"05:24",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":59
         },
         {
@@ -41,7 +41,7 @@
             "Asleep":"06:41",
             "Awake":"00:00",
             "Quality sleep":"05:07",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":59
         },
         {
@@ -52,7 +52,7 @@
             "Asleep":"07:07",
             "Awake":"01:45",
             "Quality sleep":"04:57",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":60
         },
         {
@@ -74,7 +74,7 @@
             "Asleep":"06:50",
             "Awake":"00:00",
             "Quality sleep":"04:37",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":62
         },
         {
@@ -85,7 +85,7 @@
             "Asleep":"07:29",
             "Awake":"00:30",
             "Quality sleep":"05:22",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":56
         },
         {
@@ -96,7 +96,7 @@
             "Asleep":"07:29",
             "Awake":"00:00",
             "Quality sleep":"05:18",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":56
         },
         {
@@ -107,7 +107,7 @@
             "Asleep":"08:07",
             "Awake":"00:12",
             "Quality sleep":"06:02",
-            "Deep sleep":"0:0",
+            "Deep sleep":"00:00",
             "Heartrate":61
         }
     ]

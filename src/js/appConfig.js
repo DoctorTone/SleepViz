@@ -52,6 +52,12 @@ const APPCONFIG = {
     },
     LABEL_HEIGHT: 2,
     LABEL_TEXTCOLOUR: "rgba(255, 255, 255, 1.0)",
+    LABEL_VALUE_SCALE: {
+        x: 2.5,
+        y: 1.5,
+        z: 1
+    },
+    LABEL_VALUE_OFFSET: 1,
     LABEL_DATE_SCALE: {
         x: 2.5,
         y: 1.5,
@@ -60,7 +66,7 @@ const APPCONFIG = {
     LABEL_DATE_OFFSET: {
         x: 0,
         y: 0,
-        z: 2.5
+        z: 3
     },
     LABEL_Y_POS: 1,
     LABEL_MONTH_SCALE: {

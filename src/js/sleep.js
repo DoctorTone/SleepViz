@@ -207,6 +207,7 @@ class Framework extends BaseApp {
         let monthData = sleepData[currentMonth];
         let height;
         let barScale;
+        let barValue;
 
         // Groups
         let currentAttributeGroup;
@@ -227,16 +228,25 @@ class Framework extends BaseApp {
         this.root.add(superGroup);
 
         for (let attribute=0; attribute<attributes.length; ++attribute) {
+            // Attributes themselves
             currentAttributeGroup = new THREE.Group();
             currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
             attributeGroups.push(currentAttributeGroup);
             superGroup.add(currentAttributeGroup);
 
+            // Trends
             currentTrendGroup = new THREE.Group();
             currentTrendGroup.name = attributes[attribute] + "Trend" + currentMonth + "Group";
             currentTrendGroup.visible = false;
             trendGroups.push(currentTrendGroup);
             superGroup.add(currentTrendGroup);
+
+            // Values
+            currentValueGroup = new THREE.Group();
+            currentValueGroup.name = attributes[attribute] + "Values" + currentMonth + "Group";
+            currentValueGroup.visible = false;
+            valueGroups.push(currentValueGroup);
+            this.root.add(currentValueGroup);
         }
 
         // Lines
@@ -263,6 +273,7 @@ class Framework extends BaseApp {
                 barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
                 dayData = monthData[bar];
                 dayData = dayData[attributes[attribute]];
+                barValue = dayData;
                 dayData = dayData.split(":");
                 dayData.hours = parseInt(dayData[0], 10);
                 dayData.minutes = parseInt(dayData[1], 10);
@@ -282,12 +293,21 @@ class Framework extends BaseApp {
                     labelProperty.visibility = true;
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
-                    label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
+                    label = this.labelManager.create("monthLabel" + attributes[attribute] + currentMonth, currentMonth, labelProperty);
                     this.root.add(label.getSprite());
                 }
 
                 // Lines
                 attributeLinePositions[attribute].push(barMesh.position.x, height * 2, barMesh.position.z);
+
+                // Values
+                labelProperty.position.copy(barMesh.position);
+                labelProperty.position.y = height * 2;
+                labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET
+                labelProperty.visibility = true;
+                labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
+                label = this.labelManager.create("valueLabel" + currentMonth, barValue, labelProperty);
+                this.root.add(label.getSprite());
             }
             
             // Day labels
@@ -543,9 +563,9 @@ class Framework extends BaseApp {
     }
 
     toggleValues(attributeName) {
-        let currentYear = this.getObjectByName("Values" + year);
-        if (currentYear) {
-            currentYear.visible = !currentYear.visible;
+        let currentAttribute = this.getObjectByName(attributeName + "ValuesMayGroup");
+        if (currentAttribute) {
+            currentAttribute.visible = !currentAttribute.visible;
         }
     }
 
