@@ -128,12 +128,6 @@ class Framework extends BaseApp {
                             this.toggleAttribute("Deep sleep", "May");
                         }
                     })
-            .addSubGroup( {label: "Transparent", enable: false} )
-                .addCheckbox(transparentConfig, "Year1", {
-                    onChange: () => {
-                        this.toggleTransparency("Year1");
-                    }
-                })
             .addSubGroup( {label: "Trends", enable: false} )
                 .addCheckbox(trendConfig, "Year1", {
                     onChange: () => {
