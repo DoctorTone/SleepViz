@@ -12,6 +12,8 @@ import bootstrap from "bootstrap";
 
 import sleepData from "../../data/sleepData.json";
 
+const attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
+
 class Framework extends BaseApp {
     constructor() {
         super();
@@ -101,8 +103,8 @@ class Framework extends BaseApp {
             Year1: false
         };
 
-        let scaleYearConfig = {
-            Year1: 1,
+        let scaleAttributeConfig = {
+            Scale: 1,
             range: [0.1, 3]
         };
 
@@ -152,13 +154,13 @@ class Framework extends BaseApp {
                         this.toggleTrend("Deep sleep");
                     }
                 })
-            .addSubGroup( {label: "Scales", enable: false} )
-                .addSlider(scaleYearConfig, "Year1", "range", {
+            .addSubGroup( {label: "Scale", enable: false} )
+                .addSlider(scaleAttributeConfig, "Scale", "range", {
                     onChange: () => {
-                        this.scaleYears("Year1", scaleYearConfig.Year1);
+                        this.scaleAttributes(scaleAttributeConfig.Scale);
                     },
                     onFinish: () => {
-                        this.scaleYears("Year1", scaleYearConfig.Year1);
+                        this.scaleAttributes(scaleAttributeConfig.Scale);
                     }
                 })
             .addSubGroup( {label: "Values", enable: false} )
@@ -198,7 +200,6 @@ class Framework extends BaseApp {
         let startMonth = 4;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
-        let attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
         let monthData = sleepData[currentMonth];
         let height;
         let barScale;
@@ -216,17 +217,22 @@ class Framework extends BaseApp {
         
 
         // Set up groups
+        // Group of groups
+        const superGroup = new THREE.Group();
+        superGroup.name = "SuperGroup";
+        this.root.add(superGroup);
+
         for (let attribute=0; attribute<attributes.length; ++attribute) {
             currentAttributeGroup = new THREE.Group();
             currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
             attributeGroups.push(currentAttributeGroup);
-            this.root.add(currentAttributeGroup);
+            superGroup.add(currentAttributeGroup);
 
             currentTrendGroup = new THREE.Group();
             currentTrendGroup.name = attributes[attribute] + "Trend" + currentMonth + "Group";
             currentTrendGroup.visible = false;
             trendGroups.push(currentTrendGroup);
-            this.root.add(currentTrendGroup);
+            superGroup.add(currentTrendGroup);
         }
 
         // Lines
@@ -547,12 +553,12 @@ class Framework extends BaseApp {
         this.redrawScene(scaledIncX, scaledIncZ);
     }
 
-    scaleYears(name, scale) {
-        let currentYear = this.getObjectByName(name);
-        if (currentYear) {
-            currentYear.scale.set(1, scale, 1);
+    scaleAttributes(scale) {
+        const attributeGroup = this.getObjectByName("SuperGroup");
+        if (attributeGroup) {
+            attributeGroup.scale.y = scale;
         }
-        this.redrawValueLabels(currentYear);
+        //this.redrawValueLabels(currentYear);
     }
 }
 
