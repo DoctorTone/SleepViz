@@ -78,16 +78,6 @@ class Framework extends BaseApp {
             Deep: true
         };
 
-        let gapMonthConfig = {
-            Month: 1,
-            range: [1, 3]
-        };
-
-        let gapYearConfig = {
-            Year: 1,
-            range: [1, 3]
-        };
-
         let trendConfig = {
             Asleep: false,
             Quality: false,
@@ -95,12 +85,11 @@ class Framework extends BaseApp {
             Deep: false
         };
 
-        let transparentConfig = {
-            Year1: false
-        };
-
         let valueConfig = {
-            Year1: false
+            Asleep: false,
+            Quality: false,
+            Awake: false,
+            Deep: false
         };
 
         let scaleAttributeConfig = {
@@ -164,9 +153,24 @@ class Framework extends BaseApp {
                     }
                 })
             .addSubGroup( {label: "Values", enable: false} )
-                .addCheckbox(valueConfig, "Year1", {
+                .addCheckbox(valueConfig, "Asleep", {
                     onChange: () => {
-                        this.toggleValues("Year1");
+                        this.toggleValues("Asleep");
+                    }
+                })
+                .addCheckbox(valueConfig, "Quality", {
+                    onChange: () => {
+                        this.toggleValues("Quality sleep");
+                    }
+                })
+                .addCheckbox(valueConfig, "Awake", {
+                    onChange: () => {
+                        this.toggleValues("Awake");
+                    }
+                })
+                .addCheckbox(valueConfig, "Deep", {
+                    onChange: () => {
+                        this.toggleValues("Deep sleep");
                     }
                 })
             
@@ -538,7 +542,7 @@ class Framework extends BaseApp {
         }
     }
 
-    toggleValues(year) {
+    toggleValues(attributeName) {
         let currentYear = this.getObjectByName("Values" + year);
         if (currentYear) {
             currentYear.visible = !currentYear.visible;
