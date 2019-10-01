@@ -195,8 +195,6 @@ class Framework extends BaseApp {
         let labelProperty;
         let dayData;
         let minuteData;
-        let currentAttributeGroup;
-        let currentValueGroup;
         let startMonth = 4;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
@@ -204,9 +202,18 @@ class Framework extends BaseApp {
         let monthData = sleepData[currentMonth];
         let height;
         let barScale;
+
+        // Groups
+        let currentAttributeGroup;
+        let attributeGroups = [];
+        let currentValueGroup;
+        let valueGroups = [];
+        let currentTrendGroup;
+        let trendGroups = [];
+
         // Lines
         let attributeLinePositions = [];
-        let attributeGroups = [];
+        
 
         // Set up groups
         for (let attribute=0; attribute<attributes.length; ++attribute) {
@@ -214,6 +221,11 @@ class Framework extends BaseApp {
             currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
             attributeGroups.push(currentAttributeGroup);
             this.root.add(currentAttributeGroup);
+
+            currentTrendGroup = new THREE.Group();
+            currentTrendGroup.name = attributes[attribute] + currentMonth + "Group";
+            trendGroups.push(currentTrendGroup);
+            this.root.add(currentTrendGroup);
         }
 
         // Lines
@@ -359,7 +371,7 @@ class Framework extends BaseApp {
             line.computeLineDistances();
             line.scale.set(scale, scale, scale);
             line.visible = true;
-            this.root.add(line);
+            trendGroups[i].add(line);
         }
         this.lineGeoms = lineGeoms;
 
