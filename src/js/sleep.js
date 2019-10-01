@@ -69,19 +69,11 @@ class Framework extends BaseApp {
     }
 
     createGUI() {
-        let monthConfig = {
-            Jan: true,
-            Feb: true,
-            Mar: true,
-            Apr: true,
-            May: true,
-            Jun: true,
-            Jul: true,
-            Aug: true,
-            Sep: true,
-            Oct: true,
-            Nov: true,
-            Dec: true
+        let attributeConfig = {
+            Asleep: true,
+            Quality: true,
+            Awake: true,
+            Deep: true
         };
 
         let gapMonthConfig = {
@@ -115,65 +107,25 @@ class Framework extends BaseApp {
         guiWidth = parseInt(guiWidth, 10);
         let gui = new controlkit();
         gui.addPanel( {label: "Configuration", width: guiWidth, enable: false})
-            .addSubGroup( {label: "Months", enable: false} )
-                    .addCheckbox(monthConfig, "Jan", {
+            .addSubGroup( {label: "Attributes", enable: false} )
+                    .addCheckbox(attributeConfig, "Asleep", {
                         onChange: () => {
-                            this.toggleMonth("Jan", 0);
+                            this.toggleAttribute("Asleep", "May");
                         }
                     })
-                    .addCheckbox(monthConfig, "Feb", {
+                    .addCheckbox(attributeConfig, "Quality", {
                         onChange: () => {
-                            this.toggleMonth("Feb", 1);
+                            this.toggleAttribute("Quality sleep", "May");
                         }
                     })
-                    .addCheckbox(monthConfig, "Mar", {
+                    .addCheckbox(attributeConfig, "Awake", {
                         onChange: () => {
-                            this.toggleMonth("Mar", 2);
+                            this.toggleAttribute("Awake", "May");
                         }
                     })
-                    .addCheckbox(monthConfig, "Apr", {
+                    .addCheckbox(attributeConfig, "Deep", {
                         onChange: () => {
-                            this.toggleMonth("Apr", 3);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "May", {
-                        onChange: () => {
-                            this.toggleMonth("May", 4);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Jun", {
-                        onChange: () => {
-                            this.toggleMonth("Jun", 5);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Jul", {
-                        onChange: () => {
-                            this.toggleMonth("Jul", 6);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Aug", {
-                        onChange: () => {
-                            this.toggleMonth("Aug", 7);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Sep", {
-                        onChange: () => {
-                            this.toggleMonth("Sep", 8);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Oct", {
-                        onChange: () => {
-                            this.toggleMonth("Oct", 9);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Nov", {
-                        onChange: () => {
-                            this.toggleMonth("Nov", 10);
-                        }
-                    })
-                    .addCheckbox(monthConfig, "Dec", {
-                        onChange: () => {
-                            this.toggleMonth("Dec", 11);
+                            this.toggleAttribute("Deep sleep", "May");
                         }
                     })
             .addSubGroup( {label: "Gaps", enable: false} )
@@ -239,129 +191,119 @@ class Framework extends BaseApp {
         let label;
         let labelProperty;
         let dayData;
-        let monthData;
-        let currentMonth;
         let minuteData;
-        let currentGroup;
+        let currentAttributeGroup;
         let currentValueGroup;
         let startMonth = 4;
+        let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
         let attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
+        let monthData = sleepData[currentMonth];
         // Lines
         let monthlyLinePositions = [];
-        
-        for(let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
-            // Create group
-            currentGroup = new THREE.Group();
-            currentMonth = APPCONFIG.MONTHS[startMonth];
-            currentGroup.name = currentMonth;
-            monthData = sleepData[currentMonth];
+        let attributeGroups = [];
 
-            this.root.add(currentGroup);
-
-            currentValueGroup = new THREE.Group();
-            currentValueGroup.name = "ValuesMonth" + currentMonth;
-            currentValueGroup.visible = false;
-            
-            this.root.add(currentValueGroup);
-
-            let linePositions = [];
-            let labelValue;
-
-            for(let bar=0; bar<monthData.length; ++bar) {
-                // Label properties
-                labelProperty = {};
-                labelProperty.position = new THREE.Vector3();
-
-                // Create meshes
-                barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z + (APPCONFIG.BAR_INC_Z * row));
-                for (let attribute=0; attribute<attributes.length; ++attribute) {
-                    barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                    barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
-                    barMesh.castShadow = true;
-                    barMesh.receiveShadow = true;
-                    bars.push(barMesh);
-                    barMesh.position.copy(barStartPos);
-                    barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
-                    dayData = monthData[bar];
-                    dayData = dayData[attributes[attribute]];
-                    dayData = dayData.split(":");
-                    dayData.hours = parseInt(dayData[0], 10);
-                    dayData.minutes = parseInt(dayData[1], 10);
-                    minuteData = (dayData.hours * 60) + dayData.minutes;
-                    if (minuteData === 0) {
-                        minuteData = 0.1;
-                    }
-                    barMesh.scale.set(1, minuteData/40, 1);
-                    //barMesh.position.y += (minuteData);
-                    currentGroup.add(barMesh);
-                    // Month label
-                    if (bar === 0 && attribute === 1) {
-                        labelProperty.position.copy(barMesh.position);
-                        labelProperty.visibility = true;
-                        labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
-                        labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
-                        label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
-                        this.root.add(label.getSprite());
-                    }
-                }
-                
-                // Day labels
-                labelProperty.position.copy(barMesh.position);
-                labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
-                labelProperty.visibility = true;
-                labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
-                label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
-                this.root.add(label.getSprite());
-
-                // Lines
-                linePositions.push(barMesh.position.x, barMesh.position.y*2, barMesh.position.z);
-
-                // Value labels
-                /*
-                labelProperty.position.copy(barMesh.position);
-                labelProperty.position.y *= 2;
-                labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
-                labelProperty.visibility = true;
-                labelProperty.scale = APPCONFIG.VALUE_SCALE;
-                if (dayData < 0.5) {
-                    dayData = 0;
-                }
-                labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + bar;
-                label = this.labelManager.create("valueLabel" + labelValue, dayData, labelProperty);
-                currentValueGroup.add(label.getSprite());
-                */
-
-                // Labels
-                /*
-                if (row === 0) {
-                    labelProperty.position.copy(barMesh.position);
-                    labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
-                    labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
-                    labelProperty.scale = APPCONFIG.LABEL_SCALE;
-                    labelProperty.visibility = true;
-                    labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
-                    labelProperty.multiLine = false;
-                    label = this.labelManager.create("monthLabel" + bar, APPCONFIG.MONTHS[bar], labelProperty);
-                    this.root.add(label.getSprite());
-                }
-                */
-                /*
-                if (bar === 0) {
-                    labelProperty.position.copy(barMesh.position);
-                    labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
-                    labelProperty.position.add(APPCONFIG.LABEL_YEAR_OFFSET);
-                    labelProperty.scale = APPCONFIG.LABEL_SCALE;
-                    labelProperty.visibility = true;
-                    labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
-                    labelProperty.multiLine = false;
-                    label = this.labelManager.create("yearLabel" + row, APPCONFIG.YEARS[row], labelProperty);
-                    this.root.add(label.getSprite());
-                }
-                */
-            }
-            monthlyLinePositions.push(linePositions);
+        // Set up groups
+        for (let attribute=0; attribute<attributes.length; ++attribute) {
+            currentAttributeGroup = new THREE.Group();
+            currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
+            attributeGroups.push(currentAttributeGroup);
+            this.root.add(currentAttributeGroup);
         }
+
+        for(let bar=0; bar<monthData.length; ++bar) {
+            // Label properties
+            labelProperty = {};
+            labelProperty.position = new THREE.Vector3();
+
+            // Create meshes
+            barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z);
+            for (let attribute=0; attribute<attributes.length; ++attribute) {
+                barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
+                //barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
+                barMesh.castShadow = true;
+                barMesh.receiveShadow = true;
+                bars.push(barMesh);
+                barMesh.position.copy(barStartPos);
+                barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
+                dayData = monthData[bar];
+                dayData = dayData[attributes[attribute]];
+                dayData = dayData.split(":");
+                dayData.hours = parseInt(dayData[0], 10);
+                dayData.minutes = parseInt(dayData[1], 10);
+                minuteData = (dayData.hours * 60) + dayData.minutes;
+                if (minuteData === 0) {
+                    minuteData = 0.1;
+                }
+                barMesh.scale.set(1, minuteData/40, 1);
+                //barMesh.position.y += (minuteData);
+                attributeGroups[attribute].add(barMesh);
+                // Month label
+                if (bar === 0 && attribute === 1) {
+                    labelProperty.position.copy(barMesh.position);
+                    labelProperty.visibility = true;
+                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
+                    labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
+                    label = this.labelManager.create("monthLabel" + currentMonth, currentMonth, labelProperty);
+                    this.root.add(label.getSprite());
+                }
+            }
+            
+            // Day labels
+            labelProperty.position.copy(barMesh.position);
+            labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
+            labelProperty.visibility = true;
+            labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
+            label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
+            this.root.add(label.getSprite());
+
+            // Lines
+            // linePositions.push(barMesh.position.x, barMesh.position.y*2, barMesh.position.z);
+
+            // Value labels
+            /*
+            labelProperty.position.copy(barMesh.position);
+            labelProperty.position.y *= 2;
+            labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
+            labelProperty.visibility = true;
+            labelProperty.scale = APPCONFIG.VALUE_SCALE;
+            if (dayData < 0.5) {
+                dayData = 0;
+            }
+            labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + bar;
+            label = this.labelManager.create("valueLabel" + labelValue, dayData, labelProperty);
+            currentValueGroup.add(label.getSprite());
+            */
+
+            // Labels
+            /*
+            if (row === 0) {
+                labelProperty.position.copy(barMesh.position);
+                labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
+                labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
+                labelProperty.scale = APPCONFIG.LABEL_SCALE;
+                labelProperty.visibility = true;
+                labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
+                labelProperty.multiLine = false;
+                label = this.labelManager.create("monthLabel" + bar, APPCONFIG.MONTHS[bar], labelProperty);
+                this.root.add(label.getSprite());
+            }
+            */
+            /*
+            if (bar === 0) {
+                labelProperty.position.copy(barMesh.position);
+                labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
+                labelProperty.position.add(APPCONFIG.LABEL_YEAR_OFFSET);
+                labelProperty.scale = APPCONFIG.LABEL_SCALE;
+                labelProperty.visibility = true;
+                labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
+                labelProperty.multiLine = false;
+                label = this.labelManager.create("yearLabel" + row, APPCONFIG.YEARS[row], labelProperty);
+                this.root.add(label.getSprite());
+            }
+            */
+        }
+        //monthlyLinePositions.push(linePositions);
 
         this.bars = bars;
 
@@ -529,19 +471,14 @@ class Framework extends BaseApp {
         }
     }
     
-    toggleMonth(monthName, monthNum) {
-        const years = ["Year1"];
-        let month;
-        let currentMonth;
-        let numYears = years.length;
-        for(let i=0; i<numYears; ++i) {
-            month = years[i] + monthName;
-            currentMonth = this.getObjectByName(month);
-            if (currentMonth) {
-                currentMonth.visible = !currentMonth.visible;
-            }
+    toggleAttribute(attributeName, attributeMonth) {
+        const currentGroupName = attributeName + attributeMonth + "Group";
+        const currentAttribute = this.getObjectByName(currentGroupName);
+        if (currentAttribute) {
+            currentAttribute.visible = !currentAttribute.visible;
         }
         // Set value visibility
+        /*
         let column;
         let label;
         for (let i=0; i<numYears; ++i) {
@@ -551,6 +488,7 @@ class Framework extends BaseApp {
                 label.setVisibility(currentMonth.visible);
             }
         }
+        */
     }
 
     toggleTransparency(year) {
