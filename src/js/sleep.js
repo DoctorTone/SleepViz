@@ -202,6 +202,8 @@ class Framework extends BaseApp {
         let barStartPos = new THREE.Vector3();
         let attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
         let monthData = sleepData[currentMonth];
+        let height;
+        let barScale;
         // Lines
         let attributeLinePositions = [];
         let attributeGroups = [];
@@ -245,7 +247,10 @@ class Framework extends BaseApp {
                 if (minuteData === 0) {
                     minuteData = 0.1;
                 }
-                barMesh.scale.set(1, minuteData/40, 1);
+                barScale = minuteData/APPCONFIG.BAR_SCALE;
+                barMesh.scale.set(1, barScale, 1);
+                height = barScale * (APPCONFIG.BAR_HEIGHT/2);
+                barMesh.position.y = height;
                 //barMesh.position.y += (minuteData);
                 attributeGroups[attribute].add(barMesh);
                 // Month label
