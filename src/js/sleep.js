@@ -223,7 +223,7 @@ class Framework extends BaseApp {
             this.root.add(currentAttributeGroup);
 
             currentTrendGroup = new THREE.Group();
-            currentTrendGroup.name = attributes[attribute] + currentMonth + "Group";
+            currentTrendGroup.name = attributes[attribute] + "Trend" + currentMonth + "Group";
             trendGroups.push(currentTrendGroup);
             this.root.add(currentTrendGroup);
         }
