@@ -87,7 +87,10 @@ class Framework extends BaseApp {
         };
 
         let trendConfig = {
-            Year1: false
+            Asleep: false,
+            Quality: false,
+            Awake: false,
+            Deep: false
         };
 
         let transparentConfig = {
@@ -129,9 +132,24 @@ class Framework extends BaseApp {
                         }
                     })
             .addSubGroup( {label: "Trends", enable: false} )
-                .addCheckbox(trendConfig, "Year1", {
+                .addCheckbox(trendConfig, "Asleep", {
                     onChange: () => {
-                        this.toggleTrend("Year1");
+                        this.toggleTrend("Asleep");
+                    }
+                })
+                .addCheckbox(trendConfig, "Quality", {
+                    onChange: () => {
+                        this.toggleTrend("Quality");
+                    }
+                })
+                .addCheckbox(trendConfig, "Awake", {
+                    onChange: () => {
+                        this.toggleTrend("Awake");
+                    }
+                })
+                .addCheckbox(trendConfig, "Deep", {
+                    onChange: () => {
+                        this.toggleTrend("Deep");
                     }
                 })
             .addSubGroup( {label: "Scales", enable: false} )
