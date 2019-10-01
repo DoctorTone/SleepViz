@@ -321,11 +321,10 @@ class Framework extends BaseApp {
         this.bars = bars;
 
         // Lines
-        /*
         const lineColour = new THREE.Color();
         lineColour.setHex(0xdadada);
         let lineColours = [];
-        const numPositions = monthlyLinePositions[0].length;
+        const numPositions = attributeLinePositions[0].length;
         for(let i=0; i<numPositions; ++i) {
             lineColours.push(lineColour.r, lineColour.g, lineColour.b);
         }
@@ -339,27 +338,25 @@ class Framework extends BaseApp {
 
         lineMat.resolution.set( window.innerWidth, window.innerHeight );
 
-        const numLineGeometries = monthlyLinePositions.length;
+        const numLineGeometries = attributeLinePositions.length;
         let lineGeom;
         let line;
         const scale = 1;
         let lineGeoms = [];
         for(let i=0; i<numLineGeometries; ++i) {
             lineGeom = new LineGeometry();
-            lineGeom.setPositions(monthlyLinePositions[i]);
+            lineGeom.setPositions(attributeLinePositions[i]);
             lineGeom.setColors(lineColours);
             lineGeoms.push(lineGeom);
 
             line = new Line2(lineGeom, lineMat);
-            currentYear = i + 1;
-            line.name = "Year" + currentYear + "Trend";
+            line.name = "Attribute" + i + "Trend";
             line.computeLineDistances();
             line.scale.set(scale, scale, scale);
-            line.visible = false;
+            line.visible = true;
             this.root.add(line);
         }
         this.lineGeoms = lineGeoms;
-        */
 
         this.createGUI();
     }
