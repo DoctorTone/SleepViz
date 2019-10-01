@@ -69,7 +69,7 @@ const APPCONFIG = {
     },
     LABEL_MONTH_OFFSET: {
         x: -7,
-        y: 2,
+        y: -5,
         z: 0
     },
     LABEL_YEAR_OFFSET: {
