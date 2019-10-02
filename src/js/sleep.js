@@ -29,6 +29,7 @@ class Framework extends BaseApp {
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
+        this.camRotAxis = new THREE.Vector3(0, 1, 0);
     }
 
     setContainer(container) {
@@ -411,7 +412,11 @@ class Framework extends BaseApp {
         let delta = this.clock.getDelta();
 
         if (this.cameraRotate) {
-            this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
+            this.tempVec.copy(this.camera.position);
+            this.tempVec.sub(this.controls.target);
+            this.tempVec.applyAxisAngle(this.camRotAxis, this.rotSpeed * this.rotDirection * delta);
+            this.camera.position.copy(this.tempVec);
+            this.camera.position.add(this.controls.target);
         }
 
         if(this.zoomingIn) {
