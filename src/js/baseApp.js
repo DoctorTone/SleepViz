@@ -150,6 +150,7 @@ export class BaseApp {
         directionalLight.shadow.radius = 2;
         directionalLight.shadow.bias = -0.0005;
         scene.add( directionalLight );
+        this.directionalLight = directionalLight;
         // scene.add( new THREE.CameraHelper( directionalLight.shadow.camera ) );
          
 

@@ -99,6 +99,10 @@ class Framework extends BaseApp {
             range: [0.1, 3]
         };
 
+        let shadowConfig = {
+            Shadows: true
+        };
+
         let guiWidth = $('#guiWidth').css("width");
         guiWidth = parseInt(guiWidth, 10);
         let gui = new controlkit();
@@ -173,6 +177,12 @@ class Framework extends BaseApp {
                 .addCheckbox(valueConfig, "Deep", {
                     onChange: () => {
                         this.toggleValues("Deep sleep");
+                    }
+                })
+            .addSubGroup( {label: "Shadows", enable: false} )
+                .addCheckbox(shadowConfig, "Shadows", {
+                    onChange: () => {
+                        this.toggleShadows();
                     }
                 })
             
