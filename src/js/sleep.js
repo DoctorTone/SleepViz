@@ -265,7 +265,7 @@ class Framework extends BaseApp {
             barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z);
             for (let attribute=0; attribute<attributes.length; ++attribute) {
                 barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                //barMesh.name = currentGroup.name + APPCONFIG.MONTHS[bar];
+                barMesh.name = "bar" + bar + attributes[attribute] + currentMonth;
                 barMesh.castShadow = true;
                 barMesh.receiveShadow = true;
                 bars.push(barMesh);
@@ -303,10 +303,10 @@ class Framework extends BaseApp {
                 // Values
                 labelProperty.position.copy(barMesh.position);
                 labelProperty.position.y = height * 2;
-                labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET
+                labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
-                label = this.labelManager.create("valueLabel" + currentMonth, barValue, labelProperty);
+                label = this.labelManager.create("valueLabel" + bar + attributes[attribute] + currentMonth, barValue, labelProperty);
                 valueGroups[attribute].add(label.getSprite());
             }
             
@@ -508,21 +508,21 @@ class Framework extends BaseApp {
         this.zoomingOut = status;
     }
 
-    redrawValueLabels(currentYear) {
-        // Get year number
-        let yearNum = currentYear.name.slice(-1);
-        if (yearNum) {
-            let yScale = currentYear.scale.y;
-            let year = parseInt(yearNum, 10);
-            let row = year - 1;
-            let label;
-            let labelValue;
-            for (let i=0; i<APPCONFIG.NUM_BARS_PER_ROW; ++i) {
-                labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + i;
-                label = this.labelManager.getLabel("valueLabel" + labelValue);
-                if (label) {
-                    label.setHeight((currentYear.children[i].position.y * yScale * 2) + APPCONFIG.VALUE_OFFSET);
-                }
+    redrawValueLabels(scale) {
+        // Get all bars
+        let currentBar;
+        let height;
+        let labelName;
+        let currentLabel;
+        for (let i=0, numBars=this.bars.length; i<numBars; ++i) {
+            currentBar = this.bars[i];
+            height = currentBar.position.y * 2 * scale;
+            labelName = currentBar.name;
+            labelName = labelName.slice(3);
+            labelName = "valueLabel" + labelName;
+            currentLabel = this.labelManager.getLabel(labelName);
+            if (currentLabel) {
+                currentLabel.setHeight(height + APPCONFIG.LABEL_VALUE_OFFSET);
             }
         }
     }
@@ -583,7 +583,7 @@ class Framework extends BaseApp {
         if (attributeGroup) {
             attributeGroup.scale.y = scale;
         }
-        //this.redrawValueLabels(currentYear);
+        this.redrawValueLabels(scale);
     }
 }
 
