@@ -29,7 +29,8 @@ class Framework extends BaseApp {
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
-        this.camRotAxis = new THREE.Vector3(0, 1, 0);
+        this.camRotateLeftRight = new THREE.Vector3(0, 1, 0);
+        this.camRotateUpDown = new THREE.Vector3(1, 0, 0);
     }
 
     setContainer(container) {
@@ -482,22 +483,22 @@ class Framework extends BaseApp {
         switch (direction) {
             case APPCONFIG.RIGHT:
                 this.rotDirection = 1;
-                this.rotAxis = `y`;
+                this.camRotAxis = this.camRotateLeftRight;
                 break;
 
             case APPCONFIG.LEFT:
                 this.rotDirection = -1;
-                this.rotAxis = `y`;
+                this.camRotAxis = this.camRotateLeftRight;
                 break;
 
             case APPCONFIG.UP:
-                this.rotDirection = 1;
-                this.rotAxis = `x`;
+                this.rotDirection = -1;
+                this.camRotAxis = this.camRotateUpDown;
                 break;
 
             case APPCONFIG.DOWN:
-                this.rotDirection = -1;
-                this.rotAxis = `x`;
+                this.rotDirection = 1;
+                this.camRotAxis = this.camRotateUpDown;
                 break;
 
             default:
