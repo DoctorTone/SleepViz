@@ -6,6 +6,7 @@ import { Line2 } from 'three/examples/jsm/lines/Line2';
 
 import { BaseApp } from "./baseApp";
 import { APPCONFIG } from "./appConfig";
+import { SceneConfig } from "./sceneConfig";
 import { LabelManager } from "./LabelManager";
 import controlkit from "controlkit";
 import bootstrap from "bootstrap";
@@ -526,6 +527,12 @@ class Framework extends BaseApp {
         this.zoomingOut = status;
     }
 
+    resetView() {
+        this.controls.reset();
+        this.camera.position.copy(SceneConfig.CameraPos);
+        this.controls.target.copy(SceneConfig.LookAtPos);
+    }
+
     redrawValueLabels(scale) {
         // Get all bars
         let currentBar;
@@ -624,6 +631,7 @@ $(document).ready( () => {
     let rotateDown = $("#rotateDown");
     let zoomIn = $("#zoomIn");
     let zoomOut = $("#zoomOut");
+    let reset = $("#reset");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -729,6 +737,10 @@ $(document).ready( () => {
 
     zoomOut.on("touchend", () => {
         app.zoomOut(false);
+    });
+
+    reset.on("click", () => {
+        app.resetView();
     });
 
     $("#info").on("click", () => {
