@@ -37,6 +37,12 @@ body {
     width: 45%;
     padding: 0.2rem 0.4rem;
 }
+#buttonLarge {
+    width: 100%;
+}
+#buttonLarge button {
+    width: 95%;
+}
 #rotate img {
     width: 100%;
 }
