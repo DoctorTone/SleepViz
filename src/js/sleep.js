@@ -416,16 +416,18 @@ class Framework extends BaseApp {
 
         if(this.zoomingIn) {
             this.tempVec.copy(this.camera.position);
-            this.tempVec.multiplyScalar(this.zoomSpeed * delta);
-            this.root.position.add(this.tempVec);
+            this.tempVec.sub(this.controls.target);
+            this.tempVec.multiplyScalar(this.zoomSpeed * -delta);
+            this.camera.position.add(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
         }
 
         if(this.zoomingOut) {
             this.tempVec.copy(this.camera.position);
+            this.tempVec.sub(this.controls.target);
             this.tempVec.multiplyScalar(this.zoomSpeed * delta);
-            this.root.position.sub(this.tempVec);
+            this.camera.position.add(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
         }
