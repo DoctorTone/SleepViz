@@ -581,13 +581,14 @@ class Framework extends BaseApp {
     }
 
     toggleValues(attributeName) {
-        // DEBUG
-        console.log("toggle = ", attributeName);
-
         let currentAttribute = this.getObjectByName(attributeName + "ValuesMayGroup");
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
         }
+    }
+
+    toggleShadows() {
+        this.directionalLight.castShadow = !this.directionalLight.castShadow;
     }
 
     scaleBars(xScale, zScale) {
