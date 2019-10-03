@@ -14,6 +14,7 @@ import bootstrap from "bootstrap";
 import sleepData from "../../data/sleepData.json";
 
 const attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
+const attributeDisplayNames = ["  Asleep", "  Quality", "  Awake", "  Deep "];
 
 class Framework extends BaseApp {
     constructor() {
@@ -308,7 +309,7 @@ class Framework extends BaseApp {
                     labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
                     labelProperty.visibility = true;
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
-                    label = this.labelManager.create("attributeLabel" + attributes[attribute], attributes[attribute], labelProperty);
+                    label = this.labelManager.create("attributeLabel" + attributes[attribute], attributeDisplayNames[attribute], labelProperty);
                     this.root.add(label.getSprite());
                 }
 
