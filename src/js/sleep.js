@@ -299,7 +299,6 @@ class Framework extends BaseApp {
                 barMesh.scale.set(1, barScale, 1);
                 height = barScale * (APPCONFIG.BAR_HEIGHT/2);
                 barMesh.position.y = height;
-                //barMesh.position.y += (minuteData);
                 attributeGroups[attribute].add(barMesh);
 
                 // Attribute labels
@@ -346,51 +345,7 @@ class Framework extends BaseApp {
             labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
             label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
             this.root.add(label.getSprite());
-
-            // Value labels
-            /*
-            labelProperty.position.copy(barMesh.position);
-            labelProperty.position.y *= 2;
-            labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
-            labelProperty.visibility = true;
-            labelProperty.scale = APPCONFIG.VALUE_SCALE;
-            if (dayData < 0.5) {
-                dayData = 0;
-            }
-            labelValue = (row * APPCONFIG.NUM_BARS_PER_ROW) + bar;
-            label = this.labelManager.create("valueLabel" + labelValue, dayData, labelProperty);
-            currentValueGroup.add(label.getSprite());
-            */
-
-            // Labels
-            /*
-            if (row === 0) {
-                labelProperty.position.copy(barMesh.position);
-                labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
-                labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
-                labelProperty.scale = APPCONFIG.LABEL_SCALE;
-                labelProperty.visibility = true;
-                labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
-                labelProperty.multiLine = false;
-                label = this.labelManager.create("monthLabel" + bar, APPCONFIG.MONTHS[bar], labelProperty);
-                this.root.add(label.getSprite());
-            }
-            */
-            /*
-            if (bar === 0) {
-                labelProperty.position.copy(barMesh.position);
-                labelProperty.position.y = APPCONFIG.LABEL_HEIGHT;
-                labelProperty.position.add(APPCONFIG.LABEL_YEAR_OFFSET);
-                labelProperty.scale = APPCONFIG.LABEL_SCALE;
-                labelProperty.visibility = true;
-                labelProperty.textColour = APPCONFIG.LABEL_TEXTCOLOUR;
-                labelProperty.multiLine = false;
-                label = this.labelManager.create("yearLabel" + row, APPCONFIG.YEARS[row], labelProperty);
-                this.root.add(label.getSprite());
-            }
-            */
         }
-        //monthlyLinePositions.push(linePositions);
 
         this.bars = bars;
 
