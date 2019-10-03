@@ -300,6 +300,18 @@ class Framework extends BaseApp {
                 barMesh.position.y = height;
                 //barMesh.position.y += (minuteData);
                 attributeGroups[attribute].add(barMesh);
+
+                // Attribute labels
+                if (bar === 0) {
+                    labelProperty.position.copy(barMesh.position);
+                    labelProperty.position.x += APPCONFIG.ATTRIBUTE_LABEL_OFFSET_X;
+                    labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
+                    labelProperty.visibility = true;
+                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
+                    label = this.labelManager.create("attributeLabel" + attributes[attribute], attributes[attribute], labelProperty);
+                    this.root.add(label.getSprite());
+                }
+
                 // Month label
                 if (bar === 0 && attribute === 1) {
                     labelProperty.position.copy(barMesh.position);
