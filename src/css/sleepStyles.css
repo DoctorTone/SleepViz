@@ -60,6 +60,14 @@ body {
 #info img {
     width: 100%;
 }
+#sleepData {
+    top: 5%;
+    left: 0.5%;
+    width: 30%;
+}
+#sleepData img {
+    width: 22.5%;
+}
 
 /* Small screens */
 @media (min-width: 576px) {
