@@ -309,6 +309,7 @@ class Framework extends BaseApp {
                     labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
                     labelProperty.visibility = true;
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
+                    labelProperty.textColour =  "rgba(255, 255, 255, 1.0)",
                     label = this.labelManager.create("attributeLabel" + attributes[attribute], attributeDisplayNames[attribute], labelProperty);
                     this.root.add(label.getSprite());
                 }
@@ -319,6 +320,7 @@ class Framework extends BaseApp {
                     labelProperty.visibility = true;
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
+                    labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
                     label = this.labelManager.create("monthLabel" + attributes[attribute] + currentMonth, currentMonth, labelProperty);
                     this.root.add(label.getSprite());
                 }
