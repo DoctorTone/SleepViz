@@ -61,7 +61,7 @@ body {
     width: 100%;
 }
 #sleepData {
-    top: 15%;
+    top: 7.5%;
     left: 1%;
     width: 25%;
     color: white;
@@ -103,21 +103,32 @@ body {
 @media (min-width: 768px) {
     .title {
         padding-left: 30px;
-        text-align: left;
+    }
+    #sleepData {
+        top: 5%;
+        width: 22.5%;
     }
     #guiWidth {
         width: 300px;
     }
 }
 
+@media (min-width: 768px) and (orientation: landscape) {
+    #rotate {
+        top: 50%;
+    }
+}
 /* iPad in landscape */
 @media (min-width: 992px) {
     #rotate {
         width: 10%;
-        top: 60%;
+        top: 55%;
     }
     #info {
         width: 6%;
+    }
+    #sleepData {
+        width: 15%;
     }
 }
 
@@ -132,11 +143,17 @@ body {
     #info {
         width: 4%;
     }
+    #sleepData {
+        width: 12.5%;
+    }
 }
 
 /* Full HD screens */
 @media (min-width: 1600px) {
     #rotate {
         width: 7%;
+    }
+    #sleepData {
+        width: 11%;
     }
 }
