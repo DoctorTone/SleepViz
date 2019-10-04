@@ -589,19 +589,43 @@ class Framework extends BaseApp {
         let startMonth = 4;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let monthData = sleepData[currentMonth];
-        let totalSleep = 0;
+        let totalSleep;
         let currentSleep;
+        let currentAttribute;
         let numDays = monthData.length;
-        for (let day=0; day<numDays; ++day) {
-            currentSleep = monthData[day].Asleep;
-            currentSleep = currentSleep.split(":");
-            currentSleep.hours = parseInt(currentSleep[0], 10);
-            currentSleep.minutes = parseInt(currentSleep[1], 10);
-            currentSleep = (currentSleep.hours * 60) + currentSleep.minutes;
-            totalSleep += currentSleep;
+        const sleepTimes = [];
+        for (let attribute=0; attribute<attributes.length; ++attribute) {
+            currentAttribute = attributes[attribute];
+            totalSleep = 0;
+            for (let day=0; day<numDays; ++day) {
+                currentSleep = monthData[day];
+                currentSleep = currentSleep[currentAttribute];
+                currentSleep = currentSleep.split(":");
+                currentSleep.hours = parseInt(currentSleep[0], 10);
+                currentSleep.minutes = parseInt(currentSleep[1], 10);
+                currentSleep = (currentSleep.hours * 60) + currentSleep.minutes;
+                totalSleep += currentSleep;
+            }
+            sleepTimes.push(totalSleep/numDays);
         }
-
-        $("#sleep").html(totalSleep/numDays);
+        
+        // Format sleep times
+        let hours;
+        let minutes;
+        const sleepDisplay = [];
+        for (let i=0, numTimes=sleepTimes.length; i<numTimes; ++i) {
+            hours = Math.round(sleepTimes[i]/60);
+            hours = hours.toString();
+            if (hours.length < 2) hours = "0" + hours;
+            minutes = Math.round(sleepTimes[i] % 60);
+            minutes = minutes.toString();
+            if (minutes.length < 2) minutes = "0" + minutes;
+            sleepDisplay.push(hours + ":" + minutes);
+        }
+        $("#sleep").html(sleepDisplay[0]);
+        $("#quality").html(sleepDisplay[1]);
+        $("#awake").html(sleepDisplay[2]);
+        $("#deep").html(sleepDisplay[3]);
     }
 }
 
