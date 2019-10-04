@@ -205,6 +205,9 @@ class Framework extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
+        // Show numerical sleep data
+        this.showSleepData();
+
         // Add bars to scene
         const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         //const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
@@ -580,6 +583,25 @@ class Framework extends BaseApp {
             attributeGroup.scale.y = scale;
         }
         this.redrawValueLabels(scale);
+    }
+
+    showSleepData() {
+        let startMonth = 4;
+        let currentMonth = APPCONFIG.MONTHS[startMonth];
+        let monthData = sleepData[currentMonth];
+        let totalSleep = 0;
+        let currentSleep;
+        let numDays = monthData.length;
+        for (let day=0; day<numDays; ++day) {
+            currentSleep = monthData[day].Asleep;
+            currentSleep = currentSleep.split(":");
+            currentSleep.hours = parseInt(currentSleep[0], 10);
+            currentSleep.minutes = parseInt(currentSleep[1], 10);
+            currentSleep = (currentSleep.hours * 60) + currentSleep.minutes;
+            totalSleep += currentSleep;
+        }
+
+        $("#sleep").html(totalSleep/numDays);
     }
 }
 
