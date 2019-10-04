@@ -88,8 +88,11 @@ body {
         width: 11%;
         top: 11%;
     }
+    #sleepData {
+        width: 20%;
+    }
     #info {
-        width: 7.5%;
+        width: 6.5%;
     }
     #guiWidth {
         width: 200px;
