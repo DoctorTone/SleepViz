@@ -12,7 +12,7 @@ body {
     text-align: left;
 }
 .title h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 .modal {
     color: black;
@@ -63,7 +63,7 @@ body {
 #sleepData {
     top: 15%;
     left: 1%;
-    width: 7.5%;
+    width: 25%;
     color: white;
     border: 2px solid white;
     border-radius: 20px;
@@ -77,9 +77,6 @@ body {
 
 /* Small screens */
 @media (min-width: 576px) {
-    .title {
-        text-align: center;
-    }
     #rotate {
         width: 15%;
     }
@@ -87,9 +84,6 @@ body {
 
 /* Small screen - landscape */
 @media (min-width: 576px) and (orientation: landscape) {
-    .title {
-        text-align: center;
-    }
     #rotate {
         width: 11%;
         top: 11%;
