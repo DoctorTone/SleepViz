@@ -62,17 +62,15 @@ body {
 }
 #sleepData {
     top: 5%;
-    left: 0.5%;
+    left: 1%;
     width: 7.5%;
     color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1% 0;
+    background-color: rgba(50, 50, 150, 0.25);
 }
-#sleepData div {
-    border: 4px solid white;
-    border-radius: 50%;
-    width: 100%;
-    height: 120px;
-    padding-top: 17.5%;
-}
+
 #sleepData img {
     width: 95%;
 }
