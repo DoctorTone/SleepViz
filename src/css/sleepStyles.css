@@ -68,7 +68,7 @@ body {
     border: 2px solid white;
     border-radius: 20px;
     padding: 1% 0;
-    background-color: rgba(50, 50, 150, 0.25);
+    background-color: rgba(0, 0, 50, 0.25);
 }
 
 #sleepData img {
