@@ -13,9 +13,6 @@ import bootstrap from "bootstrap";
 
 import sleepData from "../../data/sleepData.json";
 
-const attributes = ["Asleep", "Quality sleep", "Awake", "Deep sleep"];
-const attributeDisplayNames = ["  Asleep", "  Quality", "  Awake", "  Deep "];
-
 class Framework extends BaseApp {
     constructor() {
         super();
@@ -244,23 +241,23 @@ class Framework extends BaseApp {
         superGroup.name = "SuperGroup";
         this.root.add(superGroup);
 
-        for (let attribute=0; attribute<attributes.length; ++attribute) {
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
             // Attributes themselves
             currentAttributeGroup = new THREE.Group();
-            currentAttributeGroup.name = attributes[attribute] + currentMonth + "Group";
+            currentAttributeGroup.name = APPCONFIG.attributes[attribute] + currentMonth + "Group";
             attributeGroups.push(currentAttributeGroup);
             superGroup.add(currentAttributeGroup);
 
             // Trends
             currentTrendGroup = new THREE.Group();
-            currentTrendGroup.name = attributes[attribute] + "Trend" + currentMonth + "Group";
+            currentTrendGroup.name = APPCONFIG.attributes[attribute] + "Trend" + currentMonth + "Group";
             currentTrendGroup.visible = false;
             trendGroups.push(currentTrendGroup);
             superGroup.add(currentTrendGroup);
 
             // Values
             currentValueGroup = new THREE.Group();
-            currentValueGroup.name = attributes[attribute] + "Values" + currentMonth + "Group";
+            currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + currentMonth + "Group";
             currentValueGroup.visible = false;
             valueGroups.push(currentValueGroup);
             this.root.add(currentValueGroup);
@@ -268,7 +265,7 @@ class Framework extends BaseApp {
 
         // Lines
         let linePositions;
-        for (let attribute=0; attribute<attributes.length; ++attribute) {
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
             linePositions = [];
             attributeLinePositions.push(linePositions);
         }
@@ -280,16 +277,16 @@ class Framework extends BaseApp {
 
             // Create meshes
             barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z);
-            for (let attribute=0; attribute<attributes.length; ++attribute) {
+            for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
                 barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                barMesh.name = "bar" + bar + attributes[attribute] + currentMonth;
+                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
                 barMesh.castShadow = true;
                 barMesh.receiveShadow = true;
                 bars.push(barMesh);
                 barMesh.position.copy(barStartPos);
                 barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
                 dayData = monthData[bar];
-                dayData = dayData[attributes[attribute]];
+                dayData = dayData[APPCONFIG.attributes[attribute]];
                 barValue = dayData;
                 dayData = dayData.split(":");
                 dayData.hours = parseInt(dayData[0], 10);
@@ -312,7 +309,7 @@ class Framework extends BaseApp {
                     labelProperty.visibility = true;
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.textColour =  "rgba(255, 255, 255, 1.0)",
-                    label = this.labelManager.create("attributeLabel" + attributes[attribute], attributeDisplayNames[attribute], labelProperty);
+                    label = this.labelManager.create("attributeLabel" + APPCONFIG.attributes[attribute], APPCONFIG.attributeDisplayNames[attribute], labelProperty);
                     this.root.add(label.getSprite());
                 }
 
@@ -323,7 +320,7 @@ class Framework extends BaseApp {
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
                     labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
-                    label = this.labelManager.create("monthLabel" + attributes[attribute] + currentMonth, currentMonth, labelProperty);
+                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + currentMonth, currentMonth, labelProperty);
                     this.root.add(label.getSprite());
                 }
 
@@ -336,7 +333,7 @@ class Framework extends BaseApp {
                 labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
-                label = this.labelManager.create("valueLabel" + bar + attributes[attribute] + currentMonth, barValue, labelProperty);
+                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + currentMonth, barValue, labelProperty);
                 valueGroups[attribute].add(label.getSprite());
             }
             
@@ -594,8 +591,8 @@ class Framework extends BaseApp {
         let currentAttribute;
         let numDays = monthData.length;
         const sleepTimes = [];
-        for (let attribute=0; attribute<attributes.length; ++attribute) {
-            currentAttribute = attributes[attribute];
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
+            currentAttribute = APPCONFIG.attributes[attribute];
             totalSleep = 0;
             for (let day=0; day<numDays; ++day) {
                 currentSleep = monthData[day];
