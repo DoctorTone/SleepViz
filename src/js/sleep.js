@@ -272,14 +272,14 @@ class Framework extends BaseApp {
 
         // Work out starting position
         const numBars = monthData.length;
-        barStartPos.x = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
+        let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
         for(let bar=0; bar<numBars; ++bar) {
             // Label properties
             labelProperty = {};
             labelProperty.position = new THREE.Vector3();
 
             // Create meshes
-            barStartPos.set(barStartPos.x + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
+            barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
             for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
                 barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
                 barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
