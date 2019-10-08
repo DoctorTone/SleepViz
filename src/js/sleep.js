@@ -215,7 +215,7 @@ class Framework extends BaseApp {
         let labelProperty;
         let dayData;
         let minuteData;
-        let startMonth = 4;
+        let startMonth = 5;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
         let monthData = sleepData[currentMonth];

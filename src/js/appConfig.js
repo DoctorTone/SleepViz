@@ -37,7 +37,7 @@ const APPCONFIG = {
         "Mar",
         "Apr",
         "May",
-        "Jun",
+        "June",
         "Jul",
         "Aug",
         "Sep",

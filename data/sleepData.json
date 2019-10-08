@@ -110,5 +110,326 @@
             "Deep sleep":"00:00",
             "Heartrate":61
         }
+    ],
+    "June": [
+        {
+            "Day": 1,
+            "In":"00:15",
+            "Until":"07:31",
+            "Duration":"07:16",
+            "Asleep":"07:08",
+            "Awake":"00:08",
+            "Quality sleep":"05:20",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 2,
+            "In":"00:03",
+            "Until":"08:12",
+            "Duration":"08:09",
+            "Asleep":"07:56",
+            "Awake":"00:13",
+            "Quality sleep":"05:38",
+            "Deep sleep":"00:14",
+            "Heartrate":57
+        },
+        {
+            "Day": 3,
+            "In":"01:15",
+            "Until":"07:00",
+            "Duration":"05:45",
+            "Asleep":"05:42",
+            "Awake":"00:03",
+            "Quality sleep":"04:22",
+            "Deep sleep":"00:00",
+            "Heartrate":57
+        },
+        {
+            "Day": 3,
+            "In":"23:46",
+            "Until":"07:28",
+            "Duration":"07:42",
+            "Asleep":"07:19",
+            "Awake":"00:23",
+            "Quality sleep":"05:03",
+            "Deep sleep":"00:15",
+            "Heartrate":58
+        },
+        {
+            "Day": 4,
+            "In":"23:00",
+            "Until":"06:57",
+            "Duration":"07:57",
+            "Asleep":"07:30",
+            "Awake":"00:27",
+            "Quality sleep":"05:18",
+            "Deep sleep":"00:14",
+            "Heartrate":53
+        },
+        {
+            "Day": 6,
+            "In":"00:15",
+            "Until":"06:55",
+            "Duration":"06:40",
+            "Asleep":"06:40",
+            "Awake":"00:00",
+            "Quality sleep":"05:13",
+            "Deep sleep":"00:15",
+            "Heartrate":53
+        },
+        {
+            "Day": 8,
+            "In":"00:03",
+            "Until":"06:30",
+            "Duration":"07:42",
+            "Asleep":"07:42",
+            "Awake":"00:00",
+            "Quality sleep":"05:33",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 8,
+            "In":"22:30",
+            "Until":"07:34",
+            "Duration":"09:04",
+            "Asleep":"08:33",
+            "Awake":"00:31",
+            "Quality sleep":"06:18",
+            "Deep sleep":"00:00",
+            "Heartrate":66
+        },
+        {
+            "Day": 9,
+            "In":"23:17",
+            "Until":"07:02",
+            "Duration":"07:45",
+            "Asleep":"07:13",
+            "Awake":"00:32",
+            "Quality sleep":"05:06",
+            "Deep sleep":"00:16",
+            "Heartrate":59
+        },
+        {
+            "Day": 10,
+            "In":"22:32",
+            "Until":"06:56",
+            "Duration":"08:24",
+            "Asleep":"08:18",
+            "Awake":"00:06",
+            "Quality sleep":"05:50",
+            "Deep sleep":"00:00",
+            "Heartrate":57
+        },
+        {
+            "Day": 11,
+            "In":"23:45",
+            "Until":"07:03",
+            "Duration":"07:18",
+            "Asleep":"07:10",
+            "Awake":"00:08",
+            "Quality sleep":"05:20",
+            "Deep sleep":"00:00",
+            "Heartrate":55
+        },
+        {
+            "Day": 12,
+            "In":"23:30",
+            "Until":"06:51",
+            "Duration":"07:21",
+            "Asleep":"07:21",
+            "Awake":"00:00",
+            "Quality sleep":"05:20",
+            "Deep sleep":"00:00",
+            "Heartrate":64
+        },
+        {
+            "Day": 13,
+            "In":"23:45",
+            "Until":"07:26",
+            "Duration":"07:41",
+            "Asleep":"07:13",
+            "Awake":"00:28",
+            "Quality sleep":"05:26",
+            "Deep sleep":"00:00",
+            "Heartrate":58
+        },
+        {
+            "Day": 15,
+            "In":"00:45",
+            "Until":"06:02",
+            "Duration":"07:00",
+            "Asleep":"07:00",
+            "Awake":"00:00",
+            "Quality sleep":"05:20",
+            "Deep sleep":"00:00",
+            "Heartrate":61
+        },
+        {
+            "Day": 16,
+            "In":"00:18",
+            "Until":"07:14",
+            "Duration":"06:56",
+            "Asleep":"06:56",
+            "Awake":"00:00",
+            "Quality sleep":"04:42",
+            "Deep sleep":"00:00",
+            "Heartrate":70
+        },
+        {
+            "Day": 16,
+            "In":"23:31",
+            "Until":"06:58",
+            "Duration":"07:27",
+            "Asleep":"07:27",
+            "Awake":"00:00",
+            "Quality sleep":"05:23",
+            "Deep sleep":"00:00",
+            "Heartrate":58
+        },
+        {
+            "Day": 18,
+            "In":"00:40",
+            "Until":"06:30",
+            "Duration":"05:50",
+            "Asleep":"05:37",
+            "Awake":"00:13",
+            "Quality sleep":"04:07",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 19,
+            "In":"00:16",
+            "Until":"07:14",
+            "Duration":"06:58",
+            "Asleep":"06:58",
+            "Awake":"00:00",
+            "Quality sleep":"05:19",
+            "Deep sleep":"00:14",
+            "Heartrate":55
+        },
+        {
+            "Day": 19,
+            "In":"23:33",
+            "Until":"06:45",
+            "Duration":"07:12",
+            "Asleep":"07:11",
+            "Awake":"00:01",
+            "Quality sleep":"05:16",
+            "Deep sleep":"00:00",
+            "Heartrate":55
+        },
+        {
+            "Day": 20,
+            "In":"23:00",
+            "Until":"06:44",
+            "Duration":"07:44",
+            "Asleep":"07:14",
+            "Awake":"00:30",
+            "Quality sleep":"05:04",
+            "Deep sleep":"00:00",
+            "Heartrate":57
+        },
+        {
+            "Day": 22,
+            "In":"00:46",
+            "Until":"07:53",
+            "Duration":"07:07",
+            "Asleep":"06:52",
+            "Awake":"00:15",
+            "Quality sleep":"04:53",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 23,
+            "In":"00:00",
+            "Until":"08:09",
+            "Duration":"08:09",
+            "Asleep":"08:09",
+            "Awake":"00:00",
+            "Quality sleep":"05:54",
+            "Deep sleep":"00:00",
+            "Heartrate":66
+        },
+        {
+            "Day": 23,
+            "In":"22:31",
+            "Until":"07:15",
+            "Duration":"08:44",
+            "Asleep":"07:53",
+            "Awake":"00:51",
+            "Quality sleep":"05:33",
+            "Deep sleep":"01:31",
+            "Heartrate":60
+        },
+        {
+            "Day": 24,
+            "In":"22:30",
+            "Until":"06:56",
+            "Duration":"08:26",
+            "Asleep":"08:07",
+            "Awake":"00:19",
+            "Quality sleep":"06:03",
+            "Deep sleep":"00:00",
+            "Heartrate":55
+        },
+        {
+            "Day": 25,
+            "In":"23:38",
+            "Until":"07:02",
+            "Duration":"07:24",
+            "Asleep":"07:16",
+            "Awake":"00:08",
+            "Quality sleep":"05:32",
+            "Deep sleep":"00:00",
+            "Heartrate":58
+        },
+        {
+            "Day": 26,
+            "In":"23:15",
+            "Until":"07:06",
+            "Duration":"07:51",
+            "Asleep":"07:51",
+            "Awake":"00:00",
+            "Quality sleep":"05:43",
+            "Deep sleep":"01:15",
+            "Heartrate":53
+        },
+        {
+            "Day": 27,
+            "In":"23:51",
+            "Until":"07:09",
+            "Duration":"07:18",
+            "Asleep":"07:07",
+            "Awake":"00:11",
+            "Quality sleep":"05:21",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 28,
+            "In":"23:17",
+            "Until":"07:13",
+            "Duration":"07:56",
+            "Asleep":"07:37",
+            "Awake":"00:19",
+            "Quality sleep":"05:42",
+            "Deep sleep":"00:00",
+            "Heartrate":62
+        },
+        {
+            "Day": 30,
+            "In":"00:44",
+            "Until":"07:30",
+            "Duration":"06:46",
+            "Asleep":"06:46",
+            "Awake":"00:00",
+            "Quality sleep":"04:43",
+            "Deep sleep":"00:00",
+            "Heartrate":63
+        }
     ]
 }
