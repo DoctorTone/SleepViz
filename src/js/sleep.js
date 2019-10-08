@@ -215,7 +215,7 @@ class Framework extends BaseApp {
         let labelProperty;
         let dayData;
         let minuteData;
-        let startMonth = 5;
+        let startMonth = 4;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
         let monthData = sleepData[currentMonth];
@@ -270,13 +270,16 @@ class Framework extends BaseApp {
             attributeLinePositions.push(linePositions);
         }
 
-        for(let bar=0; bar<monthData.length; ++bar) {
+        // Work out starting position
+        const numBars = monthData.length;
+        barStartPos.x = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
+        for(let bar=0; bar<numBars; ++bar) {
             // Label properties
             labelProperty = {};
             labelProperty.position = new THREE.Vector3();
 
             // Create meshes
-            barStartPos.set(APPCONFIG.barStartPos.x + (APPCONFIG.BAR_INC_X * bar), APPCONFIG.barStartPos.y, APPCONFIG.barStartPos.z);
+            barStartPos.set(barStartPos.x + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
             for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
                 barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
                 barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
