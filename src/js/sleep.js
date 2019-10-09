@@ -354,7 +354,8 @@ class Framework extends BaseApp {
         let bbox = new THREE.Box3().setFromObject(attributeGroups[3]);
         let bsphere = new THREE.Sphere();
         bbox.getBoundingSphere(bsphere);
-        this.camera.position.z = bsphere.center.z + (bsphere.radius * APPCONFIG.CAMERA_SCALE);
+        let cameraScale = numBars > 10 ? APPCONFIG.CAMERA_SCALE_LARGE : APPCONFIG.CAMERA_SCALE_SMALL;
+        this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
 
         this.bars = bars;
 
