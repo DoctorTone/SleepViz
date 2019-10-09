@@ -92,7 +92,8 @@ const APPCONFIG = {
     DOWN: 3,
     ZOOM_SPEED: 0.1,
     attributes: ["Asleep", "Quality sleep", "Awake", "Deep sleep"],
-    attributeDisplayNames: ["  Asleep", "  Quality", "  Awake", "  Deep "]
+    attributeDisplayNames: ["  Asleep", "  Quality", "  Awake", "  Deep "],
+    CAMERA_SCALE: 1.5
 }
 
 export { APPCONFIG };

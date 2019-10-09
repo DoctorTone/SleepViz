@@ -215,7 +215,7 @@ class Framework extends BaseApp {
         let labelProperty;
         let dayData;
         let minuteData;
-        let startMonth = 4;
+        let startMonth = 5;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
         let monthData = sleepData[currentMonth];
@@ -349,6 +349,12 @@ class Framework extends BaseApp {
             label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
             this.root.add(label.getSprite());
         }
+
+        // Calculate bounding sphere for group
+        let bbox = new THREE.Box3().setFromObject(attributeGroups[3]);
+        let bsphere = new THREE.Sphere();
+        bbox.getBoundingSphere(bsphere);
+        this.camera.position.z = bsphere.center.z + (bsphere.radius * APPCONFIG.CAMERA_SCALE);
 
         this.bars = bars;
 
