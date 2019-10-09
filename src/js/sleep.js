@@ -215,7 +215,7 @@ class Framework extends BaseApp {
         let labelProperty;
         let dayData;
         let minuteData;
-        let startMonth = 5;
+        let startMonth = APPCONFIG.START_MONTH;
         let currentMonth = APPCONFIG.MONTHS[startMonth];
         let barStartPos = new THREE.Vector3();
         let monthData = sleepData[currentMonth];
@@ -593,8 +593,7 @@ class Framework extends BaseApp {
     }
 
     showSleepData() {
-        let startMonth = 4;
-        let currentMonth = APPCONFIG.MONTHS[startMonth];
+        let currentMonth = APPCONFIG.MONTHS[APPCONFIG.START_MONTH];
         let monthData = sleepData[currentMonth];
         let totalSleep;
         let currentSleep;
