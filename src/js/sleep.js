@@ -202,9 +202,6 @@ class Framework extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
-        // Show numerical sleep data
-        this.showSleepData();
-
         // Add bars to scene
         const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         //const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
@@ -397,9 +394,13 @@ class Framework extends BaseApp {
         }
         this.lineGeoms = lineGeoms;
 
-        this.currentMonth = currentMonth;
+        this.currentMonthName = currentMonth;
+        this.currentMonthNumber = startMonth;
 
         this.createGUI();
+
+        // Show numerical sleep data
+        this.showSleepData();
     }
 
     update() {
@@ -535,7 +536,7 @@ class Framework extends BaseApp {
     }
     
     toggleAttribute(attributeName) {
-        const currentGroupName = attributeName + this.currentMonth + "Group";
+        const currentGroupName = attributeName + this.currentMonthName + "Group";
         const currentAttribute = this.getObjectByName(currentGroupName);
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
@@ -563,14 +564,14 @@ class Framework extends BaseApp {
     }
 
     toggleTrend(attributeName) {
-        let currentTrend = this.getObjectByName(attributeName + "Trend" + this.currentMonth +"Group");
+        let currentTrend = this.getObjectByName(attributeName + "Trend" + this.currentMonthName +"Group");
         if(currentTrend) {
             currentTrend.visible = !currentTrend.visible;
         }
     }
 
     toggleValues(attributeName) {
-        let currentAttribute = this.getObjectByName(attributeName + "Values" + this.currentMonth + "Group");
+        let currentAttribute = this.getObjectByName(attributeName + "Values" + this.currentMonthName + "Group");
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
         }
@@ -595,8 +596,7 @@ class Framework extends BaseApp {
     }
 
     showSleepData() {
-        let currentMonth = APPCONFIG.MONTHS[APPCONFIG.START_MONTH];
-        let monthData = sleepData[currentMonth];
+        let monthData = sleepData[this.currentMonthName];
         let totalSleep;
         let currentSleep;
         let currentAttribute;
