@@ -358,7 +358,7 @@ class Framework extends BaseApp {
         let cameraScale = numBars > 10 ? APPCONFIG.CAMERA_SCALE_LARGE : APPCONFIG.CAMERA_SCALE_SMALL;
         this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
 
-        this.bars = bars;
+        this.currentBars = bars;
 
         // Lines
         const lineColour = new THREE.Color();
@@ -492,8 +492,8 @@ class Framework extends BaseApp {
         let height;
         let labelName;
         let currentLabel;
-        for (let i=0, numBars=this.bars.length; i<numBars; ++i) {
-            currentBar = this.bars[i];
+        for (let i=0, numBars=this.currentBars.length; i<numBars; ++i) {
+            currentBar = this.currentBars[i];
             height = currentBar.position.y * 2 * scale;
             labelName = currentBar.name;
             labelName = labelName.slice(3);
