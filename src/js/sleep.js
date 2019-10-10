@@ -202,32 +202,22 @@ class Framework extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
-        // Add bars to scene
-        const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
-        //const barGeom = new THREE.BoxBufferGeometry(APPCONFIG.BAR_WIDTH, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_DEPTH, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
+        // Create bar geometry
+        this.barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         const bars = [];
         this.createAttributeMaterials();
-        let barMesh;
-        let label;
-        let labelProperty;
-        let dayData;
-        let minuteData;
-        let startMonth = APPCONFIG.START_MONTH;
-        let currentMonth = APPCONFIG.MONTHS[startMonth];
-        let barStartPos = new THREE.Vector3();
-        let monthData = sleepData[currentMonth];
-        let height;
-        let barScale;
-        let barValue;
+        
+        this.currentMonthNumber = APPCONFIG.START_MONTH;
+        this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
 
         // Set up groups
         // Group of groups
         const superGroup = new THREE.Group();
-        superGroup.name = "SuperGroup" + currentMonth;
+        superGroup.name = "SuperGroup" + this.currentMonthName;
         this.root.add(superGroup);
 
         const labelGroup = new THREE.Group();
-        labelGroup.name = "LabelGroup" + currentMonth;
+        labelGroup.name = "LabelGroup" + this.currentMonthName;
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
@@ -240,136 +230,11 @@ class Framework extends BaseApp {
             attributeLinePositions.push(linePositions);
         }
 
-        // Work out starting position
-        const numBars = monthData.length;
-        let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
-        for(let bar=0; bar<numBars; ++bar) {
-            // Label properties
-            labelProperty = {};
-            labelProperty.position = new THREE.Vector3();
-
-            // Create meshes
-            barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
-            for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-                barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
-                barMesh.castShadow = true;
-                barMesh.receiveShadow = true;
-                bars.push(barMesh);
-                barMesh.position.copy(barStartPos);
-                barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
-                dayData = monthData[bar];
-                dayData = dayData[APPCONFIG.attributes[attribute]];
-                barValue = dayData;
-                dayData = dayData.split(":");
-                dayData.hours = parseInt(dayData[0], 10);
-                dayData.minutes = parseInt(dayData[1], 10);
-                minuteData = (dayData.hours * 60) + dayData.minutes;
-                if (minuteData === 0) {
-                    minuteData = 0.1;
-                }
-                barScale = minuteData/APPCONFIG.BAR_SCALE;
-                barMesh.scale.set(1, barScale, 1);
-                height = barScale * (APPCONFIG.BAR_HEIGHT/2);
-                barMesh.position.y = height;
-                attributeGroups[attribute].add(barMesh);
-
-                // Attribute labels
-                if (bar === 0) {
-                    labelProperty.position.copy(barMesh.position);
-                    labelProperty.position.x += APPCONFIG.ATTRIBUTE_LABEL_OFFSET_X;
-                    labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
-                    labelProperty.visibility = true;
-                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
-                    labelProperty.textColour =  "rgba(255, 255, 255, 1.0)",
-                    label = this.labelManager.create("attributeLabel" + APPCONFIG.attributes[attribute], APPCONFIG.attributeDisplayNames[attribute], labelProperty);
-                    labelGroup.add(label.getSprite());
-                }
-
-                // Month label
-                if (bar === 0 && attribute === 1) {
-                    labelProperty.position.copy(barMesh.position);
-                    labelProperty.visibility = true;
-                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
-                    labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
-                    labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
-                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + currentMonth, currentMonth, labelProperty);
-                    labelGroup.add(label.getSprite());
-                }
-
-                // Lines
-                attributeLinePositions[attribute].push(barMesh.position.x, height * 2, barMesh.position.z);
-
-                // Values
-                labelProperty.position.copy(barMesh.position);
-                labelProperty.position.y = height * 2;
-                labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
-                labelProperty.visibility = true;
-                labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
-                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + currentMonth, barValue, labelProperty);
-                valueGroups[attribute].add(label.getSprite());
-            }
-            
-            // Day labels
-            labelProperty.position.copy(barMesh.position);
-            labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
-            labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
-            labelProperty.visibility = true;
-            labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
-            label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
-            labelGroup.add(label.getSprite());
-        }
-
-        // Calculate bounding sphere for group
-        let bbox = new THREE.Box3().setFromObject(attributeGroups[3]);
-        let bsphere = new THREE.Sphere();
-        bbox.getBoundingSphere(bsphere);
-        let cameraScale = numBars > 10 ? APPCONFIG.CAMERA_SCALE_LARGE : APPCONFIG.CAMERA_SCALE_SMALL;
-        this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
-
+        this.createBars();
         this.currentBars = bars;
-
-        // Lines
-        const lineColour = new THREE.Color();
-        lineColour.setHex(0xdadada);
-        let lineColours = [];
-        const numPositions = attributeLinePositions[0].length;
-        for(let i=0; i<numPositions; ++i) {
-            lineColours.push(lineColour.r, lineColour.g, lineColour.b);
-        }
-
-        let lineMat = new LineMaterial( {
-            color: 0xffffff,
-            linewidth: 10,
-            vertexColors: THREE.VertexColors,
-            dashed: false
-        });
-
-        lineMat.resolution.set( window.innerWidth, window.innerHeight );
-
-        const numLineGeometries = attributeLinePositions.length;
-        let lineGeom;
-        let line;
-        const scale = 1;
-        let lineGeoms = [];
-        for(let i=0; i<numLineGeometries; ++i) {
-            lineGeom = new LineGeometry();
-            lineGeom.setPositions(attributeLinePositions[i]);
-            lineGeom.setColors(lineColours);
-            lineGeoms.push(lineGeom);
-
-            line = new Line2(lineGeom, lineMat);
-            line.name = "Attribute" + i + "Trend";
-            line.computeLineDistances();
-            line.scale.set(scale, scale, scale);
-            line.visible = true;
-            trendGroups[i].add(line);
-        }
-        this.lineGeoms = lineGeoms;
-
-        this.currentMonthName = currentMonth;
-        this.currentMonthNumber = startMonth;
-
+        this.adjustCameraPosition();
+        this.createLineGeometries();
+        
         this.createGUI();
 
         // Show numerical sleep data
@@ -431,9 +296,10 @@ class Framework extends BaseApp {
         // Day data
         let dayData;
         let minuteData;
+        let label;
         let labelProperty;
 
-        let labelGroup = this.getObjectByName("LabelGroup" + currentMonth);
+        let labelGroup = this.getObjectByName("LabelGroup" + this.currentMonthName);
 
         // Lines
         let attributeLinePositions = [];
@@ -442,6 +308,7 @@ class Framework extends BaseApp {
             linePositions = [];
             attributeLinePositions.push(linePositions);
         }
+        this.attributeLinePositions = attributeLinePositions;
 
         for(let bar=0; bar<numBars; ++bar) {
             // Label properties
@@ -451,8 +318,8 @@ class Framework extends BaseApp {
             // Create meshes
             barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
             for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-                barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
+                barMesh = new THREE.Mesh(this.barGeom, this.attributeMaterials[attribute]);
+                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + this.currentMonthName;
                 barMesh.castShadow = true;
                 barMesh.receiveShadow = true;
                 bars.push(barMesh);
@@ -493,7 +360,7 @@ class Framework extends BaseApp {
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
                     labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
-                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + currentMonth, currentMonth, labelProperty);
+                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + this.currentMonthName, this.currentMonthName, labelProperty);
                     labelGroup.add(label.getSprite());
                 }
 
@@ -506,7 +373,7 @@ class Framework extends BaseApp {
                 labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
-                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + currentMonth, barValue, labelProperty);
+                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + this.currentMonthName, barValue, labelProperty);
                 this.valueGroups[attribute].add(label.getSprite());
             }
             
@@ -534,7 +401,46 @@ class Framework extends BaseApp {
         this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
     }
 
-    
+    createLineGeometries() {
+        // Lines
+        const lineColour = new THREE.Color();
+        lineColour.setHex(0xdadada);
+        let lineColours = [];
+        const numPositions = this.attributeLinePositions[0].length;
+        for(let i=0; i<numPositions; ++i) {
+            lineColours.push(lineColour.r, lineColour.g, lineColour.b);
+        }
+
+        let lineMat = new LineMaterial( {
+            color: 0xffffff,
+            linewidth: 10,
+            vertexColors: THREE.VertexColors,
+            dashed: false
+        });
+
+        lineMat.resolution.set( window.innerWidth, window.innerHeight );
+
+        const numLineGeometries = this.attributeLinePositions.length;
+        let lineGeom;
+        let line;
+        const scale = 1;
+        let lineGeoms = [];
+        for(let i=0; i<numLineGeometries; ++i) {
+            lineGeom = new LineGeometry();
+            lineGeom.setPositions(this.attributeLinePositions[i]);
+            lineGeom.setColors(lineColours);
+            lineGeoms.push(lineGeom);
+
+            line = new Line2(lineGeom, lineMat);
+            line.name = "Attribute" + i + "Trend";
+            line.computeLineDistances();
+            line.scale.set(scale, scale, scale);
+            line.visible = true;
+            this.trendGroups[i].add(line);
+        }
+        this.lineGeoms = lineGeoms;
+    }
+
     redrawScene() {
         // Set up groups if needed
         let topGroupName = "SuperGroup" + this.currentMonthName;
