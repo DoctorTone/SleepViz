@@ -563,14 +563,14 @@ class Framework extends BaseApp {
     }
 
     toggleTrend(attributeName) {
-        let currentTrend = this.getObjectByName(attributeName + "TrendMayGroup");
+        let currentTrend = this.getObjectByName(attributeName + "Trend" + this.currentMonth +"Group");
         if(currentTrend) {
             currentTrend.visible = !currentTrend.visible;
         }
     }
 
     toggleValues(attributeName) {
-        let currentAttribute = this.getObjectByName(attributeName + "ValuesMayGroup");
+        let currentAttribute = this.getObjectByName(attributeName + "Values" + this.currentMonth + "Group");
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
         }
