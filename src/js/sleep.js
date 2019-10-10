@@ -202,9 +202,6 @@ class Framework extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
-        // Create bar geometry
-        this.barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
-        const bars = [];
         this.createAttributeMaterials();
         
         this.currentMonthNumber = APPCONFIG.START_MONTH;
@@ -221,17 +218,7 @@ class Framework extends BaseApp {
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
-
-        // Lines
-        let attributeLinePositions = [];
-        let linePositions;
-        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-            linePositions = [];
-            attributeLinePositions.push(linePositions);
-        }
-
         this.createBars();
-        this.currentBars = bars;
         this.adjustCameraPosition();
         this.createLineGeometries();
         
@@ -287,6 +274,7 @@ class Framework extends BaseApp {
         let barStartPos = new THREE.Vector3();
 
         // Bars
+        const barGeom = new THREE.CylinderBufferGeometry(APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_RADIUS, APPCONFIG.BAR_HEIGHT, APPCONFIG.BAR_SEGMENTS, APPCONFIG.BAR_SEGMENTS);
         let barMesh;
         let bars = [];
         let barScale;
@@ -318,7 +306,7 @@ class Framework extends BaseApp {
             // Create meshes
             barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
             for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-                barMesh = new THREE.Mesh(this.barGeom, this.attributeMaterials[attribute]);
+                barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
                 barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + this.currentMonthName;
                 barMesh.castShadow = true;
                 barMesh.receiveShadow = true;
@@ -386,6 +374,8 @@ class Framework extends BaseApp {
             label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
             labelGroup.add(label.getSprite());
         }
+
+        this.currentBars = bars;
     }
 
     adjustCameraPosition() {
@@ -456,18 +446,6 @@ class Framework extends BaseApp {
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
-
-        // Lines
-        let linePositions;
-        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-            linePositions = [];
-            attributeLinePositions.push(linePositions);
-        }
-
-        // Work out starting position
-        let monthData = sleepData[this.currentMonthName];
-        const numBars = monthData.length;
-        let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
 
         this.createBars();
 
