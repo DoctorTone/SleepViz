@@ -220,18 +220,6 @@ class Framework extends BaseApp {
         let barScale;
         let barValue;
 
-        // Groups
-        let currentAttributeGroup;
-        let attributeGroups = [];
-        let currentValueGroup;
-        let valueGroups = [];
-        let currentTrendGroup;
-        let trendGroups = [];
-
-        // Lines
-        let attributeLinePositions = [];
-        
-
         // Set up groups
         // Group of groups
         const superGroup = new THREE.Group();
@@ -242,29 +230,10 @@ class Framework extends BaseApp {
         labelGroup.name = "LabelGroup" + currentMonth;
         this.root.add(labelGroup);
 
-        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
-            // Attributes themselves
-            currentAttributeGroup = new THREE.Group();
-            currentAttributeGroup.name = APPCONFIG.attributes[attribute] + currentMonth + "Group";
-            attributeGroups.push(currentAttributeGroup);
-            superGroup.add(currentAttributeGroup);
-
-            // Trends
-            currentTrendGroup = new THREE.Group();
-            currentTrendGroup.name = APPCONFIG.attributes[attribute] + "Trend" + currentMonth + "Group";
-            currentTrendGroup.visible = false;
-            trendGroups.push(currentTrendGroup);
-            superGroup.add(currentTrendGroup);
-
-            // Values
-            currentValueGroup = new THREE.Group();
-            currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + currentMonth + "Group";
-            currentValueGroup.visible = false;
-            valueGroups.push(currentValueGroup);
-            labelGroup.add(currentValueGroup);
-        }
+        this.createSceneGroups(superGroup, labelGroup);
 
         // Lines
+        let attributeLinePositions = [];
         let linePositions;
         for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
             linePositions = [];
@@ -407,8 +376,170 @@ class Framework extends BaseApp {
         this.showSleepData();
     }
 
-    redrawScene() {
+    createSceneGroups(superGroup, labelGroup) {
+        // Groups
+        let currentAttributeGroup;
+        let attributeGroups = [];
+        let currentValueGroup;
+        let valueGroups = [];
+        let currentTrendGroup;
+        let trendGroups = [];
 
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
+            // Attributes themselves
+            currentAttributeGroup = new THREE.Group();
+            currentAttributeGroup.name = APPCONFIG.attributes[attribute] + this.currentMonthName + "Group";
+            attributeGroups.push(currentAttributeGroup);
+            superGroup.add(currentAttributeGroup);
+
+            // Trends
+            currentTrendGroup = new THREE.Group();
+            currentTrendGroup.name = APPCONFIG.attributes[attribute] + "Trend" + this.currentMonthName + "Group";
+            currentTrendGroup.visible = false;
+            trendGroups.push(currentTrendGroup);
+            superGroup.add(currentTrendGroup);
+
+            // Values
+            currentValueGroup = new THREE.Group();
+            currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + this.currentMonthName + "Group";
+            currentValueGroup.visible = false;
+            valueGroups.push(currentValueGroup);
+            labelGroup.add(currentValueGroup);
+        }
+    }
+
+    createBars() {
+        // Month data
+        let monthData = sleepData[this.currentMonthName];
+        const numBars = monthData.length;
+
+        // Start position
+        let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
+        let barStartPos = new THREE.Vector3();
+
+        // Bars
+        let barMesh;
+        let bars = [];
+        let barScale;
+        let height;
+        let barValue;
+
+        // Day data
+        let dayData;
+        let minuteData;
+        let labelProperty;
+
+        for(let bar=0; bar<numBars; ++bar) {
+            // Label properties
+            labelProperty = {};
+            labelProperty.position = new THREE.Vector3();
+
+            // Create meshes
+            barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
+            for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
+                barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
+                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + currentMonth;
+                barMesh.castShadow = true;
+                barMesh.receiveShadow = true;
+                bars.push(barMesh);
+                barMesh.position.copy(barStartPos);
+                barMesh.position.z += (attribute * APPCONFIG.ATTRIBUTE_INC_Z);
+                dayData = monthData[bar];
+                dayData = dayData[APPCONFIG.attributes[attribute]];
+                barValue = dayData;
+                dayData = dayData.split(":");
+                dayData.hours = parseInt(dayData[0], 10);
+                dayData.minutes = parseInt(dayData[1], 10);
+                minuteData = (dayData.hours * 60) + dayData.minutes;
+                if (minuteData === 0) {
+                    minuteData = 0.1;
+                }
+                barScale = minuteData/APPCONFIG.BAR_SCALE;
+                barMesh.scale.set(1, barScale, 1);
+                height = barScale * (APPCONFIG.BAR_HEIGHT/2);
+                barMesh.position.y = height;
+                attributeGroups[attribute].add(barMesh);
+
+                // Attribute labels
+                if (bar === 0) {
+                    labelProperty.position.copy(barMesh.position);
+                    labelProperty.position.x += APPCONFIG.ATTRIBUTE_LABEL_OFFSET_X;
+                    labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
+                    labelProperty.visibility = true;
+                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
+                    labelProperty.textColour =  "rgba(255, 255, 255, 1.0)",
+                    label = this.labelManager.create("attributeLabel" + APPCONFIG.attributes[attribute], APPCONFIG.attributeDisplayNames[attribute], labelProperty);
+                    labelGroup.add(label.getSprite());
+                }
+
+                // Month label
+                if (bar === 0 && attribute === 1) {
+                    labelProperty.position.copy(barMesh.position);
+                    labelProperty.visibility = true;
+                    labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
+                    labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
+                    labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
+                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + currentMonth, currentMonth, labelProperty);
+                    labelGroup.add(label.getSprite());
+                }
+
+                // Lines
+                attributeLinePositions[attribute].push(barMesh.position.x, height * 2, barMesh.position.z);
+
+                // Values
+                labelProperty.position.copy(barMesh.position);
+                labelProperty.position.y = height * 2;
+                labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
+                labelProperty.visibility = true;
+                labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
+                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + currentMonth, barValue, labelProperty);
+                valueGroups[attribute].add(label.getSprite());
+            }
+            
+            // Day labels
+            labelProperty.position.copy(barMesh.position);
+            labelProperty.position.add(APPCONFIG.LABEL_DATE_OFFSET);
+            labelProperty.position.y = APPCONFIG.LABEL_Y_POS;
+            labelProperty.visibility = true;
+            labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
+            label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
+            labelGroup.add(label.getSprite());
+        }
+    }
+
+    redrawScene() {
+        // Set up groups if needed
+        let topGroupName = "SuperGroup" + this.currentMonthName;
+        if (this.getObjectByName(topGroupName)) return;
+
+        // Group of groups
+        const superGroup = new THREE.Group();
+        superGroup.name = "SuperGroup" + this.currentMonthName;
+        this.root.add(superGroup);
+
+        const labelGroup = new THREE.Group();
+        labelGroup.name = "LabelGroup" + currentMonth;
+        this.root.add(labelGroup);
+
+        this.createSceneGroups(superGroup, labelGroup);
+
+        // Lines
+        let linePositions;
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
+            linePositions = [];
+            attributeLinePositions.push(linePositions);
+        }
+
+        // Work out starting position
+        let monthData = sleepData[this.currentMonthName];
+        const numBars = monthData.length;
+        let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
+
+        this.createBars();
+
+        this.adjustCameraPosition();
+
+        this.createLineGeometries();
     }
 
     update() {
