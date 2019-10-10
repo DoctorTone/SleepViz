@@ -406,6 +406,10 @@ class Framework extends BaseApp {
             valueGroups.push(currentValueGroup);
             labelGroup.add(currentValueGroup);
         }
+
+        this.attributeGroups = attributeGroups;
+        this.trendGroups = trendGroups;
+        this.valueGroups = valueGroups;
     }
 
     createBars() {
@@ -428,6 +432,16 @@ class Framework extends BaseApp {
         let dayData;
         let minuteData;
         let labelProperty;
+
+        let labelGroup = this.getObjectByName("LabelGroup" + currentMonth);
+
+        // Lines
+        let attributeLinePositions = [];
+        let linePositions;
+        for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
+            linePositions = [];
+            attributeLinePositions.push(linePositions);
+        }
 
         for(let bar=0; bar<numBars; ++bar) {
             // Label properties
@@ -458,7 +472,7 @@ class Framework extends BaseApp {
                 barMesh.scale.set(1, barScale, 1);
                 height = barScale * (APPCONFIG.BAR_HEIGHT/2);
                 barMesh.position.y = height;
-                attributeGroups[attribute].add(barMesh);
+                this.attributeGroups[attribute].add(barMesh);
 
                 // Attribute labels
                 if (bar === 0) {
@@ -493,7 +507,7 @@ class Framework extends BaseApp {
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
                 label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + currentMonth, barValue, labelProperty);
-                valueGroups[attribute].add(label.getSprite());
+                this.valueGroups[attribute].add(label.getSprite());
             }
             
             // Day labels
