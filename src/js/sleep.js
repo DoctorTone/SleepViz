@@ -109,22 +109,22 @@ class Framework extends BaseApp {
             .addSubGroup( {label: "Attributes", enable: false} )
                     .addCheckbox(attributeConfig, "Asleep", {
                         onChange: () => {
-                            this.toggleAttribute("Asleep", "May");
+                            this.toggleAttribute("Asleep");
                         }
                     })
                     .addCheckbox(attributeConfig, "Quality", {
                         onChange: () => {
-                            this.toggleAttribute("Quality sleep", "May");
+                            this.toggleAttribute("Quality sleep");
                         }
                     })
                     .addCheckbox(attributeConfig, "Awake", {
                         onChange: () => {
-                            this.toggleAttribute("Awake", "May");
+                            this.toggleAttribute("Awake");
                         }
                     })
                     .addCheckbox(attributeConfig, "Deep", {
                         onChange: () => {
-                            this.toggleAttribute("Deep sleep", "May");
+                            this.toggleAttribute("Deep sleep");
                         }
                     })
             .addSubGroup( {label: "Trends", enable: false} )
@@ -397,6 +397,8 @@ class Framework extends BaseApp {
         }
         this.lineGeoms = lineGeoms;
 
+        this.currentMonth = currentMonth;
+
         this.createGUI();
     }
 
@@ -532,8 +534,8 @@ class Framework extends BaseApp {
         }
     }
     
-    toggleAttribute(attributeName, attributeMonth) {
-        const currentGroupName = attributeName + attributeMonth + "Group";
+    toggleAttribute(attributeName) {
+        const currentGroupName = attributeName + this.currentMonth + "Group";
         const currentAttribute = this.getObjectByName(currentGroupName);
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
