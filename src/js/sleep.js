@@ -235,8 +235,12 @@ class Framework extends BaseApp {
         // Set up groups
         // Group of groups
         const superGroup = new THREE.Group();
-        superGroup.name = "SuperGroup";
+        superGroup.name = "SuperGroup" + currentMonth;
         this.root.add(superGroup);
+
+        const labelGroup = new THREE.Group();
+        labelGroup.name = "LabelGroup" + currentMonth;
+        this.root.add(labelGroup);
 
         for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
             // Attributes themselves
@@ -257,7 +261,7 @@ class Framework extends BaseApp {
             currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + currentMonth + "Group";
             currentValueGroup.visible = false;
             valueGroups.push(currentValueGroup);
-            this.root.add(currentValueGroup);
+            labelGroup.add(currentValueGroup);
         }
 
         // Lines
@@ -310,7 +314,7 @@ class Framework extends BaseApp {
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.textColour =  "rgba(255, 255, 255, 1.0)",
                     label = this.labelManager.create("attributeLabel" + APPCONFIG.attributes[attribute], APPCONFIG.attributeDisplayNames[attribute], labelProperty);
-                    this.root.add(label.getSprite());
+                    labelGroup.add(label.getSprite());
                 }
 
                 // Month label
@@ -321,7 +325,7 @@ class Framework extends BaseApp {
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
                     labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
                     label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + currentMonth, currentMonth, labelProperty);
-                    this.root.add(label.getSprite());
+                    labelGroup.add(label.getSprite());
                 }
 
                 // Lines
@@ -344,7 +348,7 @@ class Framework extends BaseApp {
             labelProperty.visibility = true;
             labelProperty.scale = APPCONFIG.LABEL_DATE_SCALE;
             label = this.labelManager.create("dayLabel" + bar, monthData[bar].Day, labelProperty);
-            this.root.add(label.getSprite());
+            labelGroup.add(label.getSprite());
         }
 
         // Calculate bounding sphere for group
