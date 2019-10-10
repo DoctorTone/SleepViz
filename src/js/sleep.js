@@ -521,6 +521,20 @@ class Framework extends BaseApp {
         }
     }
 
+    adjustCameraPosition() {
+        // Calculate bounding sphere for group
+        // Month data
+        let monthData = sleepData[this.currentMonthName];
+        const numBars = monthData.length;
+
+        let bbox = new THREE.Box3().setFromObject(this.attributeGroups[3]);
+        let bsphere = new THREE.Sphere();
+        bbox.getBoundingSphere(bsphere);
+        let cameraScale = numBars > 10 ? APPCONFIG.CAMERA_SCALE_LARGE : APPCONFIG.CAMERA_SCALE_SMALL;
+        this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
+    }
+
+    
     redrawScene() {
         // Set up groups if needed
         let topGroupName = "SuperGroup" + this.currentMonthName;
