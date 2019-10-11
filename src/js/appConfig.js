@@ -41,6 +41,7 @@ const APPCONFIG = {
         "Dec"
     ],
     START_MONTH: 4,
+    LAST_MONTH: 5,
     LABEL_SCALE: {
         x: 20,
         y: 5,
