@@ -105,7 +105,8 @@ const MonthlyConfig = {
         valueGroups: null,
         trendGroups: null,
         labelGroup: null,
-        attributeLinePositions: null
+        attributeLinePositions: null,
+        bars: null
     },
     "June": {
         superGroup: null,
@@ -113,7 +114,8 @@ const MonthlyConfig = {
         valueGroups: null,
         trendGroups: null,
         labelGroup: null,
-        attributeLinePositions: null
+        attributeLinePositions: null,
+        bars: null
     }
 };
 

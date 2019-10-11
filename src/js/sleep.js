@@ -383,7 +383,7 @@ class Framework extends BaseApp {
             labelGroup.add(label.getSprite());
         }
 
-        this.currentBars = bars;
+        currentMonthConfig.bars = bars;
     }
 
     adjustCameraPosition() {
@@ -546,8 +546,10 @@ class Framework extends BaseApp {
         let height;
         let labelName;
         let currentLabel;
-        for (let i=0, numBars=this.currentBars.length; i<numBars; ++i) {
-            currentBar = this.currentBars[i];
+        let bars = MonthlyConfig[this.currentMonthName].bars;
+        
+        for (let i=0, numBars=bars.length; i<numBars; ++i) {
+            currentBar = bars[i];
             height = currentBar.position.y * 2 * scale;
             labelName = currentBar.name;
             labelName = labelName.slice(3);
