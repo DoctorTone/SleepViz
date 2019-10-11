@@ -98,21 +98,23 @@ const APPCONFIG = {
     CAMERA_SCALE_SMALL: 2
 };
 
-const monthGroups = [
-    {
-        month: "May",
+const MonthlyConfig = {
+    "May": {
+        superGroup: null,
         attributeGroups: null,
         valueGroups: null,
         trendGroups: null,
-        labelGroup: null
+        labelGroup: null,
+        attributeLinePositions: null
     },
-    {
-        month: "June",
+    "June": {
+        superGroup: null,
         attributeGroups: null,
         valueGroups: null,
         trendGroups: null,
-        labelGroup: null
+        labelGroup: null,
+        attributeLinePositions: null
     }
-];
+};
 
-export { APPCONFIG, monthGroups };
+export { APPCONFIG, MonthlyConfig };
