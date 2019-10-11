@@ -208,14 +208,18 @@ class Framework extends BaseApp {
         this.currentMonthNumber = APPCONFIG.START_MONTH;
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
 
-        // Set up groups
+        // Monthly data
+        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+
         // Group of groups
         const superGroup = new THREE.Group();
         superGroup.name = "SuperGroup" + this.currentMonthName;
+        currentMonthConfig.superGroup = superGroup;
         this.root.add(superGroup);
 
         const labelGroup = new THREE.Group();
         labelGroup.name = "LabelGroup" + this.currentMonthName;
+        currentMonthConfig.labelGroup = labelGroup;
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
