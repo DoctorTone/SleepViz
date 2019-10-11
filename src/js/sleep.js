@@ -425,7 +425,7 @@ class Framework extends BaseApp {
         let lineGeom;
         let line;
         const scale = 1;
-        
+
         for(let i=0; i<numLineGeometries; ++i) {
             lineGeom = new LineGeometry();
             lineGeom.setPositions(currentMonthConfig.attributeLinePositions[i]);
@@ -451,7 +451,7 @@ class Framework extends BaseApp {
         this.root.add(superGroup);
 
         const labelGroup = new THREE.Group();
-        labelGroup.name = "LabelGroup" + currentMonth;
+        labelGroup.name = "LabelGroup" + this.currentMonthName;
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
@@ -613,6 +613,12 @@ class Framework extends BaseApp {
         this.redrawValueLabels(scale);
     }
 
+    nextMonth() {
+        ++this.currentMonthNumber;
+        this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
+        this.redrawScene();
+    }
+
     showSleepData() {
         let monthData = sleepData[this.currentMonthName];
         let totalSleep;
@@ -674,6 +680,7 @@ $(document).ready( () => {
     let zoomIn = $("#zoomIn");
     let zoomOut = $("#zoomOut");
     let reset = $("#reset");
+    let monthRight = $("#monthRight");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -783,6 +790,10 @@ $(document).ready( () => {
 
     reset.on("click", () => {
         app.resetView();
+    });
+
+    monthRight.on("click", () => {
+        app.nextMonth();
     });
 
     $("#info").on("click", () => {
