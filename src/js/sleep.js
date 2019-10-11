@@ -425,12 +425,11 @@ class Framework extends BaseApp {
         let lineGeom;
         let line;
         const scale = 1;
-        //let lineGeoms = [];
+        
         for(let i=0; i<numLineGeometries; ++i) {
             lineGeom = new LineGeometry();
             lineGeom.setPositions(currentMonthConfig.attributeLinePositions[i]);
             lineGeom.setColors(lineColours);
-            //lineGeoms.push(lineGeom);
 
             line = new Line2(lineGeom, lineMat);
             line.name = "Attribute" + i + "Trend";

@@ -70,11 +70,12 @@ body {
     padding: 1% 0;
     background-color: rgba(0, 0, 50, 0.25);
 }
-
 #sleepData img {
     width: 95%;
 }
-
+#monthControl button {
+    width: 35%;
+}
 /* Small screens */
 @media (min-width: 576px) {
     #rotate {
