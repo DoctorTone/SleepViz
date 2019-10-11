@@ -425,12 +425,12 @@ class Framework extends BaseApp {
         let lineGeom;
         let line;
         const scale = 1;
-        let lineGeoms = [];
+        //let lineGeoms = [];
         for(let i=0; i<numLineGeometries; ++i) {
             lineGeom = new LineGeometry();
             lineGeom.setPositions(currentMonthConfig.attributeLinePositions[i]);
             lineGeom.setColors(lineColours);
-            lineGeoms.push(lineGeom);
+            //lineGeoms.push(lineGeom);
 
             line = new Line2(lineGeom, lineMat);
             line.name = "Attribute" + i + "Trend";
@@ -439,7 +439,6 @@ class Framework extends BaseApp {
             line.visible = true;
             currentMonthConfig.trendGroups[i].add(line);
         }
-        this.lineGeoms = lineGeoms;
     }
 
     redrawScene() {
@@ -547,7 +546,7 @@ class Framework extends BaseApp {
         let labelName;
         let currentLabel;
         let bars = MonthlyConfig[this.currentMonthName].bars;
-        
+
         for (let i=0, numBars=bars.length; i<numBars; ++i) {
             currentBar = bars[i];
             height = currentBar.position.y * 2 * scale;
