@@ -96,6 +96,23 @@ const APPCONFIG = {
     attributeDisplayNames: ["  Asleep", "  Quality", "  Awake", "  Deep "],
     CAMERA_SCALE_LARGE: 1.3,
     CAMERA_SCALE_SMALL: 2
-}
+};
 
-export { APPCONFIG };
+const monthGroups = [
+    {
+        month: "May",
+        attributeGroups: null,
+        valueGroups: null,
+        trendGroups: null,
+        labelGroup: null
+    },
+    {
+        month: "June",
+        attributeGroups: null,
+        valueGroups: null,
+        trendGroups: null,
+        labelGroup: null
+    }
+];
+
+export { APPCONFIG, monthGroups };
