@@ -440,18 +440,16 @@ class Framework extends BaseApp {
         }
     }
 
-    redrawScene() {
+    redrawScene(lastMonth) {
         // See if next scene is set up
         let currentMonthConfig = MonthlyConfig[this.currentMonthName];
         if (currentMonthConfig.superGroup) {
             // Hide previous, show next
-            let previousMonth = this.currentMonthNumber - 1;
-            if (previousMonth < APPCONFIG.START_MONTH) previousMonth = APPCONFIG.LAST_MONTH;
-            let previousMonthName = APPCONFIG.MONTHS[previousMonth];
-            MonthlyConfig[previousMonthName].superGroup.visibility = false;
+            let previousMonthName = APPCONFIG.MONTHS[lastMonth];
+            MonthlyConfig[previousMonthName].superGroup.visible = false;
 
             //Show this month
-            currentMonthConfig.superGroup.visibility = true;
+            currentMonthConfig.superGroup.visible = true;
 
             return;
         }
@@ -463,10 +461,12 @@ class Framework extends BaseApp {
         // Group of groups
         const superGroup = new THREE.Group();
         superGroup.name = "SuperGroup" + this.currentMonthName;
+        currentMonthConfig.superGroup = superGroup;
         this.root.add(superGroup);
 
         const labelGroup = new THREE.Group();
         labelGroup.name = "LabelGroup" + this.currentMonthName;
+        currentMonthConfig.labelGroup = labelGroup;
         this.root.add(labelGroup);
 
         this.createSceneGroups(superGroup, labelGroup);
@@ -629,9 +629,17 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
+        let lastMonth = this.currentMonthNumber;
         ++this.currentMonthNumber;
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
-        this.redrawScene();
+        this.redrawScene(lastMonth);
+    }
+
+    previousMonth() {
+        let lastMonth = this.currentMonthNumber;
+        --this.currentMonthNumber;
+        this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
+        this.redrawScene(lastMonth);
     }
 
     showSleepData() {
@@ -696,6 +704,7 @@ $(document).ready( () => {
     let zoomOut = $("#zoomOut");
     let reset = $("#reset");
     let monthRight = $("#monthRight");
+    let monthLeft = $("#monthLeft");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -809,6 +818,10 @@ $(document).ready( () => {
 
     monthRight.on("click", () => {
         app.nextMonth();
+    });
+
+    monthLeft.on("click", () => {
+        app.previousMonth();
     });
 
     $("#info").on("click", () => {
