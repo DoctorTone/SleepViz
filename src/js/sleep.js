@@ -625,7 +625,7 @@ class Framework extends BaseApp {
     }
 
     scaleAttributes(scale) {
-        const attributeGroup = this.getObjectByName("SuperGroup");
+        const attributeGroup = this.getObjectByName("SuperGroup" + this.currentMonthName);
         if (attributeGroup) {
             attributeGroup.scale.y = scale;
         }
