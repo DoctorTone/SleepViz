@@ -635,14 +635,20 @@ class Framework extends BaseApp {
 
     nextMonth() {
         let lastMonth = this.currentMonthNumber;
-        ++this.currentMonthNumber;
+        if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
+            this.currentMonthNumber = APPCONFIG.START_MONTH;
+        }
+
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
         this.redrawScene(lastMonth);
     }
 
     previousMonth() {
         let lastMonth = this.currentMonthNumber;
-        --this.currentMonthNumber;
+        if (--this.currentMonthNumber < APPCONFIG.START_MONTH) {
+            this.currentMonthNumber = APPCONFIG.LAST_MONTH;
+        }
+        
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
         this.redrawScene(lastMonth);
     }
