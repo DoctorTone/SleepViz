@@ -451,7 +451,8 @@ class Framework extends BaseApp {
         if (currentMonthConfig.superGroup) {
             //Show this month
             currentMonthConfig.superGroup.visible = true;
-            
+            this.adjustCameraPosition();
+
             return;
         }
 
