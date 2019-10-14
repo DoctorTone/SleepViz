@@ -448,6 +448,7 @@ class Framework extends BaseApp {
         let previousMonthName = APPCONFIG.MONTHS[lastMonth];
         MonthlyConfig[previousMonthName].superGroup.visible = false;
         MonthlyConfig[previousMonthName].labelGroup.visible = false;
+        this.showSleepData();
 
         if (currentMonthConfig.superGroup) {
             //Show this month
