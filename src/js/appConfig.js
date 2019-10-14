@@ -27,21 +27,21 @@ const APPCONFIG = {
         0x00aaaa
     ],
     MONTHS: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
+        "January",
+        "February",
+        "March",
+        "April",
         "May",
         "June",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
     ],
     START_MONTH: 4,
-    LAST_MONTH: 5,
+    LAST_MONTH: 6,
     LABEL_SCALE: {
         x: 20,
         y: 5,
@@ -110,6 +110,15 @@ const MonthlyConfig = {
         bars: null
     },
     "June": {
+        superGroup: null,
+        attributeGroups: null,
+        valueGroups: null,
+        trendGroups: null,
+        labelGroup: null,
+        attributeLinePositions: null,
+        bars: null
+    },
+    "July": {
         superGroup: null,
         attributeGroups: null,
         valueGroups: null,

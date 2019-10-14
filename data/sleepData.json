@@ -431,5 +431,293 @@
             "Deep sleep":"00:00",
             "Heartrate":63
         }
+    ],
+    "July": [
+        {
+            "Day": 1,
+            "In":"00:15",
+            "Until":"06:15",
+            "Duration":"06:00",
+            "Asleep":"06:00",
+            "Awake":"00:00",
+            "Quality sleep":"04:32",
+            "Deep sleep":"00:00",
+            "Heartrate":63
+        },
+        {
+            "Day": 1,
+            "In":"21:30",
+            "Until":"06:50",
+            "Duration":"09:20",
+            "Asleep":"06:26",
+            "Awake":"02:54",
+            "Quality sleep":"03:47",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 3,
+            "In":"00:15",
+            "Until":"07:03",
+            "Duration":"06:48",
+            "Asleep":"06:27",
+            "Awake":"00:21",
+            "Quality sleep":"04:33",
+            "Deep sleep":"00:00",
+            "Heartrate":58
+        },
+        {
+            "Day": 4,
+            "In":"00:58",
+            "Until":"07:15",
+            "Duration":"06:17",
+            "Asleep":"05:07",
+            "Awake":"01:10",
+            "Quality sleep":"03:41",
+            "Deep sleep":"01:27",
+            "Heartrate":58
+        },
+        {
+            "Day": 6,
+            "In":"23:30",
+            "Until":"07:46",
+            "Duration":"08:16",
+            "Asleep":"07:47",
+            "Awake":"00:29",
+            "Quality sleep":"05:01",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 8,
+            "In":"00:09",
+            "Until":"07:00",
+            "Duration":"06:51",
+            "Asleep":"06:33",
+            "Awake":"00:18",
+            "Quality sleep":"05:01",
+            "Deep sleep":"00:15",
+            "Heartrate":60
+        },
+        {
+            "Day": 9,
+            "In":"23:33",
+            "Until":"07:15",
+            "Duration":"07:42",
+            "Asleep":"07:29",
+            "Awake":"00:13",
+            "Quality sleep":"05:34",
+            "Deep sleep":"00:00",
+            "Heartrate":64
+        },
+        {
+            "Day": 10,
+            "In":"22:16",
+            "Until":"07:03",
+            "Duration":"08:47",
+            "Asleep":"06:53",
+            "Awake":"01:54",
+            "Quality sleep":"04:43",
+            "Deep sleep":"00:15",
+            "Heartrate":58
+        },
+        {
+            "Day": 11,
+            "In":"23:45",
+            "Until":"07:23",
+            "Duration":"08:03",
+            "Asleep":"07:33",
+            "Awake":"00:30",
+            "Quality sleep":"05:11",
+            "Deep sleep":"00:45",
+            "Heartrate":58
+        },
+        {
+            "Day": 14,
+            "In":"01:31",
+            "Until":"08:12",
+            "Duration":"06:41",
+            "Asleep":"06:41",
+            "Awake":"00:00",
+            "Quality sleep":"04:46",
+            "Deep sleep":"00:00",
+            "Heartrate":61
+        },
+        {
+            "Day": 15,
+            "In":"00:00",
+            "Until":"07:07",
+            "Duration":"07:07",
+            "Asleep":"07:01",
+            "Awake":"00:06",
+            "Quality sleep":"04:42",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 15,
+            "In":"23:16",
+            "Until":"07:14",
+            "Duration":"07:58",
+            "Asleep":"07:51",
+            "Awake":"00:07",
+            "Quality sleep":"05:52",
+            "Deep sleep":"00:15",
+            "Heartrate":55
+        },
+        {
+            "Day": 16,
+            "In":"23:17",
+            "Until":"07:06",
+            "Duration":"07:49",
+            "Asleep":"07:49",
+            "Awake":"00:00",
+            "Quality sleep":"05:48",
+            "Deep sleep":"00:15",
+            "Heartrate":55
+        },
+        {
+            "Day": 17,
+            "In":"23:00",
+            "Until":"06:30",
+            "Duration":"07:30",
+            "Asleep":"07:30",
+            "Awake":"00:00",
+            "Quality sleep":"05:30",
+            "Deep sleep":"00:00",
+            "Heartrate":54
+        },
+        {
+            "Day": 19,
+            "In":"00:30",
+            "Until":"07:45",
+            "Duration":"07:15",
+            "Asleep":"07:15",
+            "Awake":"00:00",
+            "Quality sleep":"05:09",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 20,
+            "In":"00:30",
+            "Until":"08:15",
+            "Duration":"07:45",
+            "Asleep":"07:45",
+            "Awake":"00:00",
+            "Quality sleep":"05:10",
+            "Deep sleep":"00:00",
+            "Heartrate":62
+        },
+        {
+            "Day": 22,
+            "In":"00:00",
+            "Until":"07:35",
+            "Duration":"07:35",
+            "Asleep":"07:35",
+            "Awake":"00:00",
+            "Quality sleep":"05:26",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 22,
+            "In":"21:14",
+            "Until":"07:10",
+            "Duration":"09:56",
+            "Asleep":"07:42",
+            "Awake":"02:14",
+            "Quality sleep":"05:30",
+            "Deep sleep":"00:00",
+            "Heartrate":61
+        },
+        {
+            "Day": 23,
+            "In":"23:30",
+            "Until":"07:00",
+            "Duration":"07:20",
+            "Asleep":"07:25",
+            "Awake":"00:05",
+            "Quality sleep":"04:37",
+            "Deep sleep":"00:00",
+            "Heartrate":59
+        },
+        {
+            "Day": 24,
+            "In":"23:43",
+            "Until":"06:45",
+            "Duration":"07:02",
+            "Asleep":"07:02",
+            "Awake":"00:00",
+            "Quality sleep":"04:04",
+            "Deep sleep":"00:15",
+            "Heartrate":56
+        },
+        {
+            "Day": 26,
+            "In":"00:00",
+            "Until":"07:03",
+            "Duration":"07:03",
+            "Asleep":"06:57",
+            "Awake":"00:06",
+            "Quality sleep":"04:45",
+            "Deep sleep":"00:00",
+            "Heartrate":61
+        },
+        {
+            "Day": 26,
+            "In":"23:02",
+            "Until":"08:15",
+            "Duration":"09:13",
+            "Asleep":"08:14",
+            "Awake":"00:59",
+            "Quality sleep":"05:23",
+            "Deep sleep":"00:00",
+            "Heartrate":60
+        },
+        {
+            "Day": 27,
+            "In":"23:16",
+            "Until":"08:04",
+            "Duration":"08:48",
+            "Asleep":"08:48",
+            "Awake":"00:00",
+            "Quality sleep":"06:16",
+            "Deep sleep":"00:00",
+            "Heartrate":57
+        },
+        {
+            "Day": 29,
+            "In":"00:01",
+            "Until":"06:57",
+            "Duration":"06:56",
+            "Asleep":"06:54",
+            "Awake":"00:02",
+            "Quality sleep":"05:13",
+            "Deep sleep":"00:15",
+            "Heartrate":57
+        },
+        {
+            "Day": 29,
+            "In":"23:44",
+            "Until":"05:38",
+            "Duration":"05:54",
+            "Asleep":"05:54",
+            "Awake":"00:00",
+            "Quality sleep":"04:18",
+            "Deep sleep":"00:00",
+            "Heartrate":63
+        },
+        {
+            "Day": 30,
+            "In":"23:58",
+            "Until":"06:43",
+            "Duration":"06:45",
+            "Asleep":"06:26",
+            "Awake":"00:19",
+            "Quality sleep":"04:28",
+            "Deep sleep":"00:00",
+            "Heartrate":53
+        }
     ]
 }
