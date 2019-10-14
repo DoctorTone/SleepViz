@@ -447,10 +447,12 @@ class Framework extends BaseApp {
         // Hide previous, show next
         let previousMonthName = APPCONFIG.MONTHS[lastMonth];
         MonthlyConfig[previousMonthName].superGroup.visible = false;
+        MonthlyConfig[previousMonthName].labelGroup.visible = false;
 
         if (currentMonthConfig.superGroup) {
             //Show this month
             currentMonthConfig.superGroup.visible = true;
+            currentMonthConfig.labelGroup.visible = true;
             this.adjustCameraPosition();
 
             return;
