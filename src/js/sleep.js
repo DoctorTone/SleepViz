@@ -443,14 +443,15 @@ class Framework extends BaseApp {
     redrawScene(lastMonth) {
         // See if next scene is set up
         let currentMonthConfig = MonthlyConfig[this.currentMonthName];
-        if (currentMonthConfig.superGroup) {
-            // Hide previous, show next
-            let previousMonthName = APPCONFIG.MONTHS[lastMonth];
-            MonthlyConfig[previousMonthName].superGroup.visible = false;
 
+        // Hide previous, show next
+        let previousMonthName = APPCONFIG.MONTHS[lastMonth];
+        MonthlyConfig[previousMonthName].superGroup.visible = false;
+
+        if (currentMonthConfig.superGroup) {
             //Show this month
             currentMonthConfig.superGroup.visible = true;
-
+            
             return;
         }
 
