@@ -530,6 +530,8 @@ class Framework extends BaseApp {
                 this.animateGroup.position.y = APPCONFIG.LABEL_ANIMATE_OFFSET;
                 this.groupAnimating = false;
                 this.animateGroup.visible = false;
+                this.animateGroup.position.y = 0;
+                // Labels stopped animating
                 this.rotateBars();
             }
         }
@@ -540,6 +542,13 @@ class Framework extends BaseApp {
                 this.rotateGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
                 this.rotateGroup.visible = false;
                 this.groupRotating = false;
+                this.rotateGroup.rotation.x = 0;
+                // Bars stopped animating
+                if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
+                    this.currentMonthNumber = APPCONFIG.START_MONTH;
+                }
+                this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
+                this.rotateBars();
             }
         }
 
@@ -665,6 +674,7 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
+        this.animationFinished = false;
         this.startRedraw();
 
         // DEBUG
