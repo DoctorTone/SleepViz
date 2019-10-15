@@ -26,7 +26,8 @@ class Framework extends BaseApp {
         this.zoomingIn = false;
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
-        this.groupRotating = false;
+        this.groupRotatingDown = false;
+        this.groupRotatingUp = false;
         this.groupAnimating = false;
 
         //Temp variables
@@ -493,7 +494,7 @@ class Framework extends BaseApp {
     rotateBars() {
         let currentMonthConfig = MonthlyConfig[this.currentMonthName];
         this.rotateGroup = currentMonthConfig.superGroup;
-        this.groupRotating = true;
+        this.groupRotatingDown = true;
     }
 
     moveGroups() {
@@ -545,12 +546,12 @@ class Framework extends BaseApp {
             }
         }
 
-        if (this.groupRotating) {
+        if (this.groupRotatingDown) {
             this.rotateGroup.rotation.x += APPCONFIG.GROUP_ROTATE_SPEED * delta;
             if (this.rotateGroup.rotation.x <= APPCONFIG.GROUP_ROTATE_OFFSET) {
                 this.rotateGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
                 this.rotateGroup.visible = false;
-                this.groupRotating = false;
+                this.groupRotatingDown = false;
                 this.rotateGroup.rotation.x = 0;
                 if (!this.animationFinished) {
                     // Rotate next set of bars
