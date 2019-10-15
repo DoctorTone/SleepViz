@@ -26,6 +26,8 @@ class Framework extends BaseApp {
         this.zoomingIn = false;
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
+        this.groupRotating = false;
+        this.groupAnimating = false;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
@@ -208,21 +210,7 @@ class Framework extends BaseApp {
         this.currentMonthNumber = APPCONFIG.START_MONTH;
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
 
-        // Monthly data
-        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
-
-        // Group of groups
-        const superGroup = new THREE.Group();
-        superGroup.name = "SuperGroup" + this.currentMonthName;
-        currentMonthConfig.superGroup = superGroup;
-        this.root.add(superGroup);
-
-        const labelGroup = new THREE.Group();
-        labelGroup.name = "LabelGroup" + this.currentMonthName;
-        currentMonthConfig.labelGroup = labelGroup;
-        this.root.add(labelGroup);
-
-        this.createSceneGroups(superGroup, labelGroup);
+        this.createSceneGroups(this.currentMonthNumber);
         this.createBars();
         this.adjustCameraPosition();
         this.createLineGeometries();
@@ -233,8 +221,22 @@ class Framework extends BaseApp {
         this.showSleepData();
     }
 
-    createSceneGroups(superGroup, labelGroup) {
-        // Groups
+    createSceneGroups(monthNumber) {
+        // See if groups exist
+        let monthName = APPCONFIG.MONTHS[monthNumber];
+        let currentMonthConfig = MonthlyConfig[monthName];
+        if (currentMonthConfig.superGroup) return;
+
+        // Create new groups
+        const superGroup = new THREE.Group();
+        superGroup.name = "SuperGroup" + monthName;
+        currentMonthConfig.superGroup = superGroup;
+        this.root.add(superGroup);
+
+        const labelGroup = new THREE.Group();
+        labelGroup.name = "LabelGroup" + monthName;
+        currentMonthConfig.labelGroup = labelGroup;
+        this.root.add(labelGroup);
         let currentAttributeGroup;
         let attributeGroups = [];
         let currentValueGroup;
@@ -245,27 +247,26 @@ class Framework extends BaseApp {
         for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
             // Attributes themselves
             currentAttributeGroup = new THREE.Group();
-            currentAttributeGroup.name = APPCONFIG.attributes[attribute] + this.currentMonthName + "Group";
+            currentAttributeGroup.name = APPCONFIG.attributes[attribute] + monthName + "Group";
             attributeGroups.push(currentAttributeGroup);
             superGroup.add(currentAttributeGroup);
 
             // Trends
             currentTrendGroup = new THREE.Group();
-            currentTrendGroup.name = APPCONFIG.attributes[attribute] + "Trend" + this.currentMonthName + "Group";
+            currentTrendGroup.name = APPCONFIG.attributes[attribute] + "Trend" + monthName + "Group";
             currentTrendGroup.visible = false;
             trendGroups.push(currentTrendGroup);
             superGroup.add(currentTrendGroup);
 
             // Values
             currentValueGroup = new THREE.Group();
-            currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + this.currentMonthName + "Group";
+            currentValueGroup.name = APPCONFIG.attributes[attribute] + "Values" + monthName + "Group";
             currentValueGroup.visible = false;
             valueGroups.push(currentValueGroup);
             labelGroup.add(currentValueGroup);
         }
 
         // Store in month config
-        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
         currentMonthConfig.attributeGroups = attributeGroups;
         currentMonthConfig.trendGroups = trendGroups;
         currentMonthConfig.valueGroups = valueGroups;
@@ -495,6 +496,14 @@ class Framework extends BaseApp {
         this.groupRotating = true;
     }
 
+    moveGroups() {
+        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+        currentMonthConfig.labelGroup.position.y = APPCONFIG.LABEL_ANIMATE_OFFSET;
+        currentMonthConfig.labelGroup.visible = true;
+        currentMonthConfig.superGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
+        currentMonthConfig.superGroup.visible = true;
+    }
+
     update() {
         let delta = this.clock.getDelta();
 
@@ -543,12 +552,16 @@ class Framework extends BaseApp {
                 this.rotateGroup.visible = false;
                 this.groupRotating = false;
                 this.rotateGroup.rotation.x = 0;
-                // Bars stopped animating
-                if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
-                    this.currentMonthNumber = APPCONFIG.START_MONTH;
+                if (!this.animationFinished) {
+                    // Rotate next set of bars
+                    if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
+                        this.currentMonthNumber = APPCONFIG.START_MONTH;
+                    }
+                    this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
+                    this.moveGroups();
+                    this.rotateBars();
                 }
-                this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
-                this.rotateBars();
+                
             }
         }
 
@@ -674,6 +687,7 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
+        this.createSceneGroups(this.currentMonthNumber + 1);
         this.animationFinished = false;
         this.startRedraw();
 
