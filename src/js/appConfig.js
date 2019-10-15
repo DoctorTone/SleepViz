@@ -96,7 +96,9 @@ const APPCONFIG = {
     attributes: ["Asleep", "Quality sleep", "Awake", "Deep sleep"],
     attributeDisplayNames: ["  Asleep", "  Quality", "  Awake", "  Deep "],
     CAMERA_SCALE_LARGE: 1.3,
-    CAMERA_SCALE_SMALL: 2
+    CAMERA_SCALE_SMALL: 2,
+    LABEL_ANIMATE_SPEED: -3,
+    LABEL_ANIMATE_OFFSET: -3
 };
 
 const MonthlyConfig = {

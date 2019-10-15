@@ -483,6 +483,12 @@ class Framework extends BaseApp {
         this.createLineGeometries();
     }
 
+    startRedraw() {
+        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+        this.animateGroup = currentMonthConfig.labelGroup;
+        this.groupAnimating = true;
+    }
+
     update() {
         let delta = this.clock.getDelta();
 
@@ -510,6 +516,17 @@ class Framework extends BaseApp {
             this.camera.position.add(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
+        }
+
+        if (this.groupAnimating) {
+            this.animateGroup.position.y += APPCONFIG.LABEL_ANIMATE_SPEED * delta;
+            if (this.animateGroup.position.y <= APPCONFIG.LABEL_ANIMATE_OFFSET) {
+                this.animateGroup.position.y = APPCONFIG.LABEL_ANIMATE_OFFSET;
+                this.groupAnimating = false;
+
+                // DEBUG
+                console.log("Stopped group animation");
+            }
         }
 
         super.update();
@@ -634,13 +651,14 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
+        this.startRedraw();
         let lastMonth = this.currentMonthNumber;
         if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
             this.currentMonthNumber = APPCONFIG.START_MONTH;
         }
 
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
-        this.redrawScene(lastMonth);
+        // this.redrawScene(lastMonth);
     }
 
     previousMonth() {
