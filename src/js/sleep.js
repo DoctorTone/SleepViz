@@ -529,6 +529,7 @@ class Framework extends BaseApp {
             if (this.animateGroup.position.y <= APPCONFIG.LABEL_ANIMATE_OFFSET) {
                 this.animateGroup.position.y = APPCONFIG.LABEL_ANIMATE_OFFSET;
                 this.groupAnimating = false;
+                this.animateGroup.visible = false;
                 this.rotateBars();
             }
         }
@@ -537,6 +538,7 @@ class Framework extends BaseApp {
             this.rotateGroup.rotation.x += APPCONFIG.GROUP_ROTATE_SPEED * delta;
             if (this.rotateGroup.rotation.x <= APPCONFIG.GROUP_ROTATE_OFFSET) {
                 this.rotateGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
+                this.rotateGroup.visible = false;
                 this.groupRotating = false;
             }
         }
