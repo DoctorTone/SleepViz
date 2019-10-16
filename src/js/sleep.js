@@ -718,7 +718,11 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
-        this.createSceneGroups(this.currentMonthNumber + 1, false);
+        let monthNumber = this.currentMonthNumber + 1;
+        if (monthNumber> APPCONFIG.LAST_MONTH) {
+            monthNumber = APPCONFIG.START_MONTH;
+        }
+        this.createSceneGroups(monthNumber, false);
         this.animationFinished = false;
         this.startRedraw();
 
