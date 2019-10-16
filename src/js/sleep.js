@@ -591,6 +591,7 @@ class Framework extends BaseApp {
                 this.rotateGroup.rotation.x = 0;
                 this.groupRotatingUp = false;
                 this.groupAnimatingUp = true;
+                this.adjustCameraPosition();
                 this.animateGroup = this.setAnimateGroup();
             }
         }
