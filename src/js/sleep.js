@@ -212,7 +212,6 @@ class Framework extends BaseApp {
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
 
         this.createSceneGroups(this.currentMonthNumber);
-        this.createBars();
         this.adjustCameraPosition();
         this.createLineGeometries();
         
@@ -271,13 +270,16 @@ class Framework extends BaseApp {
         currentMonthConfig.attributeGroups = attributeGroups;
         currentMonthConfig.trendGroups = trendGroups;
         currentMonthConfig.valueGroups = valueGroups;
+
+        // Add bars
+        this.createBars(monthName);
     }
 
-    createBars() {
+    createBars(monthName) {
         // Month data
-        let monthData = sleepData[this.currentMonthName];
+        let monthData = sleepData[monthName];
         const numBars = monthData.length;
-        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+        let currentMonthConfig = MonthlyConfig[monthName];
 
         // Start position
         let startPosX = ((numBars/2) - 0.5) * -APPCONFIG.BAR_INC_X;
@@ -297,7 +299,7 @@ class Framework extends BaseApp {
         let label;
         let labelProperty;
 
-        let labelGroup = this.getObjectByName("LabelGroup" + this.currentMonthName);
+        let labelGroup = this.getObjectByName("LabelGroup" + monthName);
 
         // Lines
         let attributeLinePositions = [];
@@ -306,7 +308,7 @@ class Framework extends BaseApp {
             linePositions = [];
             attributeLinePositions.push(linePositions);
         }
-        MonthlyConfig[this.currentMonthName].attributeLinePositions = attributeLinePositions;
+        MonthlyConfig[monthName].attributeLinePositions = attributeLinePositions;
 
         for(let bar=0; bar<numBars; ++bar) {
             // Label properties
@@ -317,7 +319,7 @@ class Framework extends BaseApp {
             barStartPos.set(startPosX + (APPCONFIG.BAR_INC_X * bar), barStartPos.y, barStartPos.z);
             for (let attribute=0; attribute<APPCONFIG.attributes.length; ++attribute) {
                 barMesh = new THREE.Mesh(barGeom, this.attributeMaterials[attribute]);
-                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + this.currentMonthName;
+                barMesh.name = "bar" + bar + APPCONFIG.attributes[attribute] + monthName;
                 barMesh.castShadow = true;
                 barMesh.receiveShadow = true;
                 bars.push(barMesh);
@@ -358,7 +360,7 @@ class Framework extends BaseApp {
                     labelProperty.scale = APPCONFIG.LABEL_MONTH_SCALE;
                     labelProperty.position.add(APPCONFIG.LABEL_MONTH_OFFSET);
                     labelProperty.textColour =  "rgba(0, 0, 0, 1.0)",
-                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + this.currentMonthName, this.currentMonthName, labelProperty);
+                    label = this.labelManager.create("monthLabel" + APPCONFIG.attributes[attribute] + monthName, monthName, labelProperty);
                     labelGroup.add(label.getSprite());
                 }
 
@@ -371,7 +373,7 @@ class Framework extends BaseApp {
                 labelProperty.position.y += APPCONFIG.LABEL_VALUE_OFFSET;
                 labelProperty.visibility = true;
                 labelProperty.scale = APPCONFIG.LABEL_VALUE_SCALE;
-                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + this.currentMonthName, barValue, labelProperty);
+                label = this.labelManager.create("valueLabel" + bar + APPCONFIG.attributes[attribute] + monthName, barValue, labelProperty);
                 currentMonthConfig.valueGroups[attribute].add(label.getSprite());
             }
             
