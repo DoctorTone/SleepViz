@@ -26,6 +26,7 @@ class Framework extends BaseApp {
         this.zoomingIn = false;
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
+        this.animating = false;
         this.groupRotatingDown = false;
         this.groupRotatingUp = false;
         this.groupAnimatingDown = false;
@@ -564,6 +565,7 @@ class Framework extends BaseApp {
             if (this.animateGroup.position.y >= 0) {
                 this.animateGroup.position.y = 0;
                 this.groupAnimatingUp = false;
+                this.animating = false;
             }
         }
 
@@ -716,6 +718,9 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
+        if (this.animating) return;
+
+        this.animating = true;
         let monthNumber = this.currentMonthNumber + 1;
         if (monthNumber> APPCONFIG.LAST_MONTH) {
             monthNumber = APPCONFIG.START_MONTH;
@@ -738,6 +743,9 @@ class Framework extends BaseApp {
     }
 
     previousMonth() {
+        if (this.animating) return;
+
+        this.animating = true;
         let monthNumber = this.currentMonthNumber - 1;
         if (monthNumber < APPCONFIG.START_MONTH) {
             monthNumber = APPCONFIG.LAST_MONTH;
