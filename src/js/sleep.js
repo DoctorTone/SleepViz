@@ -576,9 +576,7 @@ class Framework extends BaseApp {
                 this.rotateGroup.rotation.x = 0;
         
                 // Rotate next set of bars
-                if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
-                    this.currentMonthNumber = APPCONFIG.START_MONTH;
-                }
+                this.currentMonthNumber = this.nextMonthNumber;
                 this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
                 this.moveGroups();
                 this.rotateBars(APPCONFIG.ROTATE_UP);
@@ -722,6 +720,7 @@ class Framework extends BaseApp {
         if (monthNumber> APPCONFIG.LAST_MONTH) {
             monthNumber = APPCONFIG.START_MONTH;
         }
+        this.nextMonthNumber = monthNumber;
         this.createSceneGroups(monthNumber, false);
         this.animationFinished = false;
         this.startRedraw();
@@ -739,13 +738,15 @@ class Framework extends BaseApp {
     }
 
     previousMonth() {
-        let lastMonth = this.currentMonthNumber;
-        if (--this.currentMonthNumber < APPCONFIG.START_MONTH) {
-            this.currentMonthNumber = APPCONFIG.LAST_MONTH;
+        let monthNumber = this.currentMonthNumber - 1;
+        if (monthNumber < APPCONFIG.START_MONTH) {
+            monthNumber = APPCONFIG.LAST_MONTH;
         }
         
-        this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
-        this.redrawScene(lastMonth);
+        this.nextMonthNumber = monthNumber;
+        this.createSceneGroups(monthNumber, false);
+        this.animationFinished = false;
+        this.startRedraw();
     }
 
     showSleepData() {
