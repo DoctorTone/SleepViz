@@ -552,8 +552,8 @@ class Framework extends BaseApp {
         }
 
         if (this.groupRotatingDown) {
-            this.rotateGroup.rotation.x += APPCONFIG.GROUP_ROTATE_SPEED * delta;
-            if (this.rotateGroup.rotation.x <= APPCONFIG.GROUP_ROTATE_OFFSET) {
+            this.rotateGroup.rotation.x += APPCONFIG.GROUP_ROTATE_SPEED * -delta;
+            if (this.rotateGroup.rotation.x <= -APPCONFIG.GROUP_ROTATE_OFFSET) {
                 this.rotateGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
                 this.rotateGroup.visible = false;
                 this.groupRotatingDown = false;
@@ -570,8 +570,8 @@ class Framework extends BaseApp {
         }
 
         if (this.groupRotatingUp) {
-            this.rotateGroup.rotation.x += -APPCONFIG.GROUP_ROTATE_SPEED * delta;
-            if (this.rotateGroup.rotation.x >= 0) {
+            this.rotateGroup.rotation.x += APPCONFIG.GROUP_ROTATE_SPEED * -delta;
+            if (this.rotateGroup.rotation.x <= 0) {
                 this.rotateGroup.rotation.x = 0;
                 this.groupRotatingUp = false;
             }
