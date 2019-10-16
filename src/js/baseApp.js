@@ -141,8 +141,8 @@ export class BaseApp {
         directionalLight.castShadow = true;
         directionalLight.shadow.camera.near = 0.1;
         directionalLight.shadow.camera.far = 100;
-        directionalLight.shadow.camera.right = SceneConfig.ShadowWidth;
-        directionalLight.shadow.camera.left = - SceneConfig.ShadowWidth;
+        directionalLight.shadow.camera.right = SceneConfig.ShadowWidth + SceneConfig.ShadowExtra;
+        directionalLight.shadow.camera.left = - SceneConfig.ShadowWidth - SceneConfig.ShadowExtra;
         directionalLight.shadow.camera.top	= SceneConfig.ShadowWidth;
         directionalLight.shadow.camera.bottom = - SceneConfig.ShadowWidth;
         directionalLight.shadow.mapSize.width = SceneConfig.ShadowMapSize;
@@ -151,6 +151,8 @@ export class BaseApp {
         directionalLight.shadow.bias = -0.0005;
         scene.add( directionalLight );
         this.directionalLight = directionalLight;
+
+        // DEBUG
         // scene.add( new THREE.CameraHelper( directionalLight.shadow.camera ) );
          
 

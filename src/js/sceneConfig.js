@@ -10,6 +10,7 @@ const SceneConfig = {
         z: 35
     },
     ShadowWidth: 35,
+    ShadowExtra: 35,
     ShadowMapSize: 512,
     CameraPos: {
         x: 0,

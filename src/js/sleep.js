@@ -593,6 +593,7 @@ class Framework extends BaseApp {
                 this.groupAnimatingUp = true;
                 this.adjustCameraPosition();
                 this.animateGroup = this.setAnimateGroup();
+                this.showSleepData();
             }
         }
 
