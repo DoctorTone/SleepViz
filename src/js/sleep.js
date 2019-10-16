@@ -28,7 +28,8 @@ class Framework extends BaseApp {
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
         this.groupRotatingDown = false;
         this.groupRotatingUp = false;
-        this.groupAnimating = false;
+        this.groupAnimatingDown = false;
+        this.groupAnimatingUp = false;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
@@ -492,7 +493,7 @@ class Framework extends BaseApp {
     startRedraw() {
         let currentMonthConfig = MonthlyConfig[this.currentMonthName];
         this.animateGroup = currentMonthConfig.labelGroup;
-        this.groupAnimating = true;
+        this.groupAnimatingDown = true;
     }
 
     rotateBars(direction) {
@@ -508,6 +509,13 @@ class Framework extends BaseApp {
         currentMonthConfig.labelGroup.visible = true;
         currentMonthConfig.superGroup.rotation.x = APPCONFIG.GROUP_ROTATE_OFFSET;
         currentMonthConfig.superGroup.visible = true;
+    }
+
+    setAnimateGroup() {
+        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+        let animateGroup = currentMonthConfig.labelGroup;
+
+        return animateGroup;
     }
 
     update() {
@@ -539,15 +547,23 @@ class Framework extends BaseApp {
             //console.log("Root = ", this.root.position);
         }
 
-        if (this.groupAnimating) {
-            this.animateGroup.position.y += APPCONFIG.LABEL_ANIMATE_SPEED * delta;
+        if (this.groupAnimatingDown) {
+            this.animateGroup.position.y -= APPCONFIG.LABEL_ANIMATE_SPEED * delta;
             if (this.animateGroup.position.y <= APPCONFIG.LABEL_ANIMATE_OFFSET) {
                 this.animateGroup.position.y = APPCONFIG.LABEL_ANIMATE_OFFSET;
-                this.groupAnimating = false;
+                this.groupAnimatingDown = false;
                 this.animateGroup.visible = false;
                 this.animateGroup.position.y = 0;
                 // Labels stopped animating
                 this.rotateBars(APPCONFIG.ROTATE_DOWN);
+            }
+        }
+
+        if (this.groupAnimatingUp) {
+            this.animateGroup.position.y += APPCONFIG.LABEL_ANIMATE_SPEED * delta;
+            if (this.animateGroup.position.y >= 0) {
+                this.animateGroup.position.y = 0;
+                this.groupAnimatingUp = false;
             }
         }
 
@@ -574,6 +590,8 @@ class Framework extends BaseApp {
             if (this.rotateGroup.rotation.x <= 0) {
                 this.rotateGroup.rotation.x = 0;
                 this.groupRotatingUp = false;
+                this.groupAnimatingUp = true;
+                this.animateGroup = this.setAnimateGroup();
             }
         }
 
