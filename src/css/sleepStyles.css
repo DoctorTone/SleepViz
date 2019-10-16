@@ -32,6 +32,7 @@ body {
     right: 1%;
     width: 22.5%;
     color: white;
+    -webkit-touch-callout: none;
 }
 #rotate button {
     width: 45%;
@@ -51,11 +52,13 @@ body {
     bottom: 1%;
     left: 1%;
     width: 100%;
+    -webkit-touch-callout: none;
 }
 #info {
     bottom: 1%;
     right: 1%;
     width: 10%;
+    -webkit-touch-callout: none;
 }
 #info img {
     width: 100%;
@@ -69,9 +72,13 @@ body {
     border-radius: 20px;
     padding: 1% 0;
     background-color: rgba(0, 0, 50, 0.25);
+    -webkit-touch-callout: none;
 }
 #sleepData img {
     width: 95%;
+}
+#monthControl {
+    -webkit-touch-callout: none;
 }
 #monthControl button {
     width: 35%;

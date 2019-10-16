@@ -798,6 +798,14 @@ class Framework extends BaseApp {
         $("#awake").html(sleepDisplay[2]);
         $("#deep").html(sleepDisplay[3]);
     }
+
+    stopNotifications(elemList) {
+        for(let i=0, numElems=elemList.length; i<numElems; ++i) {
+            $('#' + elemList[i]).contextmenu(() => {
+                return false;
+            });
+        }
+    }
 }
 
 $(document).ready( () => {
@@ -943,4 +951,7 @@ $(document).ready( () => {
     $("#info").on("click", () => {
         $("#infoModal").modal();
     });
+
+    let elemList = ["rotate", "info", "sleepData"];
+    app.stopNotifications(elemList);
 });
