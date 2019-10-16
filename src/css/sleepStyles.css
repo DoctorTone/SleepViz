@@ -93,6 +93,7 @@ body {
     #sleepData {
         width: 17.5%;
         top: 10%;
+        padding: 0 0;
     }
     #info {
         width: 6.5%;
