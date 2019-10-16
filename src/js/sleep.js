@@ -211,7 +211,7 @@ class Framework extends BaseApp {
         this.currentMonthNumber = APPCONFIG.START_MONTH;
         this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
 
-        this.createSceneGroups(this.currentMonthNumber);
+        this.createSceneGroups(this.currentMonthNumber, true);
         this.adjustCameraPosition();
         this.createLineGeometries();
         
@@ -221,7 +221,7 @@ class Framework extends BaseApp {
         this.showSleepData();
     }
 
-    createSceneGroups(monthNumber) {
+    createSceneGroups(monthNumber, visible) {
         // See if groups exist
         let monthName = APPCONFIG.MONTHS[monthNumber];
         let currentMonthConfig = MonthlyConfig[monthName];
@@ -229,11 +229,13 @@ class Framework extends BaseApp {
 
         // Create new groups
         const superGroup = new THREE.Group();
+        superGroup.visible = visible;
         superGroup.name = "SuperGroup" + monthName;
         currentMonthConfig.superGroup = superGroup;
         this.root.add(superGroup);
 
         const labelGroup = new THREE.Group();
+        labelGroup.visible = visible;
         labelGroup.name = "LabelGroup" + monthName;
         currentMonthConfig.labelGroup = labelGroup;
         this.root.add(labelGroup);
@@ -697,7 +699,7 @@ class Framework extends BaseApp {
     }
 
     nextMonth() {
-        this.createSceneGroups(this.currentMonthNumber + 1);
+        this.createSceneGroups(this.currentMonthNumber + 1, false);
         this.animationFinished = false;
         this.startRedraw();
 
