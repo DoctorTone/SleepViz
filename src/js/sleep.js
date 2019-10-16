@@ -215,7 +215,6 @@ class Framework extends BaseApp {
 
         this.createSceneGroups(this.currentMonthNumber, true);
         this.adjustCameraPosition();
-        this.createLineGeometries();
         
         this.createGUI();
 
@@ -277,6 +276,7 @@ class Framework extends BaseApp {
 
         // Add bars
         this.createBars(monthName);
+        this.createLineGeometries(monthName);
     }
 
     createBars(monthName) {
@@ -407,9 +407,9 @@ class Framework extends BaseApp {
         this.camera.position.z = bsphere.center.z + (bsphere.radius * cameraScale);
     }
 
-    createLineGeometries() {
+    createLineGeometries(monthName) {
         // Monthly data
-        let currentMonthConfig = MonthlyConfig[this.currentMonthName];
+        let currentMonthConfig = MonthlyConfig[monthName];
 
         // Lines
         const lineColour = new THREE.Color();
