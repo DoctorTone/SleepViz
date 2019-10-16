@@ -491,10 +491,11 @@ class Framework extends BaseApp {
         this.groupAnimating = true;
     }
 
-    rotateBars() {
+    rotateBars(direction) {
         let currentMonthConfig = MonthlyConfig[this.currentMonthName];
         this.rotateGroup = currentMonthConfig.superGroup;
-        this.groupRotatingDown = true;
+        this.groupRotatingDown = direction;
+        this.groupRotatingUp = !this.groupRotatingDown;
     }
 
     moveGroups() {
@@ -542,7 +543,7 @@ class Framework extends BaseApp {
                 this.animateGroup.visible = false;
                 this.animateGroup.position.y = 0;
                 // Labels stopped animating
-                this.rotateBars();
+                this.rotateBars(APPCONFIG.ROTATE_DOWN);
             }
         }
 
@@ -553,16 +554,22 @@ class Framework extends BaseApp {
                 this.rotateGroup.visible = false;
                 this.groupRotatingDown = false;
                 this.rotateGroup.rotation.x = 0;
-                if (!this.animationFinished) {
-                    // Rotate next set of bars
-                    if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
-                        this.currentMonthNumber = APPCONFIG.START_MONTH;
-                    }
-                    this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
-                    this.moveGroups();
-                    this.rotateBars();
+        
+                // Rotate next set of bars
+                if (++this.currentMonthNumber > APPCONFIG.LAST_MONTH) {
+                    this.currentMonthNumber = APPCONFIG.START_MONTH;
                 }
-                
+                this.currentMonthName = APPCONFIG.MONTHS[this.currentMonthNumber];
+                this.moveGroups();
+                this.rotateBars(APPCONFIG.ROTATE_UP);
+            }
+        }
+
+        if (this.groupRotatingUp) {
+            this.rotateGroup.rotation.x += -APPCONFIG.GROUP_ROTATE_SPEED * delta;
+            if (this.rotateGroup.rotation.x >= 0) {
+                this.rotateGroup.rotation.x = 0;
+                this.groupRotatingUp = false;
             }
         }
 

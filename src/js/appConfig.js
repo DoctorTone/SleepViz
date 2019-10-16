@@ -100,7 +100,9 @@ const APPCONFIG = {
     LABEL_ANIMATE_SPEED: -3,
     LABEL_ANIMATE_OFFSET: -3,
     GROUP_ROTATE_SPEED: -2.5,
-    GROUP_ROTATE_OFFSET: -Math.PI
+    GROUP_ROTATE_OFFSET: -Math.PI,
+    ROTATE_UP: false,
+    ROTATE_DOWN: true
 };
 
 const MonthlyConfig = {
