@@ -125,7 +125,14 @@ body {
     color: #fff;
     background-color:  rgba(130, 130, 255, 0.75);
     border-color:  rgba(130, 130, 255, 0.75);
-  }
+}
+.infoTitleBtn {
+    background-color: rgb(100, 100, 100);
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+}
 /* Small screens */
 @media (min-width: 576px) {
     #rotate {
