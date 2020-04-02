@@ -787,11 +787,11 @@ class Framework extends BaseApp {
         for (let i=0, numTimes=sleepTimes.length; i<numTimes; ++i) {
             hours = Math.round(sleepTimes[i]/60);
             hours = hours.toString();
-            if (hours.length < 2) hours = "0" + hours;
+            hours += "h";
             minutes = Math.round(sleepTimes[i] % 60);
             minutes = minutes.toString();
-            if (minutes.length < 2) minutes = "0" + minutes;
-            sleepDisplay.push(hours + ":" + minutes);
+            minutes += "mins";
+            sleepDisplay.push(hours + " " + minutes);
         }
         $("#sleep").html(sleepDisplay[0]);
         $("#quality").html(sleepDisplay[1]);
