@@ -95,13 +95,24 @@ body {
 #sleepData img {
     width: 95%;
 }
-#sleepAttribute {
-    top: 0;
+#sleepAttribute,
+#qualityAttribute,
+#awakeAttribute,
+#deepAttribute,
+#monthAttribute {
     left: 0;
 }
 #qualityAttribute {
     top: 20%;
-    left: 0;
+}
+#awakeAttribute {
+    top: 40%;
+}
+#deepAttribute {
+    top: 60%;
+}
+#monthAttribute {
+    top: 80%;
 }
 #monthControl {
     -webkit-touch-callout: none;
@@ -110,6 +121,11 @@ body {
     width: 35%;
     padding: 0.2rem 0.4rem;
 }
+.btn-purple {
+    color: #fff;
+    background-color:  rgba(130, 130, 255, 0.75);
+    border-color:  rgba(130, 130, 255, 0.75);
+  }
 /* Small screens */
 @media (min-width: 576px) {
     #rotate {
@@ -137,9 +153,6 @@ body {
 }
 
 @media (min-width: 768px) {
-    .title {
-        padding-left: 30px;
-    }
     #sleepData {
         top: 5%;
         width: 22.5%;
