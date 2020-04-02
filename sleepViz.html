@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no, viewport-fit=cover">
         <title>Sleep Visualisation</title>
 
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
@@ -82,33 +82,11 @@
       <img src="./images/info.png">
     </div>
     <div id="sleepData" class="panel">
-      <div class="mb-1">
-        <p>
-          Sleep
-        </p>
-        <span id="sleep">00:00</span>
+      <div class="infoTitle mb-1">
+        <span>Sleep</span>
       </div>
-      <div class="mb-1">
-        <p>
-          Quality
-        </p>
-        <span id="quality">00:00</span>
-      </div>
-      <div class="mb-1">
-        <p>
-          Awake
-        </p>
-        <span id="awake">00:00</span>
-      </div>
-      <div>
-        <p>
-          Deep
-        </p>
-        <span id="deep">00:00</span>
-      </div>
-      <div id="monthControl">
-        <button type="button" id="monthLeft" class="btn btn-outline-secondary"><img src="./images/leftWhite.png"></button>
-        <button type="button" id="monthRight" class="btn btn-outline-secondary"><img src="./images/rightWhite.png"></button>
+      <div class="infoContent">
+        <span>7h 3mins</span>
       </div>
     </div>
   </div>  

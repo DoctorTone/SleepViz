@@ -63,15 +63,25 @@ body {
 #info img {
     width: 100%;
 }
-#sleepData {
-    top: 7.5%;
-    left: 1%;
-    width: 25%;
+.infoTitle {
+    background-color:  rgba(130, 130, 130, 0.75);
     color: white;
     border: 2px solid white;
-    border-radius: 20px;
-    padding: 1% 0;
-    background-color: rgba(0, 0, 50, 0.25);
+    border-radius: 0 20px 20px 0;
+    padding: 5px 0;
+}
+.infoContent {
+    background-color:  rgba(130, 130, 255, 0.75);
+    color: white;
+    border: 2px solid white;
+    border-radius: 0 20px 20px 0;
+    padding: 5px 0;
+}
+#sleepData {
+    top: 7.5%;
+    left: -0.5%;
+    width: 25%;
+    height: 25%;
     -webkit-touch-callout: none;
 }
 #sleepData img {
