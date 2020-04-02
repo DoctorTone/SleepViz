@@ -77,13 +77,13 @@ body {
 .infoContent {
     position: absolute;
     top: 0%;
-    left: 47.5%;
+    left: 45%;
     background-color:  rgba(130, 130, 255, 0.75);
     color: white;
     border: 2px solid white;
     border-radius: 0 20px 20px 0;
     padding: 5px 0;
-    width: 25%;
+    width: 35%;
 }
 #sleepData {
     top: 7.5%;
@@ -94,6 +94,14 @@ body {
 }
 #sleepData img {
     width: 95%;
+}
+#sleepAttribute {
+    top: 0;
+    left: 0;
+}
+#qualityAttribute {
+    top: 20%;
+    left: 0;
 }
 #monthControl {
     -webkit-touch-callout: none;
