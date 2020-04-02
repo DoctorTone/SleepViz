@@ -124,7 +124,7 @@ body {
 .btn-purple {
     color: #fff;
     background-color:  rgba(130, 130, 255, 0.75);
-    border-color:  rgba(130, 130, 255, 0.75);
+    border-color: white;
 }
 .infoTitleBtn {
     background-color: rgb(100, 100, 100);
