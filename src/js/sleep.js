@@ -799,6 +799,11 @@ class Framework extends BaseApp {
         $("#deep").html(sleepDisplay[3]);
     }
 
+    openSideMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+        document.getElementById("WebGL-Output").style.marginLeft = "250px";
+    }
+
     stopNotifications(elemList) {
         for(let i=0, numElems=elemList.length; i<numElems; ++i) {
             $('#' + elemList[i]).contextmenu(() => {
@@ -829,6 +834,7 @@ $(document).ready( () => {
     let reset = $("#reset");
     let monthRight = $("#monthRight");
     let monthLeft = $("#monthLeft");
+    let sideMenu = $("#sideMenu");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -946,6 +952,10 @@ $(document).ready( () => {
 
     monthLeft.on("click", () => {
         app.previousMonth();
+    });
+
+    sideMenu.on("click", () => {
+        app.openSideMenu();
     });
 
     $("#info").on("click", () => {
