@@ -133,6 +133,10 @@ body {
     border-radius: 20px;
     color: white;
 }
+#sideMenu {
+    top: 110%;
+    left: 10%;
+}
 /* Small screens */
 @media (min-width: 576px) {
     #rotate {
