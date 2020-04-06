@@ -133,9 +133,9 @@ body {
     border-radius: 20px;
     color: white;
 }
-#sideMenu {
-    top: 110%;
-    left: 10%;
+#sideMenuIcon {
+    top: 5%;
+    left: 2.5%;
 }
 .sidenav {
     height: 100%;
@@ -148,7 +148,15 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
   
 /* Small screens */
 @media (min-width: 576px) {

@@ -834,7 +834,7 @@ $(document).ready( () => {
     let reset = $("#reset");
     let monthRight = $("#monthRight");
     let monthLeft = $("#monthLeft");
-    let sideMenu = $("#sideMenu");
+    let sideMenuIcon = $("#sideMenuIcon");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -954,7 +954,7 @@ $(document).ready( () => {
         app.previousMonth();
     });
 
-    sideMenu.on("click", () => {
+    sideMenuIcon.on("click", () => {
         app.openSideMenu();
     });
 
