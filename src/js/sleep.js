@@ -804,6 +804,11 @@ class Framework extends BaseApp {
         document.getElementById("WebGL-Output").style.marginLeft = "250px";
     }
 
+    closeSideMenu() {
+        document.getElementById("sideMenu").style.width = "0px";
+        document.getElementById("WebGL-Output").style.marginLeft = "0px";
+    }
+
     stopNotifications(elemList) {
         for(let i=0, numElems=elemList.length; i<numElems; ++i) {
             $('#' + elemList[i]).contextmenu(() => {
@@ -835,6 +840,7 @@ $(document).ready( () => {
     let monthRight = $("#monthRight");
     let monthLeft = $("#monthLeft");
     let sideMenuIcon = $("#sideMenuIcon");
+    let closeButton = $("#closeButton");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -957,6 +963,10 @@ $(document).ready( () => {
     sideMenuIcon.on("click", () => {
         app.openSideMenu();
     });
+
+    closeButton.on("click", () => {
+        app.closeSideMenu();
+    })
 
     $("#info").on("click", () => {
         $("#infoModal").modal();
