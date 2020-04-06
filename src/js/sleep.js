@@ -802,11 +802,13 @@ class Framework extends BaseApp {
     openSideMenu() {
         document.getElementById("sideMenu").style.width = "250px";
         document.getElementById("WebGL-Output").style.marginLeft = "250px";
+        document.getElementById("sideMenuIcon").style.display = "none";
     }
 
     closeSideMenu() {
         document.getElementById("sideMenu").style.width = "0px";
         document.getElementById("WebGL-Output").style.marginLeft = "0px";
+        document.getElementById("sideMenuIcon").style.display = "block";
     }
 
     stopNotifications(elemList) {
