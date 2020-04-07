@@ -841,6 +841,8 @@ $(document).ready( () => {
     let reset = $("#reset");
     let monthRight = $("#monthRight");
     let monthLeft = $("#monthLeft");
+    let monthRightSide = $("#monthRightSide");
+    let monthLeftSide = $("#monthLeftSide");
     let sideMenuIcon = $("#sideMenuIcon");
     let closeButton = $("#closeButton");
 
@@ -959,6 +961,14 @@ $(document).ready( () => {
     });
 
     monthLeft.on("click", () => {
+        app.previousMonth();
+    });
+
+    monthRightSide.on("click", () => {
+        app.nextMonth();
+    });
+
+    monthLeftSide.on("click", () => {
         app.previousMonth();
     });
 
