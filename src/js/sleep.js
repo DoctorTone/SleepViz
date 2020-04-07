@@ -797,6 +797,12 @@ class Framework extends BaseApp {
         $("#quality").html(sleepDisplay[1]);
         $("#awake").html(sleepDisplay[2]);
         $("#deep").html(sleepDisplay[3]);
+
+        // Sidebar
+        $("#sleepSide").html(sleepDisplay[0]);
+        $("#qualitySide").html(sleepDisplay[1]);
+        $("#awakeSide").html(sleepDisplay[2]);
+        $("#deepSide").html(sleepDisplay[3]);
     }
 
     openSideMenu() {
