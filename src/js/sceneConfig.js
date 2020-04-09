@@ -24,7 +24,8 @@ const SceneConfig = {
     },
     NEAR_PLANE: 0.1,
     FAR_PLANE: 10000,
-    FOV: 45
+    FOV: 45,
+    SCREEN_SIZE_LARGE: 992
 };
 
 export { SceneConfig };

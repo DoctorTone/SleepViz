@@ -600,6 +600,15 @@ class Framework extends BaseApp {
         super.update();
     }
 
+    windowResize(event) {
+        super.windowResize(event);
+
+        this.directionalLight.castShadow = true;
+        if (window.innerWidth < SceneConfig.SCREEN_SIZE_LARGE) {
+            this.directionalLight.castShadow = false;
+        }
+    }
+
     rotateCamera(status, direction) {
         switch (direction) {
             case APPCONFIG.RIGHT:
