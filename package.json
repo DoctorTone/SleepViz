@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx parcel sleepViz.html",
-    "build": "npx parcel build sleepViz.html --public-url ./build/",
+    "build": "npx parcel build sleepViz.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

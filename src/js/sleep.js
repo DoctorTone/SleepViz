@@ -822,8 +822,8 @@ class Framework extends BaseApp {
     }
 
     openSideMenu() {
-        document.getElementById("sideMenu").style.width = "250px";
-        document.getElementById("WebGL-Output").style.marginLeft = "250px";
+        document.getElementById("sideMenu").style.width = APPCONFIG.SIDE_MENU_WIDTH;
+        document.getElementById("WebGL-Output").style.marginLeft = APPCONFIG.SIDE_MENU_WIDTH;
         document.getElementById("sideMenuIcon").style.display = "none";
     }
 
