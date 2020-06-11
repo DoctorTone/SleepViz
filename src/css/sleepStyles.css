@@ -89,7 +89,7 @@ body {
     width: 35%;
 }
 #sleepData {
-    top: 7.5%;
+    top: 9%;
     left: -0.5%;
     height: 25%;
     -webkit-touch-callout: none;
@@ -197,7 +197,7 @@ body {
 
 @media (min-width: 768px) {
     #sleepData {
-        top: 5%;
+        top: 7.5%;
         width: 22.5%;
     }
     #guiWidth {
@@ -220,7 +220,7 @@ body {
         width: 6%;
     }
     #sleepData {
-        width: 40%;
+        width: 37.5%;
     }
 }
 
