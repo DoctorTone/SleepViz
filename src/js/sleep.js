@@ -220,6 +220,11 @@ class Framework extends BaseApp {
 
         // Show numerical sleep data
         this.showSleepData();
+
+        this.directionalLight.castShadow = true;
+        if (window.innerWidth < SceneConfig.SCREEN_SIZE_LARGE) {
+            this.directionalLight.castShadow = false;
+        }
     }
 
     createSceneGroups(monthNumber, visible) {
@@ -598,6 +603,17 @@ class Framework extends BaseApp {
         }
 
         super.update();
+    }
+
+    windowResize(event) {
+        super.windowResize(event);
+
+        this.directionalLight.castShadow = true;
+        if (window.innerWidth < SceneConfig.SCREEN_SIZE_LARGE) {
+            this.directionalLight.castShadow = false;
+        }
+
+        console.log("Resize...");
     }
 
     rotateCamera(status, direction) {
