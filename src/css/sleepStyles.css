@@ -165,8 +165,8 @@ body {
 .sideNav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
+    right: 15px;
+    font-size: 24px;
 }
   
 /* Small screens */
@@ -207,7 +207,7 @@ body {
 
 @media (min-width: 768px) and (orientation: landscape) {
     #rotate {
-        top: 50%;
+        top: 17.5%;
     }
 }
 /* iPad in landscape */
