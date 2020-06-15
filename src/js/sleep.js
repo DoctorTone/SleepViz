@@ -110,6 +110,8 @@ class Framework extends BaseApp {
             range: [0.1, 3]
         };
 
+        this.scaleAttributeConfig = scaleAttributeConfig;
+        
         let shadowConfig = {
             Shadows: true
         };
@@ -642,6 +644,13 @@ class Framework extends BaseApp {
             if (currentGroup) {
                 currentGroup.visible = this.valueConfig[attributes[i]];
             }
+        }
+
+        // Scale
+        currentGroup = this.getObjectByName("SuperGroup" + this.currentMonthName);
+        if (currentGroup) {
+            currentGroup.scale.y = this.scaleAttributeConfig.Scale;
+            this.redrawValueLabels(this.scaleAttributeConfig.Scale);
         }
     }
 
