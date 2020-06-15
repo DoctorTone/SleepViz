@@ -94,6 +94,8 @@ class Framework extends BaseApp {
             Deep: false
         };
 
+        this.trendConfig = trendConfig;
+
         let valueConfig = {
             Asleep: false,
             Quality: false,
@@ -143,7 +145,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(trendConfig, "Quality", {
                     onChange: () => {
-                        this.toggleTrend("Quality sleep");
+                        this.toggleTrend("Quality");
                     }
                 })
                 .addCheckbox(trendConfig, "Awake", {
@@ -153,7 +155,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(trendConfig, "Deep", {
                     onChange: () => {
-                        this.toggleTrend("Deep sleep");
+                        this.toggleTrend("Deep");
                     }
                 })
             .addSubGroup( {label: "Scale", enable: false} )
@@ -620,7 +622,16 @@ class Framework extends BaseApp {
             if (currentGroup) {
                 currentGroup.visible = this.attributeConfig[attributes[i]];
             }
-        }       
+        }
+
+        // Trends
+        for (let i=0; i<numProperties; ++i) {
+            currentGroup = attributes[i] + "Trend" + this.currentMonthName + "Group";
+            currentGroup = this.getObjectByName(currentGroup);
+            if (currentGroup) {
+                currentGroup.visible = this.trendConfig[attributes[i]];
+            }
+        }
     }
 
     windowResize(event) {
