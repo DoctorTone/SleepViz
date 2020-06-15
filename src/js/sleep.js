@@ -103,6 +103,8 @@ class Framework extends BaseApp {
             Deep: false
         };
 
+        this.valueConfig = valueConfig;
+
         let scaleAttributeConfig = {
             Scale: 1,
             range: [0.1, 3]
@@ -175,7 +177,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(valueConfig, "Quality", {
                     onChange: () => {
-                        this.toggleValues("Quality sleep");
+                        this.toggleValues("Quality");
                     }
                 })
                 .addCheckbox(valueConfig, "Awake", {
@@ -185,7 +187,7 @@ class Framework extends BaseApp {
                 })
                 .addCheckbox(valueConfig, "Deep", {
                     onChange: () => {
-                        this.toggleValues("Deep sleep");
+                        this.toggleValues("Deep");
                     }
                 })
             .addSubGroup( {label: "Shadows", enable: false} )
@@ -630,6 +632,15 @@ class Framework extends BaseApp {
             currentGroup = this.getObjectByName(currentGroup);
             if (currentGroup) {
                 currentGroup.visible = this.trendConfig[attributes[i]];
+            }
+        }
+
+        // Values
+        for (let i=0; i<numProperties; ++i) {
+            currentGroup = attributes[i] + "Values" + this.currentMonthName + "Group";
+            currentGroup = this.getObjectByName(currentGroup);
+            if (currentGroup) {
+                currentGroup.visible = this.valueConfig[attributes[i]];
             }
         }
     }
