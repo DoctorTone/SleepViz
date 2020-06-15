@@ -85,6 +85,8 @@ class Framework extends BaseApp {
             Deep: true
         };
 
+        this.attributeConfig = attributeConfig;
+
         let trendConfig = {
             Asleep: false,
             Quality: false,
@@ -120,7 +122,7 @@ class Framework extends BaseApp {
                     })
                     .addCheckbox(attributeConfig, "Quality", {
                         onChange: () => {
-                            this.toggleAttribute("Quality sleep");
+                            this.toggleAttribute("Quality");
                         }
                     })
                     .addCheckbox(attributeConfig, "Awake", {
@@ -130,7 +132,7 @@ class Framework extends BaseApp {
                     })
                     .addCheckbox(attributeConfig, "Deep", {
                         onChange: () => {
-                            this.toggleAttribute("Deep sleep");
+                            this.toggleAttribute("Deep");
                         }
                     })
             .addSubGroup( {label: "Trends", enable: false} )
@@ -571,6 +573,8 @@ class Framework extends BaseApp {
                 this.animateGroup.position.y = 0;
                 this.groupAnimatingUp = false;
                 this.animating = false;
+                // Update group status from gui
+                this.updateGroupStatusFromGUI();
             }
         }
 
@@ -603,6 +607,20 @@ class Framework extends BaseApp {
         }
 
         super.update();
+    }
+
+    updateGroupStatusFromGUI() {
+        // Attributes
+        const attributes = ["Asleep", "Quality", "Awake", "Deep"];
+        const numProperties = attributes.length;
+        let currentGroup;
+        for (let i=0; i<numProperties; ++i) {
+            currentGroup = attributes[i] + this.currentMonthName + "Group";
+            currentGroup = this.getObjectByName(currentGroup);
+            if (currentGroup) {
+                currentGroup.visible = this.attributeConfig[attributes[i]];
+            }
+        }       
     }
 
     windowResize(event) {
@@ -686,6 +704,7 @@ class Framework extends BaseApp {
         if (currentAttribute) {
             currentAttribute.visible = !currentAttribute.visible;
         }
+
         // Set value visibility
         /*
         let column;

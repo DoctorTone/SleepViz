@@ -7,8 +7,8 @@
             "Duration":"05:10",
             "Asleep":"05:10",
             "Awake":"00:00",
-            "Quality sleep":"03:52",
-            "Deep sleep":"00:00",
+            "Quality":"03:52",
+            "Deep":"00:00",
             "Heartrate":55
         },
         {
@@ -18,8 +18,8 @@
             "Duration":"06:00",
             "Asleep":"06:00",
             "Awake":"00:00",
-            "Quality sleep":"04:16",
-            "Deep sleep":"00:00",
+            "Quality":"04:16",
+            "Deep":"00:00",
             "Heartrate":58
         },
         {
@@ -29,8 +29,8 @@
             "Duration":"07:10",
             "Asleep":"06:52",
             "Awake":"00:18",
-            "Quality sleep":"05:24",
-            "Deep sleep":"00:00",
+            "Quality":"05:24",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -40,8 +40,8 @@
             "Duration":"06:41",
             "Asleep":"06:41",
             "Awake":"00:00",
-            "Quality sleep":"05:07",
-            "Deep sleep":"00:00",
+            "Quality":"05:07",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -51,8 +51,8 @@
             "Duration":"08:52",
             "Asleep":"07:07",
             "Awake":"01:45",
-            "Quality sleep":"04:57",
-            "Deep sleep":"00:00",
+            "Quality":"04:57",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -62,8 +62,8 @@
             "Duration":"10:43",
             "Asleep":"08:38",
             "Awake":"02:05",
-            "Quality sleep":"05:51",
-            "Deep sleep":"00:30",
+            "Quality":"05:51",
+            "Deep":"00:30",
             "Heartrate":57
         },
         {
@@ -73,8 +73,8 @@
             "Duration":"06:50",
             "Asleep":"06:50",
             "Awake":"00:00",
-            "Quality sleep":"04:37",
-            "Deep sleep":"00:00",
+            "Quality":"04:37",
+            "Deep":"00:00",
             "Heartrate":62
         },
         {
@@ -84,8 +84,8 @@
             "Duration":"07:59",
             "Asleep":"07:29",
             "Awake":"00:30",
-            "Quality sleep":"05:22",
-            "Deep sleep":"00:00",
+            "Quality":"05:22",
+            "Deep":"00:00",
             "Heartrate":56
         },
         {
@@ -95,8 +95,8 @@
             "Duration":"07:29",
             "Asleep":"07:29",
             "Awake":"00:00",
-            "Quality sleep":"05:18",
-            "Deep sleep":"00:00",
+            "Quality":"05:18",
+            "Deep":"00:00",
             "Heartrate":56
         },
         {
@@ -106,8 +106,8 @@
             "Duration":"08:19",
             "Asleep":"08:07",
             "Awake":"00:12",
-            "Quality sleep":"06:02",
-            "Deep sleep":"00:00",
+            "Quality":"06:02",
+            "Deep":"00:00",
             "Heartrate":61
         }
     ],
@@ -119,8 +119,8 @@
             "Duration":"07:16",
             "Asleep":"07:08",
             "Awake":"00:08",
-            "Quality sleep":"05:20",
-            "Deep sleep":"00:00",
+            "Quality":"05:20",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -130,8 +130,8 @@
             "Duration":"08:09",
             "Asleep":"07:56",
             "Awake":"00:13",
-            "Quality sleep":"05:38",
-            "Deep sleep":"00:14",
+            "Quality":"05:38",
+            "Deep":"00:14",
             "Heartrate":57
         },
         {
@@ -141,8 +141,8 @@
             "Duration":"05:45",
             "Asleep":"05:42",
             "Awake":"00:03",
-            "Quality sleep":"04:22",
-            "Deep sleep":"00:00",
+            "Quality":"04:22",
+            "Deep":"00:00",
             "Heartrate":57
         },
         {
@@ -152,8 +152,8 @@
             "Duration":"07:42",
             "Asleep":"07:19",
             "Awake":"00:23",
-            "Quality sleep":"05:03",
-            "Deep sleep":"00:15",
+            "Quality":"05:03",
+            "Deep":"00:15",
             "Heartrate":58
         },
         {
@@ -163,8 +163,8 @@
             "Duration":"07:57",
             "Asleep":"07:30",
             "Awake":"00:27",
-            "Quality sleep":"05:18",
-            "Deep sleep":"00:14",
+            "Quality":"05:18",
+            "Deep":"00:14",
             "Heartrate":53
         },
         {
@@ -174,8 +174,8 @@
             "Duration":"06:40",
             "Asleep":"06:40",
             "Awake":"00:00",
-            "Quality sleep":"05:13",
-            "Deep sleep":"00:15",
+            "Quality":"05:13",
+            "Deep":"00:15",
             "Heartrate":53
         },
         {
@@ -185,8 +185,8 @@
             "Duration":"07:42",
             "Asleep":"07:42",
             "Awake":"00:00",
-            "Quality sleep":"05:33",
-            "Deep sleep":"00:00",
+            "Quality":"05:33",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -196,8 +196,8 @@
             "Duration":"09:04",
             "Asleep":"08:33",
             "Awake":"00:31",
-            "Quality sleep":"06:18",
-            "Deep sleep":"00:00",
+            "Quality":"06:18",
+            "Deep":"00:00",
             "Heartrate":66
         },
         {
@@ -207,8 +207,8 @@
             "Duration":"07:45",
             "Asleep":"07:13",
             "Awake":"00:32",
-            "Quality sleep":"05:06",
-            "Deep sleep":"00:16",
+            "Quality":"05:06",
+            "Deep":"00:16",
             "Heartrate":59
         },
         {
@@ -218,8 +218,8 @@
             "Duration":"08:24",
             "Asleep":"08:18",
             "Awake":"00:06",
-            "Quality sleep":"05:50",
-            "Deep sleep":"00:00",
+            "Quality":"05:50",
+            "Deep":"00:00",
             "Heartrate":57
         },
         {
@@ -229,8 +229,8 @@
             "Duration":"07:18",
             "Asleep":"07:10",
             "Awake":"00:08",
-            "Quality sleep":"05:20",
-            "Deep sleep":"00:00",
+            "Quality":"05:20",
+            "Deep":"00:00",
             "Heartrate":55
         },
         {
@@ -240,8 +240,8 @@
             "Duration":"07:21",
             "Asleep":"07:21",
             "Awake":"00:00",
-            "Quality sleep":"05:20",
-            "Deep sleep":"00:00",
+            "Quality":"05:20",
+            "Deep":"00:00",
             "Heartrate":64
         },
         {
@@ -251,8 +251,8 @@
             "Duration":"07:41",
             "Asleep":"07:13",
             "Awake":"00:28",
-            "Quality sleep":"05:26",
-            "Deep sleep":"00:00",
+            "Quality":"05:26",
+            "Deep":"00:00",
             "Heartrate":58
         },
         {
@@ -262,8 +262,8 @@
             "Duration":"07:00",
             "Asleep":"07:00",
             "Awake":"00:00",
-            "Quality sleep":"05:20",
-            "Deep sleep":"00:00",
+            "Quality":"05:20",
+            "Deep":"00:00",
             "Heartrate":61
         },
         {
@@ -273,8 +273,8 @@
             "Duration":"06:56",
             "Asleep":"06:56",
             "Awake":"00:00",
-            "Quality sleep":"04:42",
-            "Deep sleep":"00:00",
+            "Quality":"04:42",
+            "Deep":"00:00",
             "Heartrate":70
         },
         {
@@ -284,8 +284,8 @@
             "Duration":"07:27",
             "Asleep":"07:27",
             "Awake":"00:00",
-            "Quality sleep":"05:23",
-            "Deep sleep":"00:00",
+            "Quality":"05:23",
+            "Deep":"00:00",
             "Heartrate":58
         },
         {
@@ -295,8 +295,8 @@
             "Duration":"05:50",
             "Asleep":"05:37",
             "Awake":"00:13",
-            "Quality sleep":"04:07",
-            "Deep sleep":"00:00",
+            "Quality":"04:07",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -306,8 +306,8 @@
             "Duration":"06:58",
             "Asleep":"06:58",
             "Awake":"00:00",
-            "Quality sleep":"05:19",
-            "Deep sleep":"00:14",
+            "Quality":"05:19",
+            "Deep":"00:14",
             "Heartrate":55
         },
         {
@@ -317,8 +317,8 @@
             "Duration":"07:12",
             "Asleep":"07:11",
             "Awake":"00:01",
-            "Quality sleep":"05:16",
-            "Deep sleep":"00:00",
+            "Quality":"05:16",
+            "Deep":"00:00",
             "Heartrate":55
         },
         {
@@ -328,8 +328,8 @@
             "Duration":"07:44",
             "Asleep":"07:14",
             "Awake":"00:30",
-            "Quality sleep":"05:04",
-            "Deep sleep":"00:00",
+            "Quality":"05:04",
+            "Deep":"00:00",
             "Heartrate":57
         },
         {
@@ -339,8 +339,8 @@
             "Duration":"07:07",
             "Asleep":"06:52",
             "Awake":"00:15",
-            "Quality sleep":"04:53",
-            "Deep sleep":"00:00",
+            "Quality":"04:53",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -350,8 +350,8 @@
             "Duration":"08:09",
             "Asleep":"08:09",
             "Awake":"00:00",
-            "Quality sleep":"05:54",
-            "Deep sleep":"00:00",
+            "Quality":"05:54",
+            "Deep":"00:00",
             "Heartrate":66
         },
         {
@@ -361,8 +361,8 @@
             "Duration":"08:44",
             "Asleep":"07:53",
             "Awake":"00:51",
-            "Quality sleep":"05:33",
-            "Deep sleep":"01:31",
+            "Quality":"05:33",
+            "Deep":"01:31",
             "Heartrate":60
         },
         {
@@ -372,8 +372,8 @@
             "Duration":"08:26",
             "Asleep":"08:07",
             "Awake":"00:19",
-            "Quality sleep":"06:03",
-            "Deep sleep":"00:00",
+            "Quality":"06:03",
+            "Deep":"00:00",
             "Heartrate":55
         },
         {
@@ -383,8 +383,8 @@
             "Duration":"07:24",
             "Asleep":"07:16",
             "Awake":"00:08",
-            "Quality sleep":"05:32",
-            "Deep sleep":"00:00",
+            "Quality":"05:32",
+            "Deep":"00:00",
             "Heartrate":58
         },
         {
@@ -394,8 +394,8 @@
             "Duration":"07:51",
             "Asleep":"07:51",
             "Awake":"00:00",
-            "Quality sleep":"05:43",
-            "Deep sleep":"01:15",
+            "Quality":"05:43",
+            "Deep":"01:15",
             "Heartrate":53
         },
         {
@@ -405,8 +405,8 @@
             "Duration":"07:18",
             "Asleep":"07:07",
             "Awake":"00:11",
-            "Quality sleep":"05:21",
-            "Deep sleep":"00:00",
+            "Quality":"05:21",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -416,8 +416,8 @@
             "Duration":"07:56",
             "Asleep":"07:37",
             "Awake":"00:19",
-            "Quality sleep":"05:42",
-            "Deep sleep":"00:00",
+            "Quality":"05:42",
+            "Deep":"00:00",
             "Heartrate":62
         },
         {
@@ -427,8 +427,8 @@
             "Duration":"06:46",
             "Asleep":"06:46",
             "Awake":"00:00",
-            "Quality sleep":"04:43",
-            "Deep sleep":"00:00",
+            "Quality":"04:43",
+            "Deep":"00:00",
             "Heartrate":63
         }
     ],
@@ -440,8 +440,8 @@
             "Duration":"06:00",
             "Asleep":"06:00",
             "Awake":"00:00",
-            "Quality sleep":"04:32",
-            "Deep sleep":"00:00",
+            "Quality":"04:32",
+            "Deep":"00:00",
             "Heartrate":63
         },
         {
@@ -451,8 +451,8 @@
             "Duration":"09:20",
             "Asleep":"06:26",
             "Awake":"02:54",
-            "Quality sleep":"03:47",
-            "Deep sleep":"00:00",
+            "Quality":"03:47",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -462,8 +462,8 @@
             "Duration":"06:48",
             "Asleep":"06:27",
             "Awake":"00:21",
-            "Quality sleep":"04:33",
-            "Deep sleep":"00:00",
+            "Quality":"04:33",
+            "Deep":"00:00",
             "Heartrate":58
         },
         {
@@ -473,8 +473,8 @@
             "Duration":"06:17",
             "Asleep":"05:07",
             "Awake":"01:10",
-            "Quality sleep":"03:41",
-            "Deep sleep":"01:27",
+            "Quality":"03:41",
+            "Deep":"01:27",
             "Heartrate":58
         },
         {
@@ -484,8 +484,8 @@
             "Duration":"08:16",
             "Asleep":"07:47",
             "Awake":"00:29",
-            "Quality sleep":"05:01",
-            "Deep sleep":"00:00",
+            "Quality":"05:01",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -495,8 +495,8 @@
             "Duration":"06:51",
             "Asleep":"06:33",
             "Awake":"00:18",
-            "Quality sleep":"05:01",
-            "Deep sleep":"00:15",
+            "Quality":"05:01",
+            "Deep":"00:15",
             "Heartrate":60
         },
         {
@@ -506,8 +506,8 @@
             "Duration":"07:42",
             "Asleep":"07:29",
             "Awake":"00:13",
-            "Quality sleep":"05:34",
-            "Deep sleep":"00:00",
+            "Quality":"05:34",
+            "Deep":"00:00",
             "Heartrate":64
         },
         {
@@ -517,8 +517,8 @@
             "Duration":"08:47",
             "Asleep":"06:53",
             "Awake":"01:54",
-            "Quality sleep":"04:43",
-            "Deep sleep":"00:15",
+            "Quality":"04:43",
+            "Deep":"00:15",
             "Heartrate":58
         },
         {
@@ -528,8 +528,8 @@
             "Duration":"08:03",
             "Asleep":"07:33",
             "Awake":"00:30",
-            "Quality sleep":"05:11",
-            "Deep sleep":"00:45",
+            "Quality":"05:11",
+            "Deep":"00:45",
             "Heartrate":58
         },
         {
@@ -539,8 +539,8 @@
             "Duration":"06:41",
             "Asleep":"06:41",
             "Awake":"00:00",
-            "Quality sleep":"04:46",
-            "Deep sleep":"00:00",
+            "Quality":"04:46",
+            "Deep":"00:00",
             "Heartrate":61
         },
         {
@@ -550,8 +550,8 @@
             "Duration":"07:07",
             "Asleep":"07:01",
             "Awake":"00:06",
-            "Quality sleep":"04:42",
-            "Deep sleep":"00:00",
+            "Quality":"04:42",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -561,8 +561,8 @@
             "Duration":"07:58",
             "Asleep":"07:51",
             "Awake":"00:07",
-            "Quality sleep":"05:52",
-            "Deep sleep":"00:15",
+            "Quality":"05:52",
+            "Deep":"00:15",
             "Heartrate":55
         },
         {
@@ -572,8 +572,8 @@
             "Duration":"07:49",
             "Asleep":"07:49",
             "Awake":"00:00",
-            "Quality sleep":"05:48",
-            "Deep sleep":"00:15",
+            "Quality":"05:48",
+            "Deep":"00:15",
             "Heartrate":55
         },
         {
@@ -583,8 +583,8 @@
             "Duration":"07:30",
             "Asleep":"07:30",
             "Awake":"00:00",
-            "Quality sleep":"05:30",
-            "Deep sleep":"00:00",
+            "Quality":"05:30",
+            "Deep":"00:00",
             "Heartrate":54
         },
         {
@@ -594,8 +594,8 @@
             "Duration":"07:15",
             "Asleep":"07:15",
             "Awake":"00:00",
-            "Quality sleep":"05:09",
-            "Deep sleep":"00:00",
+            "Quality":"05:09",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -605,8 +605,8 @@
             "Duration":"07:45",
             "Asleep":"07:45",
             "Awake":"00:00",
-            "Quality sleep":"05:10",
-            "Deep sleep":"00:00",
+            "Quality":"05:10",
+            "Deep":"00:00",
             "Heartrate":62
         },
         {
@@ -616,8 +616,8 @@
             "Duration":"07:35",
             "Asleep":"07:35",
             "Awake":"00:00",
-            "Quality sleep":"05:26",
-            "Deep sleep":"00:00",
+            "Quality":"05:26",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -627,8 +627,8 @@
             "Duration":"09:56",
             "Asleep":"07:42",
             "Awake":"02:14",
-            "Quality sleep":"05:30",
-            "Deep sleep":"00:00",
+            "Quality":"05:30",
+            "Deep":"00:00",
             "Heartrate":61
         },
         {
@@ -638,8 +638,8 @@
             "Duration":"07:20",
             "Asleep":"07:25",
             "Awake":"00:05",
-            "Quality sleep":"04:37",
-            "Deep sleep":"00:00",
+            "Quality":"04:37",
+            "Deep":"00:00",
             "Heartrate":59
         },
         {
@@ -649,8 +649,8 @@
             "Duration":"07:02",
             "Asleep":"07:02",
             "Awake":"00:00",
-            "Quality sleep":"04:04",
-            "Deep sleep":"00:15",
+            "Quality":"04:04",
+            "Deep":"00:15",
             "Heartrate":56
         },
         {
@@ -660,8 +660,8 @@
             "Duration":"07:03",
             "Asleep":"06:57",
             "Awake":"00:06",
-            "Quality sleep":"04:45",
-            "Deep sleep":"00:00",
+            "Quality":"04:45",
+            "Deep":"00:00",
             "Heartrate":61
         },
         {
@@ -671,8 +671,8 @@
             "Duration":"09:13",
             "Asleep":"08:14",
             "Awake":"00:59",
-            "Quality sleep":"05:23",
-            "Deep sleep":"00:00",
+            "Quality":"05:23",
+            "Deep":"00:00",
             "Heartrate":60
         },
         {
@@ -682,8 +682,8 @@
             "Duration":"08:48",
             "Asleep":"08:48",
             "Awake":"00:00",
-            "Quality sleep":"06:16",
-            "Deep sleep":"00:00",
+            "Quality":"06:16",
+            "Deep":"00:00",
             "Heartrate":57
         },
         {
@@ -693,8 +693,8 @@
             "Duration":"06:56",
             "Asleep":"06:54",
             "Awake":"00:02",
-            "Quality sleep":"05:13",
-            "Deep sleep":"00:15",
+            "Quality":"05:13",
+            "Deep":"00:15",
             "Heartrate":57
         },
         {
@@ -704,8 +704,8 @@
             "Duration":"05:54",
             "Asleep":"05:54",
             "Awake":"00:00",
-            "Quality sleep":"04:18",
-            "Deep sleep":"00:00",
+            "Quality":"04:18",
+            "Deep":"00:00",
             "Heartrate":63
         },
         {
@@ -715,8 +715,8 @@
             "Duration":"06:45",
             "Asleep":"06:26",
             "Awake":"00:19",
-            "Quality sleep":"04:28",
-            "Deep sleep":"00:00",
+            "Quality":"04:28",
+            "Deep":"00:00",
             "Heartrate":53
         }
     ]
