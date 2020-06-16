@@ -874,13 +874,13 @@ class Framework extends BaseApp {
     openSideMenu() {
         document.getElementById("sideMenu").style.width = APPCONFIG.SIDE_MENU_WIDTH;
         document.getElementById("WebGL-Output").style.marginLeft = APPCONFIG.SIDE_MENU_WIDTH;
-        document.getElementById("sideMenuIcon").style.display = "none";
+        document.getElementById("sideMenuIcon").style.visibility = "hidden";
     }
 
     closeSideMenu() {
         document.getElementById("sideMenu").style.width = "0px";
         document.getElementById("WebGL-Output").style.marginLeft = "0px";
-        document.getElementById("sideMenuIcon").style.display = "block";
+        document.getElementById("sideMenuIcon").style.visibility = "visible";
     }
 
     stopNotifications(elemList) {

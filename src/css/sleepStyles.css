@@ -36,6 +36,7 @@ body {
     width: 22.5%;
     color: white;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
 }
 #rotate button {
     width: 45%;
@@ -139,6 +140,8 @@ body {
 #sideMenuIcon {
     top: 7%;
     left: 2.5%;
+    -webkit-user-select: none;
+    z-index: 100;
 }
 .sideNav {
     height: 100%;
