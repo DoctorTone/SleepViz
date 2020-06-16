@@ -4,6 +4,8 @@ body {
     overflow: hidden;
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 #WebGL-Output {
     transition: margin-left .5s;
@@ -35,8 +37,6 @@ body {
     right: 1%;
     width: 22.5%;
     color: white;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
 }
 #rotate button {
     width: 45%;
@@ -56,15 +56,12 @@ body {
     bottom: 1%;
     left: 1%;
     width: 100%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
 }
 #info {
     bottom: 1%;
     right: 1%;
     width: 10%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
+    cursor: pointer;
 }
 #info img {
     width: 100%;
@@ -95,8 +92,6 @@ body {
     top: 9%;
     left: -0.5%;
     height: 25%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
     border-radius: 0 20px 20px 0;
 }
 #sleepData img {
@@ -120,9 +115,6 @@ body {
 }
 #monthAttribute {
     top: 80%;
-}
-#monthControl {
-    -webkit-touch-callout: none;
 }
 #monthControl button {
     width: 35%;
@@ -158,7 +150,6 @@ body {
     transition: 0.5s;
     padding-top: 25px;
 }
-
 .sideNav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -167,14 +158,12 @@ body {
     display: block;
     transition: 0.3s;
 }
-
 .sideNav .closebtn {
     position: absolute;
     top: 0;
     right: 15px;
     font-size: 24px;
 }
-  
 /* Small screens */
 @media (min-width: 576px) {
     #rotate {
