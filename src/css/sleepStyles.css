@@ -1,243 +1,243 @@
 /* Viz framework styles */
 body {
-    margin: 0;
-    overflow: hidden;
-    color: black;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
+  margin: 0;
+  overflow: hidden;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 #WebGL-Output {
-    transition: margin-left .5s;
+  transition: margin-left 0.5s;
 }
 .title {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    text-align: center;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  text-align: center;
 }
 .title h1 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 .modal {
-    color: black;
+  color: black;
 }
 #guiWidth {
-    width: 175px;
+  width: 175px;
 }
 .panel {
-    position: absolute;
-    text-align: center;
+  position: absolute;
+  text-align: center;
 }
 .panel p {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 #rotate {
-    bottom: 15%;
-    right: 1%;
-    width: 22.5%;
-    color: white;
+  bottom: 15%;
+  right: 1%;
+  width: 22.5%;
+  color: white;
 }
 #rotate button {
-    width: 45%;
-    padding: 0.2rem 0.4rem;
+  width: 45%;
+  padding: 0.2rem 0.4rem;
 }
 #buttonLarge {
-    width: 100%;
+  width: 100%;
 }
 #buttonLarge button {
-    width: 95%;
+  width: 95%;
 }
 #rotate img {
-    width: 100%;
+  width: 100%;
 }
 .copyright {
-    position: absolute;
-    bottom: 1%;
-    left: 1%;
-    width: 100%;
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+  width: 100%;
 }
 #info {
-    bottom: 1%;
-    right: 1%;
-    width: 10%;
-    cursor: pointer;
+  bottom: 1%;
+  right: 1%;
+  width: 7.5%;
+  cursor: pointer;
 }
 #info img {
-    width: 100%;
+  width: 100%;
 }
 .infoTitle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color:  rgb(100, 100, 100);
-    color: white;
-    border: 2px solid white;
-    border-radius: 0 20px 20px 0;
-    padding: 5px 0;
-    width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(100, 100, 100);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0 20px 20px 0;
+  padding: 5px 0;
+  width: 40%;
 }
 .infoContent {
-    position: absolute;
-    top: 0%;
-    left: 45%;
-    background-color:  rgba(130, 130, 255, 0.75);
-    color: white;
-    border: 2px solid white;
-    border-radius: 0 20px 20px 0;
-    padding: 5px 0;
-    width: 35%;
+  position: absolute;
+  top: 0%;
+  left: 37.5%;
+  background-color: rgba(130, 130, 255, 0.75);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0 20px 20px 0;
+  padding: 5px 0;
+  width: 30%;
 }
 #sleepData {
-    top: 9%;
-    left: -0.5%;
-    height: 25%;
-    border-radius: 0 20px 20px 0;
+  top: 9%;
+  left: -0.5%;
+  height: 25%;
+  border-radius: 0 20px 20px 0;
 }
 #sleepData img {
-    width: 95%;
+  width: 95%;
 }
 #sleepAttribute,
 #qualityAttribute,
 #awakeAttribute,
 #deepAttribute,
 #monthAttribute {
-    left: 0;
+  left: 0;
 }
 #qualityAttribute {
-    top: 20%;
+  top: 20%;
 }
 #awakeAttribute {
-    top: 40%;
+  top: 40%;
 }
 #deepAttribute {
-    top: 60%;
+  top: 60%;
 }
 #monthAttribute {
-    top: 80%;
+  top: 80%;
 }
 #monthControl button {
-    width: 35%;
-    padding: 0.2rem 0.4rem;
+  width: 35%;
+  padding: 0.2rem 0.4rem;
 }
 .btn-purple {
-    color: #fff;
-    background-color:  rgba(130, 130, 255, 0.75);
-    border-color: white;
+  color: #fff;
+  background-color: rgba(130, 130, 255, 0.75);
+  border-color: white;
 }
 .infoTitleBtn {
-    background-color: rgb(100, 100, 100);
-    padding: 10px 20px;
-    border: 2px solid white;
-    border-radius: 20px;
-    color: white;
+  background-color: rgb(100, 100, 100);
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
 }
 #sideMenuIcon {
-    top: 7%;
-    left: 2.5%;
-    -webkit-user-select: none;
-    z-index: 100;
+  top: 7%;
+  left: 2.5%;
+  -webkit-user-select: none;
+  z-index: 100;
 }
 .sideNav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 25px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 25px;
 }
 .sideNav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 .sideNav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 15px;
-    font-size: 24px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 24px;
 }
 /* Small screens */
 @media (min-width: 576px) {
-    #rotate {
-        width: 15%;
-    }
+  #rotate {
+    width: 15%;
+  }
 }
 
 /* Small screen - landscape */
 @media (min-width: 576px) and (orientation: landscape) {
-    #rotate {
-        width: 11%;
-        top: 11%;
-    }
-    #sleepData {
-        width: 17.5%;
-        top: 10%;
-        padding: 0 0;
-    }
-    #info {
-        width: 6.5%;
-    }
-    #guiWidth {
-        width: 200px;
-    }
+  #rotate {
+    width: 11%;
+    top: 11%;
+  }
+  #sleepData {
+    width: 17.5%;
+    top: 10%;
+    padding: 0 0;
+  }
+  #info {
+    width: 6.5%;
+  }
+  #guiWidth {
+    width: 200px;
+  }
 }
 
 @media (min-width: 768px) {
-    #sleepData {
-        top: 7.5%;
-        width: 22.5%;
-    }
-    #guiWidth {
-        width: 300px;
-    }
+  #sleepData {
+    top: 7.5%;
+    width: 22.5%;
+  }
+  #guiWidth {
+    width: 300px;
+  }
 }
 
 @media (min-width: 768px) and (orientation: landscape) {
-    #rotate {
-        top: 17.5%;
-    }
+  #rotate {
+    top: 17.5%;
+  }
 }
 /* iPad in landscape */
 @media (min-width: 992px) {
-    #rotate {
-        width: 10%;
-        top: 55%;
-    }
-    #info {
-        width: 6%;
-    }
-    #sleepData {
-        width: 37.5%;
-    }
+  #rotate {
+    width: 10%;
+    top: 55%;
+  }
+  #info {
+    width: 5%;
+  }
+  #sleepData {
+    width: 37.5%;
+  }
 }
 
 /* Larger screens */
 @media (min-width: 1200px) {
-    #rotate {
-        width: 8%;
-    }
-    #rotate img {
-        width: 100%;
-    }
-    #info {
-        width: 4%;
-    }
-    #sleepData {
-        width: 30%;
-    }
+  #rotate {
+    width: 8%;
+  }
+  #rotate img {
+    width: 100%;
+  }
+  #info {
+    width: 3%;
+  }
+  #sleepData {
+    width: 30%;
+  }
 }
 
 /* Full HD screens */
 @media (min-width: 1600px) {
-    #rotate {
-        width: 7%;
-    }
+  #rotate {
+    width: 7%;
+  }
 }
